@@ -15,75 +15,79 @@ import { Input } from 'neumo-ui';
 
 ## 基本的な使い方
 
-```tsx
-<Input placeholder="Enter text..." />
-```
+<ComponentPreview code={`<Input placeholder="Enter text..." />`}>
+  <Input placeholder="Enter text..." />
+</ComponentPreview>
 
 ## ラベル付き
 
-```tsx
-<Input label="Email" placeholder="Enter your email" />
-```
-
-## タイプ
-
-5種類の入力タイプに対応しています。
-
-```tsx
-<Input type="text" label="Text" />
-<Input type="email" label="Email" />
-<Input type="password" label="Password" />
-<Input type="number" label="Number" />
-<Input type="search" label="Search" />
-```
+<ComponentPreview code={`<Input label="Email" placeholder="Enter your email" />`}>
+  <Input label="Email" placeholder="Enter your email" />
+</ComponentPreview>
 
 ## サイズ
 
 3種類のサイズがあります。
 
-```tsx
-<Input size="sm" placeholder="Small" />
-<Input size="md" placeholder="Medium" />
-<Input size="lg" placeholder="Large" />
-```
+<ComponentShowcase title="Input Sizes">
+  <Input size="sm" placeholder="Small" />
+  <Input size="md" placeholder="Medium" />
+  <Input size="lg" placeholder="Large" />
+</ComponentShowcase>
 
 ## ヘルパーテキスト
 
-```tsx
-<Input 
+<ComponentPreview code={`<Input 
   label="Email" 
   placeholder="example@email.com"
   helperText="We'll never share your email"
-/>
-```
+/>`}>
+  <Input 
+    label="Email" 
+    placeholder="example@email.com"
+    helperText="We'll never share your email"
+  />
+</ComponentPreview>
 
 ## エラー状態
 
-```tsx
-<Input 
+<ComponentPreview code={`<Input 
   label="Email" 
   error 
   errorMessage="Invalid email address"
-/>
-```
-
-## アイコン付き
-
-左右にアイコンを配置できます。
-
-```tsx
-import { Mail, Search, Eye } from 'lucide-react';
-
-<Input leftIcon={<Mail size={16} />} placeholder="Email" />
-<Input leftIcon={<Search size={16} />} placeholder="Search..." />
-<Input type="password" rightIcon={<Eye size={16} />} placeholder="Password" />
-```
+/>`}>
+  <Input 
+    label="Email" 
+    error 
+    errorMessage="Invalid email address"
+  />
+</ComponentPreview>
 
 ## 無効状態
 
-```tsx
-<Input disabled placeholder="Disabled input" />
-```
+<ComponentPreview code={`<Input disabled placeholder="Disabled input" />`}>
+  <Input disabled placeholder="Disabled input" />
+</ComponentPreview>
+
+## フォーム例
+
+<ComponentPreview code={`<Card padding="lg">
+  <h3>Login</h3>
+  <Input label="Email" type="email" placeholder="Enter your email" />
+  <Input label="Password" type="password" placeholder="Enter your password" />
+  <Button variant="primary">Sign In</Button>
+</Card>`}>
+  <Card padding="lg" style={{ width: '320px' }}>
+    <h3 style={{ margin: '0 0 1rem 0' }}>Login</h3>
+    <div style={{ marginBottom: '1rem' }}>
+      <Input label="Email" type="email" placeholder="Enter your email" />
+    </div>
+    <div style={{ marginBottom: '1rem' }}>
+      <Input label="Password" type="password" placeholder="Enter your password" />
+    </div>
+    <Button variant="primary">Sign In</Button>
+  </Card>
+</ComponentPreview>
 
 ## Props
 

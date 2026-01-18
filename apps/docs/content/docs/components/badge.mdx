@@ -15,21 +15,21 @@ import { Badge } from 'neumo-ui';
 
 ## 基本的な使い方
 
-```tsx
-<Badge>Default</Badge>
-```
+<ComponentPreview code={`<Badge>Default</Badge>`}>
+  <Badge>Default</Badge>
+</ComponentPreview>
 
 ## バリアント
 
 5種類のバリアントがあります。
 
-```tsx
-<Badge variant="default">Default</Badge>
-<Badge variant="success">Success</Badge>
-<Badge variant="warning">Warning</Badge>
-<Badge variant="error">Error</Badge>
-<Badge variant="info">Info</Badge>
-```
+<ComponentShowcase title="Badge Variants">
+  <Badge variant="default">Default</Badge>
+  <Badge variant="success">Success</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="error">Error</Badge>
+  <Badge variant="info">Info</Badge>
+</ComponentShowcase>
 
 | バリアント | 説明 | 使用例 |
 |-----------|------|--------|
@@ -43,44 +43,58 @@ import { Badge } from 'neumo-ui';
 
 2種類のサイズがあります。
 
-```tsx
-<Badge size="sm">Small</Badge>
-<Badge size="md">Medium</Badge>
-```
+<ComponentShowcase title="Badge Sizes">
+  <Badge size="sm">Small</Badge>
+  <Badge size="md">Medium</Badge>
+</ComponentShowcase>
 
 ## 使用例
 
 ### ステータス表示
 
-```tsx
-<div style={{ display: 'flex', gap: '0.5rem' }}>
+<ComponentPreview code={`<div style={{ display: 'flex', gap: '0.5rem' }}>
   <Badge variant="success">Online</Badge>
   <Badge variant="warning">Away</Badge>
   <Badge variant="default">Offline</Badge>
-</div>
-```
+</div>`}>
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <Badge variant="success">Online</Badge>
+    <Badge variant="warning">Away</Badge>
+    <Badge variant="default">Offline</Badge>
+  </div>
+</ComponentPreview>
 
 ### カードとの組み合わせ
 
-```tsx
-<Card>
+<ComponentPreview code={`<Card>
   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
     <h3>Task Title</h3>
     <Badge variant="warning">In Progress</Badge>
   </div>
   <p>Task description...</p>
-</Card>
-```
+</Card>`}>
+  <Card style={{ width: '300px' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <h3 style={{ margin: 0 }}>Task Title</h3>
+      <Badge variant="warning">In Progress</Badge>
+    </div>
+    <p style={{ margin: '0.5rem 0 0', color: '#718096' }}>Task description...</p>
+  </Card>
+</ComponentPreview>
 
-### リストアイテム
+### ユーザーリスト
 
-```tsx
-<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-  <Avatar alt="User" size="sm" />
+<ComponentPreview code={`<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Avatar alt="John Doe" size="sm" />
   <span>John Doe</span>
   <Badge variant="info" size="sm">Admin</Badge>
-</div>
-```
+</div>`}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Avatar alt="John Doe" size="sm" />
+    <span>John Doe</span>
+    <Badge variant="info" size="sm">Admin</Badge>
+  </div>
+</ComponentPreview>
 
 ## Props
 

@@ -15,67 +15,66 @@ import { Avatar } from 'neumo-ui';
 
 ## 基本的な使い方
 
-```tsx
-<Avatar src="/avatar.jpg" alt="John Doe" />
-```
+<ComponentPreview code={`<Avatar alt="John Doe" />`}>
+  <Avatar alt="John Doe" />
+</ComponentPreview>
 
 ## イニシャル表示
 
-画像がない場合や読み込みに失敗した場合、名前からイニシャルを自動生成して表示します。
+画像がない場合、名前からイニシャルを自動生成して表示します。
 
-```tsx
-<Avatar alt="John Doe" />           {/* JD */}
-<Avatar alt="Jane" />               {/* J */}
-<Avatar alt="John Michael Doe" />   {/* JD */}
-```
-
-## カスタムフォールバック
-
-```tsx
-<Avatar alt="User" fallback="?" />
-```
+<ComponentShowcase title="Avatar Initials">
+  <Avatar alt="John Doe" />
+  <Avatar alt="Jane" />
+  <Avatar alt="Alice Bob" />
+</ComponentShowcase>
 
 ## サイズ
 
 5種類のサイズがあります。
 
-```tsx
-<Avatar alt="User" size="xs" />  {/* 24px */}
-<Avatar alt="User" size="sm" />  {/* 32px */}
-<Avatar alt="User" size="md" />  {/* 40px */}
-<Avatar alt="User" size="lg" />  {/* 56px */}
-<Avatar alt="User" size="xl" />  {/* 72px */}
-```
+<ComponentShowcase title="Avatar Sizes">
+  <Avatar alt="XS" size="xs" />
+  <Avatar alt="SM" size="sm" />
+  <Avatar alt="MD" size="md" />
+  <Avatar alt="LG" size="lg" />
+  <Avatar alt="XL" size="xl" />
+</ComponentShowcase>
+
+| サイズ | ピクセル |
+|-------|---------|
+| `xs` | 24px |
+| `sm` | 32px |
+| `md` | 40px |
+| `lg` | 56px |
+| `xl` | 72px |
 
 ## バリアント（形状）
 
-```tsx
-<Avatar alt="User" variant="circle" />   {/* 円形（デフォルト） */}
-<Avatar alt="User" variant="rounded" />  {/* 角丸四角形 */}
-```
+<ComponentShowcase title="Avatar Variants">
+  <Avatar alt="Circle" variant="circle" size="lg" />
+  <Avatar alt="Rounded" variant="rounded" size="lg" />
+</ComponentShowcase>
 
-## 画像付き
+## カスタムフォールバック
 
-```tsx
-<Avatar 
-  src="https://example.com/avatar.jpg" 
-  alt="John Doe" 
-  size="lg"
-  variant="circle"
-/>
-```
+<ComponentPreview code={`<Avatar alt="User" fallback="?" />`}>
+  <Avatar alt="User" fallback="?" />
+</ComponentPreview>
 
 ## アバターグループ
 
-複数のアバターを重ねて表示する例です。
-
-```tsx
-<div style={{ display: 'flex' }}>
+<ComponentPreview code={`<div style={{ display: 'flex' }}>
   <Avatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
   <Avatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
   <Avatar alt="User 3" style={{ zIndex: 1 }} />
-</div>
-```
+</div>`}>
+  <div style={{ display: 'flex' }}>
+    <Avatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
+    <Avatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
+    <Avatar alt="User 3" style={{ zIndex: 1 }} />
+  </div>
+</ComponentPreview>
 
 ## Props
 

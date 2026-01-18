@@ -15,19 +15,19 @@ import { Button } from 'neumo-ui';
 
 ## 基本的な使い方
 
-```tsx
-<Button>Default Button</Button>
-```
+<ComponentPreview code={`<Button>Default Button</Button>`}>
+  <Button>Default Button</Button>
+</ComponentPreview>
 
 ## バリアント
 
 3種類のバリアントがあります。
 
-```tsx
-<Button variant="default">Default</Button>
-<Button variant="primary">Primary</Button>
-<Button variant="ghost">Ghost</Button>
-```
+<ComponentShowcase title="Button Variants">
+  <Button variant="default">Default</Button>
+  <Button variant="primary">Primary</Button>
+  <Button variant="ghost">Ghost</Button>
+</ComponentShowcase>
 
 | バリアント | 説明 |
 |-----------|------|
@@ -39,34 +39,35 @@ import { Button } from 'neumo-ui';
 
 3種類のサイズがあります。
 
-```tsx
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-```
-
-## アイコン付きボタン
-
-左右にアイコンを配置できます。
-
-```tsx
-import { Plus, ArrowRight } from 'lucide-react';
-
-<Button leftIcon={<Plus size={16} />}>Add Item</Button>
-<Button rightIcon={<ArrowRight size={16} />}>Next</Button>
-```
+<ComponentShowcase title="Button Sizes">
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</ComponentShowcase>
 
 ## ローディング状態
 
-```tsx
-<Button loading>Loading...</Button>
-```
+<ComponentPreview code={`<Button loading>Loading...</Button>`}>
+  <Button loading>Loading...</Button>
+</ComponentPreview>
 
 ## 無効状態
 
-```tsx
-<Button disabled>Disabled</Button>
-```
+<ComponentPreview code={`<Button disabled>Disabled</Button>`}>
+  <Button disabled>Disabled</Button>
+</ComponentPreview>
+
+## 組み合わせ例
+
+<ComponentPreview code={`<div style={{ display: 'flex', gap: '0.5rem' }}>
+  <Button variant="primary">Submit</Button>
+  <Button variant="ghost">Cancel</Button>
+</div>`}>
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <Button variant="primary">Submit</Button>
+    <Button variant="ghost">Cancel</Button>
+  </div>
+</ComponentPreview>
 
 ## Props
 

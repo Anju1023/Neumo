@@ -15,33 +15,34 @@ import { Card } from 'neumo-ui';
 
 ## 基本的な使い方
 
-```tsx
-<Card>
+<ComponentPreview code={`<Card>
   <h2>Card Title</h2>
   <p>Card content goes here</p>
-</Card>
-```
+</Card>`}>
+  <Card>
+    <h2 style={{ margin: 0, marginBottom: '0.5rem' }}>Card Title</h2>
+    <p style={{ margin: 0, color: '#718096' }}>Card content goes here</p>
+  </Card>
+</ComponentPreview>
 
 ## バリアント
 
 3種類のバリアントがあります。
 
-```tsx
-<Card variant="elevated">
-  <h3>Elevated Card</h3>
-  <p>浮き上がったカード（デフォルト）</p>
-</Card>
-
-<Card variant="flat">
-  <h3>Flat Card</h3>
-  <p>フラットなカード</p>
-</Card>
-
-<Card variant="inset">
-  <h3>Inset Card</h3>
-  <p>凹んだカード</p>
-</Card>
-```
+<ComponentShowcase title="Card Variants">
+  <Card variant="elevated" style={{ width: '200px' }}>
+    <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Elevated</h4>
+    <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>浮き上がったカード</p>
+  </Card>
+  <Card variant="flat" style={{ width: '200px' }}>
+    <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Flat</h4>
+    <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>フラットなカード</p>
+  </Card>
+  <Card variant="inset" style={{ width: '200px' }}>
+    <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Inset</h4>
+    <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>凹んだカード</p>
+  </Card>
+</ComponentShowcase>
 
 | バリアント | 説明 |
 |-----------|------|
@@ -53,29 +54,48 @@ import { Card } from 'neumo-ui';
 
 4種類のパディングサイズがあります。
 
-```tsx
-<Card padding="none">No padding</Card>
-<Card padding="sm">Small padding</Card>
-<Card padding="md">Medium padding</Card>
-<Card padding="lg">Large padding</Card>
-```
+<ComponentShowcase title="Card Padding">
+  <Card padding="none" style={{ width: '120px' }}>
+    <span>none</span>
+  </Card>
+  <Card padding="sm" style={{ width: '120px' }}>
+    <span>sm</span>
+  </Card>
+  <Card padding="md" style={{ width: '120px' }}>
+    <span>md</span>
+  </Card>
+  <Card padding="lg" style={{ width: '120px' }}>
+    <span>lg</span>
+  </Card>
+</ComponentShowcase>
 
 ## 組み合わせ例
 
-```tsx
-<Card variant="elevated" padding="lg">
+<ComponentPreview code={`<Card variant="elevated" padding="lg">
   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-    <Avatar alt="User" size="lg" />
+    <Avatar alt="John Doe" size="lg" />
     <div>
       <h3>John Doe</h3>
       <Badge variant="success">Online</Badge>
     </div>
   </div>
   <Divider />
-  <p>This is a profile card example combining multiple components.</p>
+  <p>This is a profile card example.</p>
   <Button variant="primary">View Profile</Button>
-</Card>
-```
+</Card>`}>
+  <Card variant="elevated" padding="lg" style={{ width: '320px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+      <Avatar alt="John Doe" size="lg" />
+      <div>
+        <h3 style={{ margin: 0 }}>John Doe</h3>
+        <Badge variant="success">Online</Badge>
+      </div>
+    </div>
+    <Divider />
+    <p style={{ margin: '1rem 0', color: '#718096' }}>This is a profile card example.</p>
+    <Button variant="primary">View Profile</Button>
+  </Card>
+</ComponentPreview>
 
 ## Props
 
