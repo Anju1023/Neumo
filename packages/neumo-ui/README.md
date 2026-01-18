@@ -24,9 +24,25 @@ import 'neumo-ui/styles.css';
 - **Badge** - ステータスラベル（variant: default/success/warning/error/info）
 - **Divider** - 区切り線（orientation: horizontal/vertical）
 
+## 開発
+
+```bash
+# watchモード（開発時）
+pnpm dev
+
+# ビルド
+pnpm build
+
+# テスト
+pnpm test
+
+# リント
+pnpm lint
+```
+
 ## ドキュメント
 
-詳細なドキュメントは [docs](../../apps/docs) を参照してください。
+詳細なドキュメントは http://localhost:3000 で確認できる（ルートから `pnpm dev` で起動）。
 
 ## ライセンス
 

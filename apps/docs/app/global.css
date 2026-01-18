@@ -4,3 +4,7 @@
 
 /* Neumo UIのスタイル */
 @import 'neumo-ui/styles.css';
+
+@theme {
+  --font-sans: var(--font-inter), var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

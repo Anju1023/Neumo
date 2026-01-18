@@ -1,45 +1,53 @@
-# docs
+# Neumo UI ドキュメントサイト
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+Neumo UIのドキュメントサイト。[Fumadocs](https://fumadocs.dev) + Next.js 16で構築。
 
-Run development server:
+## 起動方法
+
+### 単体で起動
 
 ```bash
-npm run dev
-# or
+cd apps/docs
 pnpm dev
-# or
-yarn dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+### ルートから起動
 
-## Explore
+```bash
+# プロジェクトルートから
+pnpm dev
+```
 
-In the project, you can see:
+http://localhost:3000 でドキュメントサイトが開く。
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+## ディレクトリ構成
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+```
+apps/docs/
+├── app/                    # Next.js App Router
+│   ├── (home)/            # ランディングページ
+│   ├── docs/              # ドキュメントページ
+│   └── api/search/        # 検索API
+├── components/            # コンポーネント
+│   ├── landing/           # ランディングページ用
+│   └── ui/                # UI用（プレビューなど）
+├── content/docs/          # MDXコンテンツ
+│   ├── index.mdx          # はじめに
+│   ├── installation.mdx   # インストール
+│   └── components/        # コンポーネントドキュメント
+└── lib/                   # ユーティリティ
+```
 
-### Fumadocs MDX
+## コンテンツの編集
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+ドキュメントは `content/docs/` 内のMDXファイルを編集する。
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+### 新しいコンポーネントドキュメントを追加
 
-## Learn More
+1. `content/docs/components/` に新しいMDXファイルを作成
+2. `content/docs/components/meta.json` にページを追加
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+## 参考リンク
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+- [Fumadocs](https://fumadocs.dev) - ドキュメントフレームワーク
+- [Next.js](https://nextjs.org/docs) - Reactフレームワーク

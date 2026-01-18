@@ -119,18 +119,59 @@ function App() {
 
 ## 開発
 
+### プロジェクト構成
+
+```
+neumo/
+├── apps/
+│   └── docs/          # ドキュメントサイト (Fumadocs + Next.js)
+├── packages/
+│   └── neumo-ui/      # UIコンポーネントライブラリ
+└── package.json       # ルートpackage.json
+```
+
+### セットアップ
+
 ```bash
 # 依存関係のインストール
 pnpm install
 
-# 開発サーバー（ドキュメント）
+# ドキュメントサイトを起動（http://localhost:3000）
 pnpm dev
 
-# ビルド
+# ライブラリのwatchモードを起動（コンポーネント開発時）
+pnpm dev:lib
+```
+
+### コンポーネント開発時
+
+ライブラリのコードを変更しながらドキュメントサイトで確認したい場合は、2つのターミナルで以下を実行：
+
+```bash
+# ターミナル1: ライブラリのwatchモード
+pnpm dev:lib
+
+# ターミナル2: ドキュメントサイト
+pnpm dev:docs
+```
+
+### その他のコマンド
+
+```bash
+# ビルド（ライブラリ → ドキュメント）
 pnpm build
+
+# ライブラリのみビルド
+pnpm build:lib
 
 # テスト
 pnpm test
+
+# リント
+pnpm lint
+
+# クリーン
+pnpm clean
 ```
 
 ## 技術スタック
