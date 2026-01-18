@@ -33,13 +33,13 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
     // バリアント別スタイル
     const variantStyles: Record<string, string> = {
       circle: "rounded-full",
-      rounded: "rounded-[var(--neumo-radius-md,12px)]",
+      rounded: "rounded-(--neumo-radius-md,12px)",
     };
 
     // ベーススタイル
     const baseStyles = `
-      bg-[var(--neumo-bg,#e0e5ec)]
-      shadow-[var(--neumo-elevation-1)]
+      bg-(--neumo-bg,#e0e5ec)
+      shadow-(--neumo-elevation-1)
       flex items-center justify-center
       overflow-hidden
       flex-shrink-0
@@ -47,7 +47,7 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
 
     // デフォルトのフォールバック（イニシャル表示）
     const DefaultFallback = () => (
-      <span className="text-[var(--neumo-text-muted,#636e72)] font-medium">
+      <span className="text-(--neumo-text-muted,#636e72) font-medium">
         {alt ? alt.charAt(0).toUpperCase() : "?"}
       </span>
     );
