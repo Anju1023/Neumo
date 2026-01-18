@@ -39,14 +39,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // バリアント別スタイル（ニューモフィズム）
     const variantStyles: Record<string, string> = {
       default: `
-        bg-[var(--neumo-bg,#e0e5ec)]
-        text-[var(--neumo-text,#2d3436)]
-        shadow-[var(--neumo-elevation-1)]
-        hover:shadow-[var(--neumo-elevation-2)]
-        active:shadow-[var(--neumo-inset-1)]
+        bg-(--neumo-bg,#e0e5ec)
+        text-(--neumo-text,#2d3436)
+        shadow-(--neumo-elevation-1)
+        hover:shadow-(--neumo-elevation-2)
+        active:shadow-(--neumo-inset-1)
       `,
       primary: `
-        bg-[var(--neumo-primary,#6c5ce7)]
+        bg-(--neumo-primary,#6c5ce7)
         text-white
         shadow-[4px_4px_8px_rgba(108,92,231,0.4),-4px_-4px_8px_rgba(162,155,254,0.4)]
         hover:shadow-[6px_6px_12px_rgba(108,92,231,0.5),-6px_-6px_12px_rgba(162,155,254,0.5)]
@@ -54,10 +54,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       `,
       ghost: `
         bg-transparent
-        text-[var(--neumo-text,#2d3436)]
-        hover:bg-[var(--neumo-bg,#e0e5ec)]
-        hover:shadow-[var(--neumo-elevation-1)]
-        active:shadow-[var(--neumo-inset-1)]
+        text-(--neumo-text,#2d3436)
+        hover:bg-(--neumo-bg,#e0e5ec)
+        hover:shadow-(--neumo-elevation-1)
+        active:shadow-(--neumo-inset-1)
       `,
     };
 
@@ -102,13 +102,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading && <LoadingSpinner />}
         
         {/* 左アイコン（ローディング中は非表示） */}
-        {!loading && leftIcon && <span className="flex-shrink-0">{leftIcon}</span>}
+        {!loading && leftIcon && <span className="shrink-0">{leftIcon}</span>}
         
         {/* ボタンテキスト */}
         {children && <span>{children}</span>}
         
         {/* 右アイコン */}
-        {rightIcon && <span className="flex-shrink-0">{rightIcon}</span>}
+        {rightIcon && <span className="shrink-0">{rightIcon}</span>}
       </button>
     );
   }
