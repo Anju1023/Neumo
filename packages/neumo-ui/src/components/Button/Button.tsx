@@ -2,102 +2,40 @@ import { forwardRef } from "react";
 import type { ButtonProps, ButtonVariant, ButtonSize } from "./Button.types";
 
 /**
- * バリアントごとのスタイル
+ * バリアントごとのTailwindクラス
  */
-const variantStyles: Record<ButtonVariant, string> = {
-  default: `
-    background: var(--neumo-bg);
-    color: var(--neumo-text);
-    box-shadow: var(--neumo-elevation-1);
-  `,
-  primary: `
-    background: var(--neumo-primary);
-    color: white;
-    box-shadow: var(--neumo-elevation-1);
-  `,
-  ghost: `
-    background: transparent;
-    color: var(--neumo-text);
-    box-shadow: none;
-  `,
+const variantClasses: Record<ButtonVariant, string> = {
+  default: "bg-neumo-bg text-neumo-text neumo-elevation-1",
+  primary: "bg-neumo-primary text-white neumo-elevation-1",
+  ghost: "bg-transparent text-neumo-text shadow-none",
 };
 
 /**
- * サイズごとのスタイル
+ * サイズごとのTailwindクラス
  */
-const sizeStyles: Record<ButtonSize, string> = {
-  sm: `
-    padding: var(--neumo-space-xs) var(--neumo-space-sm);
-    font-size: var(--neumo-font-sm);
-    border-radius: var(--neumo-radius-sm);
-    gap: var(--neumo-space-xs);
-  `,
-  md: `
-    padding: var(--neumo-space-sm) var(--neumo-space-md);
-    font-size: var(--neumo-font-md);
-    border-radius: var(--neumo-radius-md);
-    gap: var(--neumo-space-sm);
-  `,
-  lg: `
-    padding: var(--neumo-space-md) var(--neumo-space-lg);
-    font-size: var(--neumo-font-lg);
-    border-radius: var(--neumo-radius-lg);
-    gap: var(--neumo-space-sm);
-  `,
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: "px-neumo-sm py-neumo-xs text-neumo-sm rounded-neumo-sm gap-neumo-xs",
+  md: "px-neumo-md py-neumo-sm text-neumo-md rounded-neumo-md gap-neumo-sm",
+  lg: "px-neumo-lg py-neumo-md text-neumo-lg rounded-neumo-lg gap-neumo-sm",
 };
 
 /**
- * ベーススタイル
+ * ベースのTailwindクラス
  */
-const baseStyles = `
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all var(--neumo-transition);
-  outline: none;
-  user-select: none;
-`;
+const baseClasses =
+  "inline-flex items-center justify-center border-none cursor-pointer font-medium transition-all outline-none select-none";
 
 /**
- * ホバースタイル（default/primary用）
+ * 無効時のTailwindクラス
  */
-const hoverStyles = `
-  box-shadow: var(--neumo-elevation-hover);
-  transform: translateY(-1px);
-`;
-
-/**
- * アクティブスタイル
- */
-const activeStyles = `
-  box-shadow: var(--neumo-elevation-active);
-  transform: translateY(0);
-`;
-
-/**
- * 無効スタイル
- */
-const disabledStyles = `
-  opacity: 0.5;
-  cursor: not-allowed;
-  box-shadow: none;
-`;
-
-/**
- * フォーカススタイル（アクセシビリティ）
- */
-const focusStyles = `
-  box-shadow: var(--neumo-focus-ring), var(--neumo-elevation-1);
-`;
+const disabledClasses = "opacity-50 cursor-not-allowed !shadow-none";
 
 /**
  * ローディングスピナーコンポーネント
  */
 const LoadingSpinner = () => (
   <svg
+    className="animate-neumo-spin"
     width="16"
     height="16"
     viewBox="0 0 24 24"
@@ -106,19 +44,8 @@ const LoadingSpinner = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    style={{
-      animation: "spin 1s linear infinite",
-    }}
   >
     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-    <style>
-      {`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}
-    </style>
   </svg>
 );
 
@@ -145,73 +72,39 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       children,
-      style,
-      onMouseEnter,
-      onMouseLeave,
-      onMouseDown,
-      onMouseUp,
-      onFocus,
-      onBlur,
+      className,
       ...props
     },
     ref
   ) => {
-    // スタイルを結合
-    const buttonStyle: React.CSSProperties = {
-      ...parseStyles(baseStyles),
-      ...parseStyles(variantStyles[variant]),
-      ...parseStyles(sizeStyles[size]),
-      ...(disabled ? parseStyles(disabledStyles) : {}),
-      ...style,
-    };
+    // インタラクティブかどうか（ホバー/アクティブ/フォーカス効果を適用するか）
+    const isInteractive = !disabled && !loading;
+
+    // ホバー/アクティブ効果のクラス（ghostバリアント以外）
+    const interactionClasses =
+      isInteractive && variant !== "ghost"
+        ? "hover:neumo-elevation-hover hover:-translate-y-px active:neumo-elevation-active active:translate-y-0 focus:neumo-focus-ring"
+        : "";
+
+    // クラスを結合
+    const buttonClasses = [
+      baseClasses,
+      variantClasses[variant],
+      sizeClasses[size],
+      disabled || loading ? disabledClasses : "",
+      interactionClasses,
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <button
         ref={ref}
         disabled={disabled || loading}
-        style={buttonStyle}
+        className={buttonClasses}
         aria-busy={loading}
         aria-disabled={disabled || loading}
-        onMouseEnter={(e) => {
-          if (!disabled && !loading && variant !== "ghost") {
-            Object.assign(e.currentTarget.style, parseStyles(hoverStyles));
-          }
-          onMouseEnter?.(e);
-        }}
-        onMouseLeave={(e) => {
-          if (!disabled && !loading) {
-            // 元のスタイルに戻す
-            e.currentTarget.style.boxShadow =
-              variant === "ghost" ? "none" : "var(--neumo-elevation-1)";
-            e.currentTarget.style.transform = "translateY(0)";
-          }
-          onMouseLeave?.(e);
-        }}
-        onMouseDown={(e) => {
-          if (!disabled && !loading && variant !== "ghost") {
-            Object.assign(e.currentTarget.style, parseStyles(activeStyles));
-          }
-          onMouseDown?.(e);
-        }}
-        onMouseUp={(e) => {
-          if (!disabled && !loading && variant !== "ghost") {
-            Object.assign(e.currentTarget.style, parseStyles(hoverStyles));
-          }
-          onMouseUp?.(e);
-        }}
-        onFocus={(e) => {
-          if (!disabled && !loading) {
-            Object.assign(e.currentTarget.style, parseStyles(focusStyles));
-          }
-          onFocus?.(e);
-        }}
-        onBlur={(e) => {
-          if (!disabled && !loading) {
-            e.currentTarget.style.boxShadow =
-              variant === "ghost" ? "none" : "var(--neumo-elevation-1)";
-          }
-          onBlur?.(e);
-        }}
         {...props}
       >
         {/* ローディング時はスピナーを表示 */}
@@ -230,24 +123,3 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
-
-/**
- * CSS文字列をReact.CSSPropertiesオブジェクトに変換
- */
-function parseStyles(cssString: string): React.CSSProperties {
-  const styles: Record<string, string> = {};
-  const declarations = cssString.split(";").filter((d) => d.trim());
-
-  for (const declaration of declarations) {
-    const [property, value] = declaration.split(":").map((s) => s.trim());
-    if (property && value) {
-      // CSS プロパティ名をキャメルケースに変換
-      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
-        letter.toUpperCase()
-      );
-      styles[camelCase] = value;
-    }
-  }
-
-  return styles as React.CSSProperties;
-}

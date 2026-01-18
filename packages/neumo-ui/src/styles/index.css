@@ -1,0 +1,172 @@
+/* ===================================
+   Neumo UI - Tailwind CSS v4 エントリーポイント
+   ニューモフィズム2.0デザインシステム
+   =================================== */
+
+@import "tailwindcss";
+
+/* ===================================
+   @theme - Tailwindテーマ変数の定義
+   =================================== */
+@theme {
+  /* --------------------------------
+     カラー - サーフェス
+     -------------------------------- */
+  --color-neumo-bg: #e0e5ec;
+  --color-neumo-bg-dark: #1a1a2e;
+
+  /* --------------------------------
+     カラー - テキスト
+     -------------------------------- */
+  --color-neumo-text: #2d3748;
+  --color-neumo-text-muted: #718096;
+  --color-neumo-text-dark: #e2e8f0;
+
+  /* --------------------------------
+     カラー - アクセント
+     -------------------------------- */
+  --color-neumo-primary: #6366f1;
+  --color-neumo-primary-hover: #4f46e5;
+  --color-neumo-success: #22c55e;
+  --color-neumo-warning: #f59e0b;
+  --color-neumo-error: #ef4444;
+  --color-neumo-info: #3b82f6;
+
+  /* --------------------------------
+     スペーシング
+     -------------------------------- */
+  --spacing-neumo-xs: 4px;
+  --spacing-neumo-sm: 8px;
+  --spacing-neumo-md: 16px;
+  --spacing-neumo-lg: 24px;
+  --spacing-neumo-xl: 32px;
+
+  /* --------------------------------
+     角丸
+     -------------------------------- */
+  --radius-neumo-sm: 8px;
+  --radius-neumo-md: 12px;
+  --radius-neumo-lg: 16px;
+  --radius-neumo-xl: 24px;
+  --radius-neumo-full: 9999px;
+
+  /* --------------------------------
+     フォントサイズ
+     -------------------------------- */
+  --font-size-neumo-xs: 0.75rem;
+  --font-size-neumo-sm: 0.875rem;
+  --font-size-neumo-md: 1rem;
+  --font-size-neumo-lg: 1.125rem;
+  --font-size-neumo-xl: 1.25rem;
+
+  /* --------------------------------
+     トランジション
+     -------------------------------- */
+  --transition-timing-neumo-fast: 0.15s ease;
+  --transition-timing-neumo-default: 0.2s ease;
+  --transition-timing-neumo-slow: 0.3s ease;
+
+  /* --------------------------------
+     アニメーション
+     -------------------------------- */
+  --animate-neumo-spin: neumo-spin 1s linear infinite;
+}
+
+/* ===================================
+   ベースCSS変数（シャドウ用）
+   @themeでは複雑なシャドウ値を定義できないため、
+   :rootで定義してarbitrary valuesで参照
+   =================================== */
+:root {
+  /* シャドウカラー */
+  --neumo-shadow-light: rgba(255, 255, 255, 0.8);
+  --neumo-shadow-dark: rgba(163, 177, 198, 0.6);
+
+  /* ダークモード用シャドウ */
+  --neumo-shadow-light-dark: rgba(45, 45, 70, 0.3);
+  --neumo-shadow-dark-dark: rgba(10, 10, 20, 0.5);
+
+  /* エレベーション - 浮き出し */
+  --neumo-elevation-1: 4px 4px 8px var(--neumo-shadow-dark),
+    -4px -4px 8px var(--neumo-shadow-light);
+  --neumo-elevation-2: 6px 6px 12px var(--neumo-shadow-dark),
+    -6px -6px 12px var(--neumo-shadow-light);
+  --neumo-elevation-3: 8px 8px 16px var(--neumo-shadow-dark),
+    -8px -8px 16px var(--neumo-shadow-light);
+
+  /* エレベーション - 凹み（インセット） */
+  --neumo-elevation-inset: inset 4px 4px 8px var(--neumo-shadow-dark),
+    inset -4px -4px 8px var(--neumo-shadow-light);
+  --neumo-elevation-inset-sm: inset 2px 2px 4px var(--neumo-shadow-dark),
+    inset -2px -2px 4px var(--neumo-shadow-light);
+
+  /* インタラクション用シャドウ */
+  --neumo-elevation-hover: 6px 6px 10px var(--neumo-shadow-dark),
+    -6px -6px 10px var(--neumo-shadow-light);
+  --neumo-elevation-active: inset 2px 2px 4px var(--neumo-shadow-dark),
+    inset -2px -2px 4px var(--neumo-shadow-light);
+
+  /* フォーカスリング */
+  --neumo-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neumo-shadow-light: var(--neumo-shadow-light-dark);
+    --neumo-shadow-dark: var(--neumo-shadow-dark-dark);
+  }
+}
+
+/* .dark クラスでの手動切り替え対応 */
+.dark {
+  --neumo-shadow-light: var(--neumo-shadow-light-dark);
+  --neumo-shadow-dark: var(--neumo-shadow-dark-dark);
+}
+
+/* ===================================
+   カスタムユーティリティクラス
+   =================================== */
+@utility neumo-elevation-1 {
+  box-shadow: var(--neumo-elevation-1);
+}
+
+@utility neumo-elevation-2 {
+  box-shadow: var(--neumo-elevation-2);
+}
+
+@utility neumo-elevation-3 {
+  box-shadow: var(--neumo-elevation-3);
+}
+
+@utility neumo-elevation-inset {
+  box-shadow: var(--neumo-elevation-inset);
+}
+
+@utility neumo-elevation-inset-sm {
+  box-shadow: var(--neumo-elevation-inset-sm);
+}
+
+@utility neumo-elevation-hover {
+  box-shadow: var(--neumo-elevation-hover);
+}
+
+@utility neumo-elevation-active {
+  box-shadow: var(--neumo-elevation-active);
+}
+
+@utility neumo-focus-ring {
+  box-shadow: var(--neumo-focus-ring), var(--neumo-elevation-1);
+}
+
+/* ===================================
+   キーフレームアニメーション
+   =================================== */
+@keyframes neumo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

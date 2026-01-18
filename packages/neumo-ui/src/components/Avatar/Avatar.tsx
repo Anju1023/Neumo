@@ -2,60 +2,29 @@ import { forwardRef, useState } from "react";
 import type { AvatarProps, AvatarSize, AvatarVariant } from "./Avatar.types";
 
 /**
- * サイズごとのスタイル
+ * サイズごとのTailwindクラス
  */
-const sizeStyles: Record<AvatarSize, { width: string; height: string; fontSize: string }> = {
-  xs: { width: "24px", height: "24px", fontSize: "var(--neumo-font-xs)" },
-  sm: { width: "32px", height: "32px", fontSize: "var(--neumo-font-sm)" },
-  md: { width: "40px", height: "40px", fontSize: "var(--neumo-font-md)" },
-  lg: { width: "56px", height: "56px", fontSize: "var(--neumo-font-lg)" },
-  xl: { width: "72px", height: "72px", fontSize: "var(--neumo-font-xl)" },
+const sizeClasses: Record<AvatarSize, string> = {
+  xs: "w-6 h-6 text-neumo-xs",
+  sm: "w-8 h-8 text-neumo-sm",
+  md: "w-10 h-10 text-neumo-md",
+  lg: "w-14 h-14 text-neumo-lg",
+  xl: "w-[72px] h-[72px] text-neumo-xl",
 };
 
 /**
- * バリアントごとの角丸
+ * バリアントごとのTailwindクラス
  */
-const variantStyles: Record<AvatarVariant, string> = {
-  circle: "var(--neumo-radius-full)",
-  rounded: "var(--neumo-radius-md)",
+const variantClasses: Record<AvatarVariant, string> = {
+  circle: "rounded-neumo-full",
+  rounded: "rounded-neumo-md",
 };
 
 /**
- * ベーススタイル
+ * ベースのTailwindクラス
  */
-const baseStyles = `
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--neumo-bg);
-  box-shadow: var(--neumo-elevation-1);
-  overflow: hidden;
-  flex-shrink: 0;
-`;
-
-/**
- * 画像スタイル
- */
-const imageStyles = `
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-/**
- * フォールバックスタイル
- */
-const fallbackStyles = `
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--neumo-primary) 0%, var(--neumo-info) 100%);
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-`;
+const baseClasses =
+  "inline-flex items-center justify-center bg-neumo-bg neumo-elevation-1 overflow-hidden shrink-0";
 
 /**
  * イニシャルを取得
@@ -92,7 +61,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       size = "md",
       variant = "circle",
       fallback,
-      style,
+      className,
       ...props
     },
     ref
@@ -106,36 +75,34 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     // 画像を表示するかどうか
     const showImage = src && !imageError;
 
-    // コンテナスタイル
-    const containerStyle: React.CSSProperties = {
-      ...parseStyles(baseStyles),
-      width: sizeStyles[size].width,
-      height: sizeStyles[size].height,
-      borderRadius: variantStyles[variant],
-      ...style,
-    };
+    // コンテナクラスを結合
+    const containerClasses = [
+      baseClasses,
+      sizeClasses[size],
+      variantClasses[variant],
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <div
         ref={ref}
-        style={containerStyle}
+        className={containerClasses}
         role="img"
         aria-label={alt}
+        {...props}
       >
         {showImage ? (
           <img
             src={src}
             alt={alt}
-            style={parseStyles(imageStyles)}
+            className="w-full h-full object-cover"
             onError={() => setImageError(true)}
-            {...props}
           />
         ) : (
           <span
-            style={{
-              ...parseStyles(fallbackStyles),
-              fontSize: sizeStyles[size].fontSize,
-            }}
+            className="flex items-center justify-center w-full h-full bg-gradient-to-br from-neumo-primary to-neumo-info text-white font-semibold uppercase"
             aria-hidden="true"
           >
             {fallbackText}
@@ -147,24 +114,3 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
 );
 
 Avatar.displayName = "Avatar";
-
-/**
- * CSS文字列をReact.CSSPropertiesオブジェクトに変換
- */
-function parseStyles(cssString: string): React.CSSProperties {
-  const styles: Record<string, string> = {};
-  const declarations = cssString.split(";").filter((d) => d.trim());
-
-  for (const declaration of declarations) {
-    const [property, value] = declaration.split(":").map((s) => s.trim());
-    if (property && value) {
-      // CSS プロパティ名をキャメルケースに変換
-      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
-        letter.toUpperCase()
-      );
-      styles[camelCase] = value;
-    }
-  }
-
-  return styles as React.CSSProperties;
-}

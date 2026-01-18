@@ -1,116 +1,30 @@
-import { forwardRef, useId, useState } from "react";
+import { forwardRef, useId } from "react";
 import type { InputProps, InputSize } from "./Input.types";
 
 /**
- * サイズごとのスタイル
+ * サイズごとのTailwindクラス
  */
-const sizeStyles: Record<InputSize, string> = {
-  sm: `
-    padding: var(--neumo-space-xs) var(--neumo-space-sm);
-    font-size: var(--neumo-font-sm);
-    border-radius: var(--neumo-radius-sm);
-  `,
-  md: `
-    padding: var(--neumo-space-sm) var(--neumo-space-md);
-    font-size: var(--neumo-font-md);
-    border-radius: var(--neumo-radius-md);
-  `,
-  lg: `
-    padding: var(--neumo-space-md) var(--neumo-space-lg);
-    font-size: var(--neumo-font-lg);
-    border-radius: var(--neumo-radius-lg);
-  `,
+const sizeClasses: Record<InputSize, string> = {
+  sm: "px-neumo-sm py-neumo-xs text-neumo-sm rounded-neumo-sm",
+  md: "px-neumo-md py-neumo-sm text-neumo-md rounded-neumo-md",
+  lg: "px-neumo-lg py-neumo-md text-neumo-lg rounded-neumo-lg",
 };
 
 /**
- * ベーススタイル（通常状態 - 凹み）
+ * ベースのTailwindクラス
  */
-const baseStyles = `
-  width: 100%;
-  background: var(--neumo-bg);
-  color: var(--neumo-text);
-  border: none;
-  box-shadow: var(--neumo-elevation-inset-sm);
-  transition: all var(--neumo-transition);
-  outline: none;
-`;
+const baseClasses =
+  "w-full bg-neumo-bg text-neumo-text border-none neumo-elevation-inset-sm transition-all outline-none";
 
 /**
- * フォーカススタイル
+ * フォーカス時のTailwindクラス
  */
-const focusStyles = `
-  box-shadow: var(--neumo-elevation-inset), var(--neumo-focus-ring);
-`;
+const focusClasses = "focus:neumo-elevation-inset focus:neumo-focus-ring";
 
 /**
- * エラースタイル
+ * 無効時のTailwindクラス
  */
-const errorStyles = `
-  box-shadow: var(--neumo-elevation-inset-sm), 0 0 0 2px var(--neumo-error);
-`;
-
-/**
- * 無効スタイル
- */
-const disabledStyles = `
-  opacity: 0.5;
-  cursor: not-allowed;
-`;
-
-/**
- * ラッパースタイル
- */
-const wrapperStyles = `
-  display: flex;
-  flex-direction: column;
-  gap: var(--neumo-space-xs);
-`;
-
-/**
- * インプットコンテナスタイル
- */
-const containerStyles = `
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
-/**
- * アイコンスタイル
- */
-const iconStyles = `
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neumo-text-muted);
-  pointer-events: none;
-`;
-
-/**
- * ラベルスタイル
- */
-const labelStyles = `
-  font-size: var(--neumo-font-sm);
-  font-weight: 500;
-  color: var(--neumo-text);
-`;
-
-/**
- * ヘルパーテキストスタイル
- */
-const helperStyles = `
-  font-size: var(--neumo-font-xs);
-  color: var(--neumo-text-muted);
-`;
-
-/**
- * エラーメッセージスタイル
- */
-const errorMessageStyles = `
-  font-size: var(--neumo-font-xs);
-  color: var(--neumo-error);
-`;
+const disabledClasses = "disabled:opacity-50 disabled:cursor-not-allowed";
 
 /**
  * Inputコンポーネント
@@ -140,56 +54,61 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       label,
       helperText,
-      style,
-      onFocus,
-      onBlur,
+      className,
       ...props
     },
     ref
   ) => {
-    // フォーカス状態の管理
-    const [isFocused, setIsFocused] = useState(false);
-
     // ユニークIDの生成（アクセシビリティ用）
     const generatedId = useId();
     const inputId = props.id || generatedId;
     const errorId = `${inputId}-error`;
     const helperId = `${inputId}-helper`;
 
-    // インプットのパディング調整（アイコンがある場合）
-    const paddingLeft = leftIcon ? "calc(var(--neumo-space-lg) + 8px)" : undefined;
-    const paddingRight = rightIcon ? "calc(var(--neumo-space-lg) + 8px)" : undefined;
+    // アイコンがある場合のパディングクラス
+    const iconPaddingClasses = [
+      leftIcon ? "pl-[calc(theme(spacing.neumo-lg)+8px)]" : "",
+      rightIcon ? "pr-[calc(theme(spacing.neumo-lg)+8px)]" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
-    // スタイルを結合
-    const inputStyle: React.CSSProperties = {
-      ...parseStyles(baseStyles),
-      ...parseStyles(sizeStyles[size]),
-      ...(isFocused && !error ? parseStyles(focusStyles) : {}),
-      ...(error ? parseStyles(errorStyles) : {}),
-      ...(disabled ? parseStyles(disabledStyles) : {}),
-      paddingLeft,
-      paddingRight,
-      ...style,
-    };
+    // エラー時のクラス（フォーカス時のスタイルを上書き）
+    const errorClasses = error
+      ? "shadow-[var(--neumo-elevation-inset-sm),_0_0_0_2px_theme(colors.neumo-error)] focus:shadow-[var(--neumo-elevation-inset),_0_0_0_2px_theme(colors.neumo-error)]"
+      : "";
+
+    // インプットのクラスを結合
+    const inputClasses = [
+      baseClasses,
+      sizeClasses[size],
+      !error ? focusClasses : "",
+      errorClasses,
+      disabledClasses,
+      iconPaddingClasses,
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
-      <div style={parseStyles(wrapperStyles)}>
+      <div className="flex flex-col gap-neumo-xs">
         {/* ラベル */}
         {label && (
-          <label htmlFor={inputId} style={parseStyles(labelStyles)}>
+          <label
+            htmlFor={inputId}
+            className="text-neumo-sm font-medium text-neumo-text"
+          >
             {label}
           </label>
         )}
 
         {/* インプットコンテナ */}
-        <div style={parseStyles(containerStyles)}>
+        <div className="relative flex items-center">
           {/* 左アイコン */}
           {leftIcon && (
             <span
-              style={{
-                ...parseStyles(iconStyles),
-                left: "var(--neumo-space-sm)",
-              }}
+              className="absolute left-neumo-sm flex items-center justify-center text-neumo-text-muted pointer-events-none"
               aria-hidden="true"
             >
               {leftIcon}
@@ -210,25 +129,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                   ? helperId
                   : undefined
             }
-            style={inputStyle}
-            onFocus={(e) => {
-              setIsFocused(true);
-              onFocus?.(e);
-            }}
-            onBlur={(e) => {
-              setIsFocused(false);
-              onBlur?.(e);
-            }}
+            className={inputClasses}
             {...props}
           />
 
           {/* 右アイコン */}
           {rightIcon && (
             <span
-              style={{
-                ...parseStyles(iconStyles),
-                right: "var(--neumo-space-sm)",
-              }}
+              className="absolute right-neumo-sm flex items-center justify-center text-neumo-text-muted pointer-events-none"
               aria-hidden="true"
             >
               {rightIcon}
@@ -238,14 +146,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
         {/* エラーメッセージ */}
         {error && errorMessage && (
-          <span id={errorId} style={parseStyles(errorMessageStyles)} role="alert">
+          <span id={errorId} className="text-neumo-xs text-neumo-error" role="alert">
             {errorMessage}
           </span>
         )}
 
         {/* ヘルパーテキスト */}
         {!error && helperText && (
-          <span id={helperId} style={parseStyles(helperStyles)}>
+          <span id={helperId} className="text-neumo-xs text-neumo-text-muted">
             {helperText}
           </span>
         )}
@@ -255,24 +163,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = "Input";
-
-/**
- * CSS文字列をReact.CSSPropertiesオブジェクトに変換
- */
-function parseStyles(cssString: string): React.CSSProperties {
-  const styles: Record<string, string> = {};
-  const declarations = cssString.split(";").filter((d) => d.trim());
-
-  for (const declaration of declarations) {
-    const [property, value] = declaration.split(":").map((s) => s.trim());
-    if (property && value) {
-      // CSS プロパティ名をキャメルケースに変換
-      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
-        letter.toUpperCase()
-      );
-      styles[camelCase] = value;
-    }
-  }
-
-  return styles as React.CSSProperties;
-}

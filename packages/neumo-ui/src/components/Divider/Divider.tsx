@@ -2,33 +2,19 @@ import { forwardRef } from "react";
 import type { DividerProps, DividerOrientation } from "./Divider.types";
 
 /**
- * 方向ごとのスタイル
+ * 方向ごとのTailwindクラス
  */
-const orientationStyles: Record<DividerOrientation, string> = {
-  horizontal: `
-    width: 100%;
-    height: 2px;
-    margin: var(--neumo-space-md) 0;
-  `,
-  vertical: `
-    width: 2px;
-    height: 100%;
-    margin: 0 var(--neumo-space-md);
-  `,
+const orientationClasses: Record<DividerOrientation, string> = {
+  horizontal: "w-full h-0.5 my-neumo-md",
+  vertical: "w-0.5 h-full mx-neumo-md",
 };
 
 /**
- * ベーススタイル
+ * ベースのTailwindクラス
  * ニューモフィズムの溝（groove）エフェクト
  */
-const baseStyles = `
-  border: none;
-  background: transparent;
-  box-shadow: 
-    inset 1px 1px 2px var(--neumo-shadow-dark),
-    inset -1px -1px 2px var(--neumo-shadow-light);
-  border-radius: var(--neumo-radius-full);
-`;
+const baseClasses =
+  "border-none bg-transparent shadow-[inset_1px_1px_2px_var(--neumo-shadow-dark),inset_-1px_-1px_2px_var(--neumo-shadow-light)] rounded-neumo-full";
 
 /**
  * Dividerコンポーネント
@@ -43,20 +29,22 @@ const baseStyles = `
  * ```
  */
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(
-  ({ orientation = "horizontal", style, ...props }, ref) => {
-    // スタイルを結合
-    const dividerStyle: React.CSSProperties = {
-      ...parseStyles(baseStyles),
-      ...parseStyles(orientationStyles[orientation]),
-      ...style,
-    };
+  ({ orientation = "horizontal", className, ...props }, ref) => {
+    // クラスを結合
+    const dividerClasses = [
+      baseClasses,
+      orientationClasses[orientation],
+      className,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <hr
         ref={ref}
         role="separator"
         aria-orientation={orientation}
-        style={dividerStyle}
+        className={dividerClasses}
         {...props}
       />
     );
@@ -64,24 +52,3 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(
 );
 
 Divider.displayName = "Divider";
-
-/**
- * CSS文字列をReact.CSSPropertiesオブジェクトに変換
- */
-function parseStyles(cssString: string): React.CSSProperties {
-  const styles: Record<string, string> = {};
-  const declarations = cssString.split(";").filter((d) => d.trim());
-
-  for (const declaration of declarations) {
-    const [property, value] = declaration.split(":").map((s) => s.trim());
-    if (property && value) {
-      // CSS プロパティ名をキャメルケースに変換
-      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
-        letter.toUpperCase()
-      );
-      styles[camelCase] = value;
-    }
-  }
-
-  return styles as React.CSSProperties;
-}

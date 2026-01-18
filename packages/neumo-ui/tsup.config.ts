@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  // エントリーポイント
+  // エントリーポイント（JSのみ、CSSは別途postcssでビルド）
   entry: ["src/index.ts"],
 
   // 出力形式（ESM & CommonJS）
@@ -32,4 +32,7 @@ export default defineConfig({
   banner: {
     js: "/* Neumo UI - Neumorphism 2.0 Component Library */",
   },
+
+  // ビルド成功後にCSSをビルド
+  onSuccess: "pnpm exec tailwindcss -i src/styles/index.css -o dist/styles.css --minify",
 });
