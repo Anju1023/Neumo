@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes, ReactNode } from "react";
+import type { ImgHTMLAttributes } from "react";
 
 /**
  * Avatarコンポーネントのサイズ
@@ -7,19 +7,28 @@ export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 /**
  * Avatarコンポーネントのバリアント
+ * - circle: 円形（デフォルト）
+ * - rounded: 角丸四角形
  */
 export type AvatarVariant = "circle" | "rounded";
 
 /**
- * Avatarコンポーネントのprops
+ * Avatarコンポーネントのプロパティ
  */
-export interface AvatarProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "size"> {
+export interface AvatarProps
+  extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> {
+  /** 画像のURL */
+  src?: string;
+
+  /** 代替テキスト */
+  alt: string;
+
   /** アバターのサイズ */
   size?: AvatarSize;
+
   /** アバターの形状 */
   variant?: AvatarVariant;
-  /** 画像が読み込めない場合のフォールバック */
-  fallback?: ReactNode;
-  /** 代替テキスト */
-  alt?: string;
+
+  /** フォールバック（画像がない場合に表示） */
+  fallback?: string;
 }

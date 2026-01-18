@@ -1,26 +1,26 @@
-/**
- * Neumo UI - メインエントリーポイント
- * ニューモフィズムUIコンポーネントライブラリ
- */
-
+// Neumo UI - Neumorphism 2.0 Component Library
 // コンポーネントのエクスポート
+
+// Button
 export { Button } from "./components/Button";
 export type { ButtonProps } from "./components/Button";
 
+// Card
 export { Card } from "./components/Card";
 export type { CardProps } from "./components/Card";
 
+// Input
 export { Input } from "./components/Input";
 export type { InputProps } from "./components/Input";
 
+// Avatar
 export { Avatar } from "./components/Avatar";
 export type { AvatarProps } from "./components/Avatar";
 
+// Badge
 export { Badge } from "./components/Badge";
 export type { BadgeProps } from "./components/Badge";
 
+// Divider
 export { Divider } from "./components/Divider";
 export type { DividerProps } from "./components/Divider";
-
-// スタイルのインポート（使用者がCSSを読み込む用）
-// import "@neumo/ui/styles.css" で使用可能

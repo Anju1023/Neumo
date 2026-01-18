@@ -1,46 +1,62 @@
 import { forwardRef } from "react";
-import type { DividerProps } from "./Divider.types";
+import type { DividerProps, DividerOrientation } from "./Divider.types";
 
 /**
- * ニューモフィズムスタイルの区切り線コンポーネント
- * 水平/垂直方向に対応
+ * 方向ごとのスタイル
  */
-export const Divider = forwardRef<HTMLDivElement, DividerProps>(
-  (
-    {
-      orientation = "horizontal",
-      className = "",
-      ...props
-    },
-    ref
-  ) => {
-    // 方向別スタイル
-    const orientationStyles: Record<string, string> = {
-      horizontal: `
-        w-full h-[2px]
-        bg-gradient-to-r from-transparent via-[var(--neumo-shadow-dark)] to-transparent
-        shadow-[0_1px_0_var(--neumo-shadow-light)]
-      `,
-      vertical: `
-        h-full w-[2px]
-        bg-gradient-to-b from-transparent via-[var(--neumo-shadow-dark)] to-transparent
-        shadow-[1px_0_0_var(--neumo-shadow-light)]
-      `,
+const orientationStyles: Record<DividerOrientation, string> = {
+  horizontal: `
+    width: 100%;
+    height: 2px;
+    margin: var(--neumo-space-md) 0;
+  `,
+  vertical: `
+    width: 2px;
+    height: 100%;
+    margin: 0 var(--neumo-space-md);
+  `,
+};
+
+/**
+ * ベーススタイル
+ * ニューモフィズムの溝（groove）エフェクト
+ */
+const baseStyles = `
+  border: none;
+  background: transparent;
+  box-shadow: 
+    inset 1px 1px 2px var(--neumo-shadow-dark),
+    inset -1px -1px 2px var(--neumo-shadow-light);
+  border-radius: var(--neumo-radius-full);
+`;
+
+/**
+ * Dividerコンポーネント
+ *
+ * ニューモフィズム2.0デザインの区切り線コンポーネント
+ * 溝（groove）のような凹んだデザイン
+ *
+ * @example
+ * ```tsx
+ * <Divider orientation="horizontal" />
+ * <Divider orientation="vertical" />
+ * ```
+ */
+export const Divider = forwardRef<HTMLHRElement, DividerProps>(
+  ({ orientation = "horizontal", style, ...props }, ref) => {
+    // スタイルを結合
+    const dividerStyle: React.CSSProperties = {
+      ...parseStyles(baseStyles),
+      ...parseStyles(orientationStyles[orientation]),
+      ...style,
     };
 
-    // ARIA属性用に明示的なリテラル値を取得
-    const ariaOrientation: "horizontal" | "vertical" =
-      orientation === "vertical" ? "vertical" : "horizontal";
-
     return (
-      <div
+      <hr
         ref={ref}
         role="separator"
-        aria-orientation={ariaOrientation}
-        className={`
-          ${orientationStyles[orientation]}
-          ${className}
-        `}
+        aria-orientation={orientation}
+        style={dividerStyle}
         {...props}
       />
     );
@@ -48,3 +64,24 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 );
 
 Divider.displayName = "Divider";
+
+/**
+ * CSS文字列をReact.CSSPropertiesオブジェクトに変換
+ */
+function parseStyles(cssString: string): React.CSSProperties {
+  const styles: Record<string, string> = {};
+  const declarations = cssString.split(";").filter((d) => d.trim());
+
+  for (const declaration of declarations) {
+    const [property, value] = declaration.split(":").map((s) => s.trim());
+    if (property && value) {
+      // CSS プロパティ名をキャメルケースに変換
+      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
+        letter.toUpperCase()
+      );
+      styles[camelCase] = value;
+    }
+  }
+
+  return styles as React.CSSProperties;
+}

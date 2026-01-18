@@ -1,2 +1,3 @@
+// Input コンポーネントのエクスポート
 export { Input } from "./Input";
-export type { InputProps, InputSize } from "./Input.types";
+export type { InputProps, InputType, InputSize } from "./Input.types";

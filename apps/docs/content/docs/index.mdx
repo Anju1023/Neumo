@@ -1,40 +1,58 @@
 ---
-title: はじめに
-description: Neumo UIライブラリの紹介
+title: Neumo UI
+description: ニューモフィズム2.0デザインのReact UIコンポーネントライブラリ
 ---
 
 # Neumo UI
 
-**Neumo UI** は、React / Next.js アプリケーション向けのニューモフィズムデザインUIコンポーネントライブラリです。
+**Neumo UI** は、ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリです。
 
 ## 特徴
 
-- **ニューモフィズム2.0**: 高コントラストでアクセシビリティに配慮したモダンなデザイン
-- **Tailwind CSS v4対応**: CSS変数によるカスタマイズが簡単
-- **TypeScript完全サポート**: 型安全なコンポーネント
-- **Tree-shaking対応**: 使用するコンポーネントのみをバンドル
-
-## コンポーネント
-
-現在、以下のコンポーネントが利用可能です：
-
-- [Button](/docs/components/button) - ボタンコンポーネント
-- [Card](/docs/components/card) - カードコンポーネント
-- [Input](/docs/components/input) - 入力フィールド
-- [Avatar](/docs/components/avatar) - アバター
-- [Badge](/docs/components/badge) - バッジ
-- [Divider](/docs/components/divider) - 区切り線
+- **ニューモフィズム2.0** - 高コントラストでアクセシブルなデザイン
+- **React 19対応** - 最新のReact機能に対応
+- **TypeScript** - 完全な型定義
+- **Tree-shaking対応** - 必要なコンポーネントだけをバンドル
+- **カスタマイズ可能** - CSS変数でスタイルを調整
 
 ## クイックスタート
 
 ```bash
-npm install @neumo/ui
+# インストール
+npm install neumo-ui
+
+# または pnpm
+pnpm add neumo-ui
 ```
 
 ```tsx
-import { Button } from "@neumo/ui";
+import { Button, Card, Input } from 'neumo-ui';
+import 'neumo-ui/styles.css';
 
-export default function App() {
-  return <Button variant="primary">Click me</Button>;
+function App() {
+  return (
+    <Card>
+      <h2>Welcome</h2>
+      <Input placeholder="Enter your name" />
+      <Button variant="primary">Submit</Button>
+    </Card>
+  );
 }
 ```
+
+## コンポーネント
+
+<Cards>
+  <Card title="Button" href="/docs/components/button" />
+  <Card title="Card" href="/docs/components/card" />
+  <Card title="Input" href="/docs/components/input" />
+  <Card title="Avatar" href="/docs/components/avatar" />
+  <Card title="Badge" href="/docs/components/badge" />
+  <Card title="Divider" href="/docs/components/divider" />
+</Cards>
+
+## 次のステップ
+
+<Cards>
+  <Card title="インストール" href="/docs/installation" />
+</Cards>

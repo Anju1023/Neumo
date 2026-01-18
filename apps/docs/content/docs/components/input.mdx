@@ -5,23 +5,41 @@ description: ニューモフィズムスタイルの入力フィールドコン�
 
 # Input
 
-フォーカス時にへこむ効果を持つニューモフィズムスタイルの入力フィールドです。
+ニューモフィズム2.0デザインの入力フィールドコンポーネントです。凹んだ（inset）デザインで、フォーカス時に深くなるエフェクトがあります。
 
 ## インポート
 
 ```tsx
-import { Input } from "@neumo/ui";
+import { Input } from 'neumo-ui';
 ```
 
-## 使用例
-
-### 基本的な使い方
+## 基本的な使い方
 
 ```tsx
-<Input placeholder="名前を入力" />
+<Input placeholder="Enter text..." />
 ```
 
-### サイズ
+## ラベル付き
+
+```tsx
+<Input label="Email" placeholder="Enter your email" />
+```
+
+## タイプ
+
+5種類の入力タイプに対応しています。
+
+```tsx
+<Input type="text" label="Text" />
+<Input type="email" label="Email" />
+<Input type="password" label="Password" />
+<Input type="number" label="Number" />
+<Input type="search" label="Search" />
+```
+
+## サイズ
+
+3種類のサイズがあります。
 
 ```tsx
 <Input size="sm" placeholder="Small" />
@@ -29,47 +47,61 @@ import { Input } from "@neumo/ui";
 <Input size="lg" placeholder="Large" />
 ```
 
-### タイプ
-
-```tsx
-<Input type="text" placeholder="テキスト" />
-<Input type="email" placeholder="メールアドレス" />
-<Input type="password" placeholder="パスワード" />
-<Input type="number" placeholder="数値" />
-```
-
-### エラー状態
+## ヘルパーテキスト
 
 ```tsx
 <Input 
-  error 
-  errorMessage="入力が正しくありません" 
-  placeholder="エラー"
+  label="Email" 
+  placeholder="example@email.com"
+  helperText="We'll never share your email"
 />
 ```
 
-### アイコン付き
+## エラー状態
 
 ```tsx
-<Input leftIcon={<SearchIcon />} placeholder="検索" />
-<Input rightIcon={<EyeIcon />} type="password" placeholder="パスワード" />
+<Input 
+  label="Email" 
+  error 
+  errorMessage="Invalid email address"
+/>
 ```
 
-### 無効状態
+## アイコン付き
+
+左右にアイコンを配置できます。
 
 ```tsx
-<Input disabled placeholder="無効" />
+import { Mail, Search, Eye } from 'lucide-react';
+
+<Input leftIcon={<Mail size={16} />} placeholder="Email" />
+<Input leftIcon={<Search size={16} />} placeholder="Search..." />
+<Input type="password" rightIcon={<Eye size={16} />} placeholder="Password" />
+```
+
+## 無効状態
+
+```tsx
+<Input disabled placeholder="Disabled input" />
 ```
 
 ## Props
 
 | Prop | 型 | デフォルト | 説明 |
-|------|-----|---------|------|
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | インプットのサイズ |
+|------|------|-----------|------|
+| `type` | `"text" \| "password" \| "email" \| "number" \| "search"` | `"text"` | 入力タイプ |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 入力フィールドのサイズ |
 | `error` | `boolean` | `false` | エラー状態 |
 | `errorMessage` | `string` | - | エラーメッセージ |
-| `leftIcon` | `ReactNode` | - | 左側のアイコン |
-| `rightIcon` | `ReactNode` | - | 右側のアイコン |
+| `leftIcon` | `ReactNode` | - | 左側に表示するアイコン |
+| `rightIcon` | `ReactNode` | - | 右側に表示するアイコン |
+| `label` | `string` | - | ラベルテキスト |
+| `helperText` | `string` | - | ヘルパーテキスト |
 | `disabled` | `boolean` | `false` | 無効状態 |
 
-HTMLの `<input>` 要素の全ての属性も使用可能です。
+## アクセシビリティ
+
+- `aria-invalid`: エラー時に`true`に設定
+- `aria-describedby`: エラーメッセージまたはヘルパーテキストを関連付け
+- ラベルとinputの関連付け（`htmlFor`/`id`）
+- フォーカス時にフォーカスリングを表示

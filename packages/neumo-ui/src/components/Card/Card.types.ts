@@ -1,7 +1,10 @@
-import { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 /**
  * Cardコンポーネントのバリアント
+ * - elevated: 浮き上がったカード（デフォルト）
+ * - flat: フラットなカード（シャドウなし）
+ * - inset: 凹んだカード
  */
 export type CardVariant = "elevated" | "flat" | "inset";
 
@@ -11,13 +14,15 @@ export type CardVariant = "elevated" | "flat" | "inset";
 export type CardPadding = "none" | "sm" | "md" | "lg";
 
 /**
- * Cardコンポーネントのprops
+ * Cardコンポーネントのプロパティ
  */
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   /** カードのバリアント */
   variant?: CardVariant;
-  /** カードのパディング */
+
+  /** パディングサイズ */
   padding?: CardPadding;
-  /** 子要素 */
-  children?: ReactNode;
+
+  /** カードの中身 */
+  children: ReactNode;
 }

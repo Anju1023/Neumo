@@ -1,20 +1,30 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    // モダンなターゲット設定
     "target": "ES2022",
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "allowJs": true,
+
+    // 厳密な型チェック
     "strict": true,
-    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // インターオペラビリティ
     "esModuleInterop": true,
-    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+
+    // その他
+    "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
-    "jsx": "react-jsx",
-    "isolatedModules": true
+    "sourceMap": true,
+
+    // JSX設定（React 19用）
+    "jsx": "react-jsx"
   },
   "exclude": ["node_modules", "dist", ".next"]
 }

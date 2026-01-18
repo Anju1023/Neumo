@@ -1,9 +1,139 @@
 import { forwardRef } from "react";
-import type { ButtonProps } from "./Button.types";
+import type { ButtonProps, ButtonVariant, ButtonSize } from "./Button.types";
 
 /**
- * ニューモフィズムスタイルのボタンコンポーネント
- * 押し込み/浮き上がりエフェクトを持つ
+ * バリアントごとのスタイル
+ */
+const variantStyles: Record<ButtonVariant, string> = {
+  default: `
+    background: var(--neumo-bg);
+    color: var(--neumo-text);
+    box-shadow: var(--neumo-elevation-1);
+  `,
+  primary: `
+    background: var(--neumo-primary);
+    color: white;
+    box-shadow: var(--neumo-elevation-1);
+  `,
+  ghost: `
+    background: transparent;
+    color: var(--neumo-text);
+    box-shadow: none;
+  `,
+};
+
+/**
+ * サイズごとのスタイル
+ */
+const sizeStyles: Record<ButtonSize, string> = {
+  sm: `
+    padding: var(--neumo-space-xs) var(--neumo-space-sm);
+    font-size: var(--neumo-font-sm);
+    border-radius: var(--neumo-radius-sm);
+    gap: var(--neumo-space-xs);
+  `,
+  md: `
+    padding: var(--neumo-space-sm) var(--neumo-space-md);
+    font-size: var(--neumo-font-md);
+    border-radius: var(--neumo-radius-md);
+    gap: var(--neumo-space-sm);
+  `,
+  lg: `
+    padding: var(--neumo-space-md) var(--neumo-space-lg);
+    font-size: var(--neumo-font-lg);
+    border-radius: var(--neumo-radius-lg);
+    gap: var(--neumo-space-sm);
+  `,
+};
+
+/**
+ * ベーススタイル
+ */
+const baseStyles = `
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--neumo-transition);
+  outline: none;
+  user-select: none;
+`;
+
+/**
+ * ホバースタイル（default/primary用）
+ */
+const hoverStyles = `
+  box-shadow: var(--neumo-elevation-hover);
+  transform: translateY(-1px);
+`;
+
+/**
+ * アクティブスタイル
+ */
+const activeStyles = `
+  box-shadow: var(--neumo-elevation-active);
+  transform: translateY(0);
+`;
+
+/**
+ * 無効スタイル
+ */
+const disabledStyles = `
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+`;
+
+/**
+ * フォーカススタイル（アクセシビリティ）
+ */
+const focusStyles = `
+  box-shadow: var(--neumo-focus-ring), var(--neumo-elevation-1);
+`;
+
+/**
+ * ローディングスピナーコンポーネント
+ */
+const LoadingSpinner = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    style={{
+      animation: "spin 1s linear infinite",
+    }}
+  >
+    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    <style>
+      {`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}
+    </style>
+  </svg>
+);
+
+/**
+ * Buttonコンポーネント
+ *
+ * ニューモフィズム2.0デザインのボタンコンポーネント
+ * ホバーで浮き上がり、クリックで押し込まれるエフェクト
+ *
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="md">
+ *   Click me
+ * </Button>
+ * ```
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -11,107 +141,113 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "default",
       size = "md",
       loading = false,
+      disabled = false,
       leftIcon,
       rightIcon,
-      disabled,
-      className = "",
       children,
+      style,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseDown,
+      onMouseUp,
+      onFocus,
+      onBlur,
       ...props
     },
     ref
   ) => {
-    // ベーススタイル
-    const baseStyles = `
-      inline-flex items-center justify-center
-      font-medium
-      transition-all duration-200 ease-out
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
-      disabled:opacity-50 disabled:cursor-not-allowed
-    `;
-
-    // サイズ別スタイル
-    const sizeStyles: Record<string, string> = {
-      sm: "px-3 py-1.5 text-sm rounded-lg gap-1.5",
-      md: "px-4 py-2 text-base rounded-xl gap-2",
-      lg: "px-6 py-3 text-lg rounded-xl gap-2.5",
+    // スタイルを結合
+    const buttonStyle: React.CSSProperties = {
+      ...parseStyles(baseStyles),
+      ...parseStyles(variantStyles[variant]),
+      ...parseStyles(sizeStyles[size]),
+      ...(disabled ? parseStyles(disabledStyles) : {}),
+      ...style,
     };
-
-    // バリアント別スタイル（ニューモフィズム）
-    const variantStyles: Record<string, string> = {
-      default: `
-        bg-(--neumo-bg,#e0e5ec)
-        text-(--neumo-text,#2d3436)
-        shadow-(--neumo-elevation-1)
-        hover:shadow-(--neumo-elevation-2)
-        active:shadow-(--neumo-inset-1)
-      `,
-      primary: `
-        bg-(--neumo-primary,#6c5ce7)
-        text-white
-        shadow-[4px_4px_8px_rgba(108,92,231,0.4),-4px_-4px_8px_rgba(162,155,254,0.4)]
-        hover:shadow-[6px_6px_12px_rgba(108,92,231,0.5),-6px_-6px_12px_rgba(162,155,254,0.5)]
-        active:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.2),inset_-2px_-2px_4px_rgba(255,255,255,0.1)]
-      `,
-      ghost: `
-        bg-transparent
-        text-(--neumo-text,#2d3436)
-        hover:bg-(--neumo-bg,#e0e5ec)
-        hover:shadow-(--neumo-elevation-1)
-        active:shadow-(--neumo-inset-1)
-      `,
-    };
-
-    // ローディングスピナー
-    const LoadingSpinner = () => (
-      <svg
-        className="animate-spin h-4 w-4"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <circle
-          className="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        />
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        />
-      </svg>
-    );
 
     return (
       <button
         ref={ref}
         disabled={disabled || loading}
-        className={`
-          ${baseStyles}
-          ${sizeStyles[size]}
-          ${variantStyles[variant]}
-          ${className}
-        `}
+        style={buttonStyle}
+        aria-busy={loading}
+        aria-disabled={disabled || loading}
+        onMouseEnter={(e) => {
+          if (!disabled && !loading && variant !== "ghost") {
+            Object.assign(e.currentTarget.style, parseStyles(hoverStyles));
+          }
+          onMouseEnter?.(e);
+        }}
+        onMouseLeave={(e) => {
+          if (!disabled && !loading) {
+            // 元のスタイルに戻す
+            e.currentTarget.style.boxShadow =
+              variant === "ghost" ? "none" : "var(--neumo-elevation-1)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }
+          onMouseLeave?.(e);
+        }}
+        onMouseDown={(e) => {
+          if (!disabled && !loading && variant !== "ghost") {
+            Object.assign(e.currentTarget.style, parseStyles(activeStyles));
+          }
+          onMouseDown?.(e);
+        }}
+        onMouseUp={(e) => {
+          if (!disabled && !loading && variant !== "ghost") {
+            Object.assign(e.currentTarget.style, parseStyles(hoverStyles));
+          }
+          onMouseUp?.(e);
+        }}
+        onFocus={(e) => {
+          if (!disabled && !loading) {
+            Object.assign(e.currentTarget.style, parseStyles(focusStyles));
+          }
+          onFocus?.(e);
+        }}
+        onBlur={(e) => {
+          if (!disabled && !loading) {
+            e.currentTarget.style.boxShadow =
+              variant === "ghost" ? "none" : "var(--neumo-elevation-1)";
+          }
+          onBlur?.(e);
+        }}
         {...props}
       >
         {/* ローディング時はスピナーを表示 */}
-        {loading && <LoadingSpinner />}
-        
-        {/* 左アイコン（ローディング中は非表示） */}
-        {!loading && leftIcon && <span className="shrink-0">{leftIcon}</span>}
-        
-        {/* ボタンテキスト */}
-        {children && <span>{children}</span>}
-        
-        {/* 右アイコン */}
-        {rightIcon && <span className="shrink-0">{rightIcon}</span>}
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            {leftIcon && <span aria-hidden="true">{leftIcon}</span>}
+            {children}
+            {rightIcon && <span aria-hidden="true">{rightIcon}</span>}
+          </>
+        )}
       </button>
     );
   }
 );
 
 Button.displayName = "Button";
+
+/**
+ * CSS文字列をReact.CSSPropertiesオブジェクトに変換
+ */
+function parseStyles(cssString: string): React.CSSProperties {
+  const styles: Record<string, string> = {};
+  const declarations = cssString.split(";").filter((d) => d.trim());
+
+  for (const declaration of declarations) {
+    const [property, value] = declaration.split(":").map((s) => s.trim());
+    if (property && value) {
+      // CSS プロパティ名をキャメルケースに変換
+      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
+        letter.toUpperCase()
+      );
+      styles[camelCase] = value;
+    }
+  }
+
+  return styles as React.CSSProperties;
+}

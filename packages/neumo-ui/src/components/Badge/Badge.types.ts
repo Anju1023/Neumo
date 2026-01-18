@@ -1,7 +1,12 @@
-import { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 /**
  * Badgeコンポーネントのバリアント
+ * - default: 標準バッジ
+ * - success: 成功・完了状態
+ * - warning: 警告状態
+ * - error: エラー状態
+ * - info: 情報表示
  */
 export type BadgeVariant = "default" | "success" | "warning" | "error" | "info";
 
@@ -11,13 +16,15 @@ export type BadgeVariant = "default" | "success" | "warning" | "error" | "info";
 export type BadgeSize = "sm" | "md";
 
 /**
- * Badgeコンポーネントのprops
+ * Badgeコンポーネントのプロパティ
  */
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   /** バッジのバリアント */
   variant?: BadgeVariant;
+
   /** バッジのサイズ */
   size?: BadgeSize;
-  /** 子要素 */
-  children?: ReactNode;
+
+  /** バッジの中身 */
+  children: ReactNode;
 }

@@ -5,23 +5,23 @@ description: ニューモフィズムスタイルのバッジコンポーネン�
 
 # Badge
 
-ステータスやラベルを表示するニューモフィズムスタイルのバッジコンポーネントです。
+ニューモフィズム2.0デザインのバッジコンポーネントです。ステータスやカテゴリを表示するための小さなラベルとして使用します。
 
 ## インポート
 
 ```tsx
-import { Badge } from "@neumo/ui";
+import { Badge } from 'neumo-ui';
 ```
 
-## 使用例
-
-### 基本的な使い方
+## 基本的な使い方
 
 ```tsx
 <Badge>Default</Badge>
 ```
 
-### バリアント
+## バリアント
+
+5種類のバリアントがあります。
 
 ```tsx
 <Badge variant="default">Default</Badge>
@@ -31,42 +31,61 @@ import { Badge } from "@neumo/ui";
 <Badge variant="info">Info</Badge>
 ```
 
-### サイズ
+| バリアント | 説明 | 使用例 |
+|-----------|------|--------|
+| `default` | 標準バッジ | 一般的なラベル |
+| `success` | 成功・完了状態 | 「完了」「アクティブ」 |
+| `warning` | 警告状態 | 「保留中」「注意」 |
+| `error` | エラー状態 | 「エラー」「失敗」 |
+| `info` | 情報表示 | 「新着」「ベータ」 |
+
+## サイズ
+
+2種類のサイズがあります。
 
 ```tsx
 <Badge size="sm">Small</Badge>
 <Badge size="md">Medium</Badge>
 ```
 
-### 使用例：ステータス表示
+## 使用例
+
+### ステータス表示
 
 ```tsx
-<div className="flex items-center gap-2">
-  <span>サーバー状態:</span>
-  <Badge variant="success">稼働中</Badge>
+<div style={{ display: 'flex', gap: '0.5rem' }}>
+  <Badge variant="success">Online</Badge>
+  <Badge variant="warning">Away</Badge>
+  <Badge variant="default">Offline</Badge>
 </div>
 ```
 
-### 使用例：カウンター
+### カードとの組み合わせ
 
 ```tsx
-<div className="relative">
-  <BellIcon />
-  <Badge 
-    variant="error" 
-    size="sm" 
-    className="absolute -top-1 -right-1"
-  >
-    3
-  </Badge>
+<Card>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <h3>Task Title</h3>
+    <Badge variant="warning">In Progress</Badge>
+  </div>
+  <p>Task description...</p>
+</Card>
+```
+
+### リストアイテム
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Avatar alt="User" size="sm" />
+  <span>John Doe</span>
+  <Badge variant="info" size="sm">Admin</Badge>
 </div>
 ```
 
 ## Props
 
 | Prop | 型 | デフォルト | 説明 |
-|------|-----|---------|------|
+|------|------|-----------|------|
 | `variant` | `"default" \| "success" \| "warning" \| "error" \| "info"` | `"default"` | バッジのスタイルバリアント |
 | `size` | `"sm" \| "md"` | `"md"` | バッジのサイズ |
-
-HTMLの `<span>` 要素の全ての属性も使用可能です。
+| `children` | `ReactNode` | - | バッジの中身 |

@@ -5,23 +5,23 @@ description: ニューモフィズムスタイルのボタンコンポーネン�
 
 # Button
 
-押し込み/浮き上がりエフェクトを持つニューモフィズムスタイルのボタンコンポーネントです。
+ニューモフィズム2.0デザインのボタンコンポーネントです。ホバーで浮き上がり、クリックで押し込まれるエフェクトがあります。
 
 ## インポート
 
 ```tsx
-import { Button } from "@neumo/ui";
+import { Button } from 'neumo-ui';
 ```
 
-## 使用例
-
-### 基本的な使い方
+## 基本的な使い方
 
 ```tsx
 <Button>Default Button</Button>
 ```
 
-### バリアント
+## バリアント
+
+3種類のバリアントがあります。
 
 ```tsx
 <Button variant="default">Default</Button>
@@ -29,7 +29,15 @@ import { Button } from "@neumo/ui";
 <Button variant="ghost">Ghost</Button>
 ```
 
-### サイズ
+| バリアント | 説明 |
+|-----------|------|
+| `default` | 標準のニューモフィズムボタン |
+| `primary` | プライマリカラーのボタン |
+| `ghost` | 背景なしの透明ボタン |
+
+## サイズ
+
+3種類のサイズがあります。
 
 ```tsx
 <Button size="sm">Small</Button>
@@ -37,20 +45,24 @@ import { Button } from "@neumo/ui";
 <Button size="lg">Large</Button>
 ```
 
-### ローディング状態
+## アイコン付きボタン
+
+左右にアイコンを配置できます。
+
+```tsx
+import { Plus, ArrowRight } from 'lucide-react';
+
+<Button leftIcon={<Plus size={16} />}>Add Item</Button>
+<Button rightIcon={<ArrowRight size={16} />}>Next</Button>
+```
+
+## ローディング状態
 
 ```tsx
 <Button loading>Loading...</Button>
 ```
 
-### アイコン付き
-
-```tsx
-<Button leftIcon={<SearchIcon />}>検索</Button>
-<Button rightIcon={<ArrowRightIcon />}>次へ</Button>
-```
-
-### 無効状態
+## 無効状態
 
 ```tsx
 <Button disabled>Disabled</Button>
@@ -59,12 +71,17 @@ import { Button } from "@neumo/ui";
 ## Props
 
 | Prop | 型 | デフォルト | 説明 |
-|------|-----|---------|------|
+|------|------|-----------|------|
 | `variant` | `"default" \| "primary" \| "ghost"` | `"default"` | ボタンのスタイルバリアント |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | ボタンのサイズ |
 | `loading` | `boolean` | `false` | ローディング状態 |
 | `disabled` | `boolean` | `false` | 無効状態 |
-| `leftIcon` | `ReactNode` | - | 左側のアイコン |
-| `rightIcon` | `ReactNode` | - | 右側のアイコン |
+| `leftIcon` | `ReactNode` | - | 左側に表示するアイコン |
+| `rightIcon` | `ReactNode` | - | 右側に表示するアイコン |
+| `children` | `ReactNode` | - | ボタンの中身 |
 
-HTMLの `<button>` 要素の全ての属性も使用可能です。
+## アクセシビリティ
+
+- `aria-busy`: ローディング時に`true`に設定
+- `aria-disabled`: 無効時に`true`に設定
+- キーボードフォーカス時にフォーカスリングを表示

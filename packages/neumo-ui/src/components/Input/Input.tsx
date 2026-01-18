@@ -1,89 +1,253 @@
-import { forwardRef } from "react";
-import type { InputProps } from "./Input.types";
+import { forwardRef, useId, useState } from "react";
+import type { InputProps, InputSize } from "./Input.types";
 
 /**
- * ニューモフィズムスタイルの入力フィールドコンポーネント
- * フォーカス時にinsetシャドウでへこむ効果
+ * サイズごとのスタイル
+ */
+const sizeStyles: Record<InputSize, string> = {
+  sm: `
+    padding: var(--neumo-space-xs) var(--neumo-space-sm);
+    font-size: var(--neumo-font-sm);
+    border-radius: var(--neumo-radius-sm);
+  `,
+  md: `
+    padding: var(--neumo-space-sm) var(--neumo-space-md);
+    font-size: var(--neumo-font-md);
+    border-radius: var(--neumo-radius-md);
+  `,
+  lg: `
+    padding: var(--neumo-space-md) var(--neumo-space-lg);
+    font-size: var(--neumo-font-lg);
+    border-radius: var(--neumo-radius-lg);
+  `,
+};
+
+/**
+ * ベーススタイル（通常状態 - 凹み）
+ */
+const baseStyles = `
+  width: 100%;
+  background: var(--neumo-bg);
+  color: var(--neumo-text);
+  border: none;
+  box-shadow: var(--neumo-elevation-inset-sm);
+  transition: all var(--neumo-transition);
+  outline: none;
+`;
+
+/**
+ * フォーカススタイル
+ */
+const focusStyles = `
+  box-shadow: var(--neumo-elevation-inset), var(--neumo-focus-ring);
+`;
+
+/**
+ * エラースタイル
+ */
+const errorStyles = `
+  box-shadow: var(--neumo-elevation-inset-sm), 0 0 0 2px var(--neumo-error);
+`;
+
+/**
+ * 無効スタイル
+ */
+const disabledStyles = `
+  opacity: 0.5;
+  cursor: not-allowed;
+`;
+
+/**
+ * ラッパースタイル
+ */
+const wrapperStyles = `
+  display: flex;
+  flex-direction: column;
+  gap: var(--neumo-space-xs);
+`;
+
+/**
+ * インプットコンテナスタイル
+ */
+const containerStyles = `
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+/**
+ * アイコンスタイル
+ */
+const iconStyles = `
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neumo-text-muted);
+  pointer-events: none;
+`;
+
+/**
+ * ラベルスタイル
+ */
+const labelStyles = `
+  font-size: var(--neumo-font-sm);
+  font-weight: 500;
+  color: var(--neumo-text);
+`;
+
+/**
+ * ヘルパーテキストスタイル
+ */
+const helperStyles = `
+  font-size: var(--neumo-font-xs);
+  color: var(--neumo-text-muted);
+`;
+
+/**
+ * エラーメッセージスタイル
+ */
+const errorMessageStyles = `
+  font-size: var(--neumo-font-xs);
+  color: var(--neumo-error);
+`;
+
+/**
+ * Inputコンポーネント
+ *
+ * ニューモフィズム2.0デザインのインプットコンポーネント
+ * 凹んだ（inset）デザインで、フォーカス時に深くなるエフェクト
+ *
+ * @example
+ * ```tsx
+ * <Input
+ *   label="Email"
+ *   type="email"
+ *   placeholder="Enter your email"
+ *   helperText="We'll never share your email"
+ * />
+ * ```
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      type = "text",
       size = "md",
       error = false,
       errorMessage,
+      disabled = false,
       leftIcon,
       rightIcon,
-      disabled,
-      className = "",
+      label,
+      helperText,
+      style,
+      onFocus,
+      onBlur,
       ...props
     },
     ref
   ) => {
-    // サイズ別スタイル
-    const sizeStyles: Record<string, string> = {
-      sm: "h-9 text-sm px-3",
-      md: "h-11 text-base px-4",
-      lg: "h-13 text-lg px-5",
-    };
+    // フォーカス状態の管理
+    const [isFocused, setIsFocused] = useState(false);
 
-    // アイコンがある場合のパディング調整
-    const iconPaddingStyles = {
-      left: leftIcon ? "pl-10" : "",
-      right: rightIcon ? "pr-10" : "",
-    };
+    // ユニークIDの生成（アクセシビリティ用）
+    const generatedId = useId();
+    const inputId = props.id || generatedId;
+    const errorId = `${inputId}-error`;
+    const helperId = `${inputId}-helper`;
 
-    // エラー状態のスタイル
-    const errorStyles = error
-      ? "ring-2 ring-(--neumo-error,#d63031)"
-      : "";
+    // インプットのパディング調整（アイコンがある場合）
+    const paddingLeft = leftIcon ? "calc(var(--neumo-space-lg) + 8px)" : undefined;
+    const paddingRight = rightIcon ? "calc(var(--neumo-space-lg) + 8px)" : undefined;
+
+    // スタイルを結合
+    const inputStyle: React.CSSProperties = {
+      ...parseStyles(baseStyles),
+      ...parseStyles(sizeStyles[size]),
+      ...(isFocused && !error ? parseStyles(focusStyles) : {}),
+      ...(error ? parseStyles(errorStyles) : {}),
+      ...(disabled ? parseStyles(disabledStyles) : {}),
+      paddingLeft,
+      paddingRight,
+      ...style,
+    };
 
     return (
-      <div className="relative w-full">
-        {/* 左アイコン */}
-        {leftIcon && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-(--neumo-text-muted,#636e72)">
-            {leftIcon}
-          </span>
+      <div style={parseStyles(wrapperStyles)}>
+        {/* ラベル */}
+        {label && (
+          <label htmlFor={inputId} style={parseStyles(labelStyles)}>
+            {label}
+          </label>
         )}
 
-        {/* 入力フィールド */}
-        <input
-          ref={ref}
-          disabled={disabled}
-          className={`
-            w-full
-            bg-(--neumo-bg,#e0e5ec)
-            text-(--neumo-text,#2d3436)
-            placeholder:text-(--neumo-text-muted,#636e72)
-            rounded-(--neumo-radius-md,12px)
-            shadow-(--neumo-inset-1)
-            border-none
-            outline-none
-            transition-all duration-200 ease-out
-            focus:shadow-(--neumo-inset-2)
-            focus:ring-2 focus:ring-(--neumo-primary,#6c5ce7) focus:ring-opacity-50
-            disabled:opacity-50 disabled:cursor-not-allowed
-            ${sizeStyles[size]}
-            ${iconPaddingStyles.left}
-            ${iconPaddingStyles.right}
-            ${errorStyles}
-            ${className}
-          `}
-          {...props}
-        />
+        {/* インプットコンテナ */}
+        <div style={parseStyles(containerStyles)}>
+          {/* 左アイコン */}
+          {leftIcon && (
+            <span
+              style={{
+                ...parseStyles(iconStyles),
+                left: "var(--neumo-space-sm)",
+              }}
+              aria-hidden="true"
+            >
+              {leftIcon}
+            </span>
+          )}
 
-        {/* 右アイコン */}
-        {rightIcon && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-(--neumo-text-muted,#636e72)">
-            {rightIcon}
-          </span>
-        )}
+          {/* インプット */}
+          <input
+            ref={ref}
+            id={inputId}
+            type={type}
+            disabled={disabled}
+            aria-invalid={error}
+            aria-describedby={
+              error && errorMessage
+                ? errorId
+                : helperText
+                  ? helperId
+                  : undefined
+            }
+            style={inputStyle}
+            onFocus={(e) => {
+              setIsFocused(true);
+              onFocus?.(e);
+            }}
+            onBlur={(e) => {
+              setIsFocused(false);
+              onBlur?.(e);
+            }}
+            {...props}
+          />
+
+          {/* 右アイコン */}
+          {rightIcon && (
+            <span
+              style={{
+                ...parseStyles(iconStyles),
+                right: "var(--neumo-space-sm)",
+              }}
+              aria-hidden="true"
+            >
+              {rightIcon}
+            </span>
+          )}
+        </div>
 
         {/* エラーメッセージ */}
         {error && errorMessage && (
-          <p className="mt-1.5 text-sm text-(--neumo-error,#d63031)">
+          <span id={errorId} style={parseStyles(errorMessageStyles)} role="alert">
             {errorMessage}
-          </p>
+          </span>
+        )}
+
+        {/* ヘルパーテキスト */}
+        {!error && helperText && (
+          <span id={helperId} style={parseStyles(helperStyles)}>
+            {helperText}
+          </span>
         )}
       </div>
     );
@@ -91,3 +255,24 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = "Input";
+
+/**
+ * CSS文字列をReact.CSSPropertiesオブジェクトに変換
+ */
+function parseStyles(cssString: string): React.CSSProperties {
+  const styles: Record<string, string> = {};
+  const declarations = cssString.split(";").filter((d) => d.trim());
+
+  for (const declaration of declarations) {
+    const [property, value] = declaration.split(":").map((s) => s.trim());
+    if (property && value) {
+      // CSS プロパティ名をキャメルケースに変換
+      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
+        letter.toUpperCase()
+      );
+      styles[camelCase] = value;
+    }
+  }
+
+  return styles as React.CSSProperties;
+}

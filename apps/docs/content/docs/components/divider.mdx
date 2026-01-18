@@ -5,72 +5,109 @@ description: ニューモフィズムスタイルの区切り線コンポーネ�
 
 # Divider
 
-コンテンツを区切るニューモフィズムスタイルの区切り線コンポーネントです。
+ニューモフィズム2.0デザインの区切り線コンポーネントです。溝（groove）のような凹んだデザインで、コンテンツを視覚的に分割します。
 
 ## インポート
 
 ```tsx
-import { Divider } from "@neumo/ui";
+import { Divider } from 'neumo-ui';
 ```
 
-## 使用例
+## 基本的な使い方
 
-### 基本的な使い方
+```tsx
+<Divider />
+```
+
+## 方向
+
+水平と垂直の2つの方向があります。
+
+### 水平方向（デフォルト）
 
 ```tsx
 <div>
-  <p>上のコンテンツ</p>
-  <Divider />
-  <p>下のコンテンツ</p>
+  <p>Content above</p>
+  <Divider orientation="horizontal" />
+  <p>Content below</p>
 </div>
 ```
 
-### 水平（デフォルト）
+### 垂直方向
 
 ```tsx
-<Divider orientation="horizontal" />
-```
-
-### 垂直
-
-```tsx
-<div className="flex h-20 items-center">
-  <span>左</span>
-  <Divider orientation="vertical" className="mx-4" />
-  <span>右</span>
+<div style={{ display: 'flex', alignItems: 'center', height: '40px' }}>
+  <span>Left</span>
+  <Divider orientation="vertical" />
+  <span>Right</span>
 </div>
 ```
+
+## 使用例
 
 ### カード内での使用
 
 ```tsx
 <Card>
-  <h2>タイトル</h2>
-  <Divider className="my-4" />
-  <p>コンテンツ</p>
+  <h3>Section 1</h3>
+  <p>First section content</p>
+  <Divider />
+  <h3>Section 2</h3>
+  <p>Second section content</p>
 </Card>
 ```
 
-### リスト区切り
+### リストの区切り
 
 ```tsx
-<ul>
-  <li>アイテム 1</li>
-  <Divider className="my-2" />
-  <li>アイテム 2</li>
-  <Divider className="my-2" />
-  <li>アイテム 3</li>
-</ul>
+<div>
+  <div style={{ padding: '1rem' }}>
+    <h4>Item 1</h4>
+    <p>Description</p>
+  </div>
+  <Divider />
+  <div style={{ padding: '1rem' }}>
+    <h4>Item 2</h4>
+    <p>Description</p>
+  </div>
+  <Divider />
+  <div style={{ padding: '1rem' }}>
+    <h4>Item 3</h4>
+    <p>Description</p>
+  </div>
+</div>
+```
+
+### ナビゲーション区切り
+
+```tsx
+<nav style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+  <a href="/">Home</a>
+  <Divider orientation="vertical" />
+  <a href="/about">About</a>
+  <Divider orientation="vertical" />
+  <a href="/contact">Contact</a>
+</nav>
+```
+
+## スタイルのカスタマイズ
+
+```tsx
+<Divider 
+  style={{ 
+    margin: '2rem 0',
+    width: '50%' 
+  }} 
+/>
 ```
 
 ## Props
 
 | Prop | 型 | デフォルト | 説明 |
-|------|-----|---------|------|
+|------|------|-----------|------|
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | 区切り線の方向 |
-
-HTMLの `<div>` 要素の全ての属性も使用可能です。
 
 ## アクセシビリティ
 
-Dividerコンポーネントは自動的に `role="separator"` と `aria-orientation` 属性を設定します。
+- `role="separator"`: セパレーターとしての役割を明示
+- `aria-orientation`: 方向を明示

@@ -1,74 +1,99 @@
 import { forwardRef } from "react";
-import type { BadgeProps } from "./Badge.types";
+import type { BadgeProps, BadgeVariant, BadgeSize } from "./Badge.types";
 
 /**
- * ニューモフィズムスタイルのバッジコンポーネント
- * ステータス表示やラベルに使用
+ * バリアントごとのスタイル
+ */
+const variantStyles: Record<BadgeVariant, string> = {
+  default: `
+    background: var(--neumo-bg);
+    color: var(--neumo-text);
+    box-shadow: var(--neumo-elevation-1);
+  `,
+  success: `
+    background: var(--neumo-success);
+    color: white;
+    box-shadow: 2px 2px 4px rgba(34, 197, 94, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.5);
+  `,
+  warning: `
+    background: var(--neumo-warning);
+    color: white;
+    box-shadow: 2px 2px 4px rgba(245, 158, 11, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.5);
+  `,
+  error: `
+    background: var(--neumo-error);
+    color: white;
+    box-shadow: 2px 2px 4px rgba(239, 68, 68, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.5);
+  `,
+  info: `
+    background: var(--neumo-info);
+    color: white;
+    box-shadow: 2px 2px 4px rgba(59, 130, 246, 0.3), -2px -2px 4px rgba(255, 255, 255, 0.5);
+  `,
+};
+
+/**
+ * サイズごとのスタイル
+ */
+const sizeStyles: Record<BadgeSize, string> = {
+  sm: `
+    padding: 2px 6px;
+    font-size: var(--neumo-font-xs);
+    border-radius: var(--neumo-radius-sm);
+  `,
+  md: `
+    padding: 4px 10px;
+    font-size: var(--neumo-font-sm);
+    border-radius: var(--neumo-radius-md);
+  `,
+};
+
+/**
+ * ベーススタイル
+ */
+const baseStyles = `
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: all var(--neumo-transition);
+`;
+
+/**
+ * Badgeコンポーネント
+ *
+ * ニューモフィズム2.0デザインのバッジコンポーネント
+ * ステータスやカテゴリを表示するための小さなラベル
+ *
+ * @example
+ * ```tsx
+ * <Badge variant="success">Completed</Badge>
+ * <Badge variant="error">Error</Badge>
+ * ```
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
       variant = "default",
       size = "md",
-      className = "",
       children,
+      style,
       ...props
     },
     ref
   ) => {
-    // ベーススタイル
-    const baseStyles = `
-      inline-flex items-center justify-center
-      font-medium
-      rounded-[var(--neumo-radius-full,9999px)]
-      shadow-[var(--neumo-elevation-1)]
-    `;
-
-    // サイズ別スタイル
-    const sizeStyles: Record<string, string> = {
-      sm: "px-2 py-0.5 text-xs",
-      md: "px-3 py-1 text-sm",
-    };
-
-    // バリアント別スタイル
-    const variantStyles: Record<string, string> = {
-      default: `
-        bg-[var(--neumo-bg,#e0e5ec)]
-        text-[var(--neumo-text,#2d3436)]
-      `,
-      success: `
-        bg-[var(--neumo-success,#00b894)]
-        text-white
-        shadow-[2px_2px_4px_rgba(0,184,148,0.4),-2px_-2px_4px_rgba(0,184,148,0.2)]
-      `,
-      warning: `
-        bg-[var(--neumo-warning,#fdcb6e)]
-        text-[var(--neumo-text,#2d3436)]
-        shadow-[2px_2px_4px_rgba(253,203,110,0.4),-2px_-2px_4px_rgba(253,203,110,0.2)]
-      `,
-      error: `
-        bg-[var(--neumo-error,#d63031)]
-        text-white
-        shadow-[2px_2px_4px_rgba(214,48,49,0.4),-2px_-2px_4px_rgba(214,48,49,0.2)]
-      `,
-      info: `
-        bg-[var(--neumo-info,#0984e3)]
-        text-white
-        shadow-[2px_2px_4px_rgba(9,132,227,0.4),-2px_-2px_4px_rgba(9,132,227,0.2)]
-      `,
+    // スタイルを結合
+    const badgeStyle: React.CSSProperties = {
+      ...parseStyles(baseStyles),
+      ...parseStyles(variantStyles[variant]),
+      ...parseStyles(sizeStyles[size]),
+      ...style,
     };
 
     return (
-      <span
-        ref={ref}
-        className={`
-          ${baseStyles}
-          ${sizeStyles[size]}
-          ${variantStyles[variant]}
-          ${className}
-        `}
-        {...props}
-      >
+      <span ref={ref} style={badgeStyle} {...props}>
         {children}
       </span>
     );
@@ -76,3 +101,24 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 );
 
 Badge.displayName = "Badge";
+
+/**
+ * CSS文字列をReact.CSSPropertiesオブジェクトに変換
+ */
+function parseStyles(cssString: string): React.CSSProperties {
+  const styles: Record<string, string> = {};
+  const declarations = cssString.split(";").filter((d) => d.trim());
+
+  for (const declaration of declarations) {
+    const [property, value] = declaration.split(":").map((s) => s.trim());
+    if (property && value) {
+      // CSS プロパティ名をキャメルケースに変換
+      const camelCase = property.replace(/-([a-z])/g, (_, letter) =>
+        letter.toUpperCase()
+      );
+      styles[camelCase] = value;
+    }
+  }
+
+  return styles as React.CSSProperties;
+}

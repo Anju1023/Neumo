@@ -1,14 +1,35 @@
 import { defineConfig } from "tsup";
 
-// tsup設定: ESM/CJS両対応のビルド
 export default defineConfig({
+  // エントリーポイント
   entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
+
+  // 出力形式（ESM & CommonJS）
+  format: ["esm", "cjs"],
+
+  // 型定義ファイルを生成
   dts: true,
-  splitting: false,
+
+  // ソースマップを生成
   sourcemap: true,
+
+  // distフォルダをクリーン
   clean: true,
-  external: ["react", "react-dom", "tailwindcss"],
-  // CSSファイルを別ファイルとして出力
-  injectStyle: false,
+
+  // 外部依存（バンドルに含めない）
+  external: ["react", "react-dom"],
+
+  // 本番ビルドで圧縮
+  minify: true,
+
+  // コード分割を有効化
+  splitting: true,
+
+  // ターゲット環境
+  target: "es2022",
+
+  // バナーコメント
+  banner: {
+    js: "/* Neumo UI - Neumorphism 2.0 Component Library */",
+  },
 });

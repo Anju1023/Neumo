@@ -2,28 +2,28 @@
   "name": "neumo",
   "version": "0.0.0",
   "private": true,
-  "description": "Neumorphism UI Component Library for React/Next.js",
+  "description": "Neumorphism 2.0 UI component library for React/Next.js",
   "scripts": {
-    "dev": "pnpm --filter @neumo/ui dev",
-    "build": "pnpm --filter @neumo/ui build",
-    "docs:dev": "pnpm --filter docs dev",
-    "docs:build": "pnpm --filter docs build",
-    "lint": "eslint .",
-    "test": "vitest",
-    "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules"
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean"
   },
   "keywords": [
-    "react",
-    "nextjs",
     "neumorphism",
     "ui",
+    "react",
     "components",
-    "tailwindcss"
+    "design-system"
   ],
-  "author": "",
+  "author": "Anju",
   "license": "MIT",
+  "packageManager": "pnpm@10.0.0",
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@9.15.0"
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
 }

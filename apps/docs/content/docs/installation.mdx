@@ -5,78 +5,84 @@ description: Neumo UIのインストール方法
 
 # インストール
 
+Neumo UIをプロジェクトに追加する方法を説明します。
+
 ## パッケージのインストール
 
-npm、yarn、または pnpm を使用してインストールできます。
+お好みのパッケージマネージャーでインストールしてください。
 
-```bash
-# npm
-npm install @neumo/ui
-
-# yarn
-yarn add @neumo/ui
-
-# pnpm
-pnpm add @neumo/ui
+```bash tab="npm"
+npm install neumo-ui
 ```
 
-## Peer Dependencies
-
-Neumo UIは以下のパッケージをpeer dependencyとして必要とします：
-
-- `react` >= 18.0.0
-- `react-dom` >= 18.0.0
-- `tailwindcss` >= 4.0.0
-
-## Tailwind CSSの設定
-
-### 1. contentの設定
-
-`tailwind.config.ts`（またはCSS）でNeumo UIのパスを追加します：
-
-```ts
-// tailwind.config.ts
-import type { Config } from "tailwindcss";
-
-const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@neumo/ui/**/*.{js,mjs}",
-  ],
-};
-
-export default config;
+```bash tab="pnpm"
+pnpm add neumo-ui
 ```
 
-### 2. CSSのインポート
-
-グローバルCSSファイルでスタイルをインポートします：
-
-```css
-@import "tailwindcss";
-@import "@neumo/ui/styles.css";
+```bash tab="yarn"
+yarn add neumo-ui
 ```
 
-## 使用方法
+## スタイルのインポート
+
+Neumo UIのデザイントークン（CSS変数）を使用するため、スタイルをインポートしてください。
 
 ```tsx
-import { Button, Card, Input } from "@neumo/ui";
+// アプリケーションのエントリーポイント（例: App.tsx, main.tsx）
+import 'neumo-ui/styles.css';
+```
 
-export default function Example() {
+## 使用例
+
+```tsx
+import { Button, Card, Input, Badge, Avatar, Divider } from 'neumo-ui';
+import 'neumo-ui/styles.css';
+
+function App() {
   return (
-    <Card>
-      <Input placeholder="名前を入力" />
-      <Button variant="primary">送信</Button>
-    </Card>
+    <div style={{ background: 'var(--neumo-bg)', minHeight: '100vh', padding: '2rem' }}>
+      <Card>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <Avatar alt="User" size="lg" />
+          <div>
+            <h2>Welcome back!</h2>
+            <Badge variant="success">Active</Badge>
+          </div>
+        </div>
+        
+        <Divider />
+        
+        <Input label="Email" type="email" placeholder="Enter your email" />
+        
+        <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem' }}>
+          <Button variant="primary">Submit</Button>
+          <Button variant="ghost">Cancel</Button>
+        </div>
+      </Card>
+    </div>
   );
+}
+```
+
+## 背景色の設定
+
+ニューモフィズムデザインは背景色が重要です。`--neumo-bg` 変数を使用して背景を設定してください。
+
+```css
+body {
+  background: var(--neumo-bg);
 }
 ```
 
 ## TypeScript
 
-Neumo UIはTypeScriptで書かれており、型定義が含まれています。
-追加のインストールは不要です。
+Neumo UIはTypeScriptで書かれており、型定義が含まれています。追加の型パッケージは不要です。
 
 ```tsx
-import type { ButtonProps, CardProps } from "@neumo/ui";
+import type { ButtonProps, CardProps, InputProps } from 'neumo-ui';
 ```
+
+## 要件
+
+- React 18以上
+- React DOM 18以上
