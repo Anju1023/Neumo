@@ -8,8 +8,8 @@ const inter = Inter({
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+    <html lang="ja" className={inter.className} suppressHydrationWarning>
+      <body className="flex flex-col min-h-screen bg-neumo-bg text-neumo-text">
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
