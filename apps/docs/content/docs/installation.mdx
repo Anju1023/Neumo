@@ -1,0 +1,82 @@
+---
+title: インストール
+description: Neumo UIのインストール方法
+---
+
+# インストール
+
+## パッケージのインストール
+
+npm、yarn、または pnpm を使用してインストールできます。
+
+```bash
+# npm
+npm install @neumo/ui
+
+# yarn
+yarn add @neumo/ui
+
+# pnpm
+pnpm add @neumo/ui
+```
+
+## Peer Dependencies
+
+Neumo UIは以下のパッケージをpeer dependencyとして必要とします：
+
+- `react` >= 18.0.0
+- `react-dom` >= 18.0.0
+- `tailwindcss` >= 4.0.0
+
+## Tailwind CSSの設定
+
+### 1. contentの設定
+
+`tailwind.config.ts`（またはCSS）でNeumo UIのパスを追加します：
+
+```ts
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@neumo/ui/**/*.{js,mjs}",
+  ],
+};
+
+export default config;
+```
+
+### 2. CSSのインポート
+
+グローバルCSSファイルでスタイルをインポートします：
+
+```css
+@import "tailwindcss";
+@import "@neumo/ui/styles.css";
+```
+
+## 使用方法
+
+```tsx
+import { Button, Card, Input } from "@neumo/ui";
+
+export default function Example() {
+  return (
+    <Card>
+      <Input placeholder="名前を入力" />
+      <Button variant="primary">送信</Button>
+    </Card>
+  );
+}
+```
+
+## TypeScript
+
+Neumo UIはTypeScriptで書かれており、型定義が含まれています。
+追加のインストールは不要です。
+
+```tsx
+import type { ButtonProps, CardProps } from "@neumo/ui";
+```

@@ -1,0 +1,70 @@
+---
+title: Button
+description: ニューモフィズムスタイルのボタンコンポーネント
+---
+
+# Button
+
+押し込み/浮き上がりエフェクトを持つニューモフィズムスタイルのボタンコンポーネントです。
+
+## インポート
+
+```tsx
+import { Button } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<Button>Default Button</Button>
+```
+
+### バリアント
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+### サイズ
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+### ローディング状態
+
+```tsx
+<Button loading>Loading...</Button>
+```
+
+### アイコン付き
+
+```tsx
+<Button leftIcon={<SearchIcon />}>検索</Button>
+<Button rightIcon={<ArrowRightIcon />}>次へ</Button>
+```
+
+### 無効状態
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `variant` | `"default" \| "primary" \| "ghost"` | `"default"` | ボタンのスタイルバリアント |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | ボタンのサイズ |
+| `loading` | `boolean` | `false` | ローディング状態 |
+| `disabled` | `boolean` | `false` | 無効状態 |
+| `leftIcon` | `ReactNode` | - | 左側のアイコン |
+| `rightIcon` | `ReactNode` | - | 右側のアイコン |
+
+HTMLの `<button>` 要素の全ての属性も使用可能です。

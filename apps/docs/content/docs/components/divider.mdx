@@ -1,0 +1,76 @@
+---
+title: Divider
+description: ニューモフィズムスタイルの区切り線コンポーネント
+---
+
+# Divider
+
+コンテンツを区切るニューモフィズムスタイルの区切り線コンポーネントです。
+
+## インポート
+
+```tsx
+import { Divider } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<div>
+  <p>上のコンテンツ</p>
+  <Divider />
+  <p>下のコンテンツ</p>
+</div>
+```
+
+### 水平（デフォルト）
+
+```tsx
+<Divider orientation="horizontal" />
+```
+
+### 垂直
+
+```tsx
+<div className="flex h-20 items-center">
+  <span>左</span>
+  <Divider orientation="vertical" className="mx-4" />
+  <span>右</span>
+</div>
+```
+
+### カード内での使用
+
+```tsx
+<Card>
+  <h2>タイトル</h2>
+  <Divider className="my-4" />
+  <p>コンテンツ</p>
+</Card>
+```
+
+### リスト区切り
+
+```tsx
+<ul>
+  <li>アイテム 1</li>
+  <Divider className="my-2" />
+  <li>アイテム 2</li>
+  <Divider className="my-2" />
+  <li>アイテム 3</li>
+</ul>
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | 区切り線の方向 |
+
+HTMLの `<div>` 要素の全ての属性も使用可能です。
+
+## アクセシビリティ
+
+Dividerコンポーネントは自動的に `role="separator"` と `aria-orientation` 属性を設定します。

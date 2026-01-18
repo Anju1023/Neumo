@@ -1,0 +1,69 @@
+---
+title: Avatar
+description: ニューモフィズムスタイルのアバターコンポーネント
+---
+
+# Avatar
+
+ユーザーアイコンを表示するニューモフィズムスタイルのアバターコンポーネントです。
+
+## インポート
+
+```tsx
+import { Avatar } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<Avatar src="/avatar.jpg" alt="ユーザー名" />
+```
+
+### サイズ
+
+```tsx
+<Avatar size="xs" src="/avatar.jpg" alt="XS" />
+<Avatar size="sm" src="/avatar.jpg" alt="SM" />
+<Avatar size="md" src="/avatar.jpg" alt="MD" />
+<Avatar size="lg" src="/avatar.jpg" alt="LG" />
+<Avatar size="xl" src="/avatar.jpg" alt="XL" />
+```
+
+### バリアント
+
+```tsx
+{/* 円形（デフォルト） */}
+<Avatar variant="circle" src="/avatar.jpg" alt="Circle" />
+
+{/* 角丸 */}
+<Avatar variant="rounded" src="/avatar.jpg" alt="Rounded" />
+```
+
+### フォールバック
+
+画像が読み込めない場合、`alt`の最初の文字が表示されます。
+
+```tsx
+{/* デフォルトのフォールバック（イニシャル） */}
+<Avatar alt="山田太郎" />
+
+{/* カスタムフォールバック */}
+<Avatar 
+  alt="User" 
+  fallback={<UserIcon />}
+/>
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` | アバターのサイズ |
+| `variant` | `"circle" \| "rounded"` | `"circle"` | アバターの形状 |
+| `src` | `string` | - | 画像のURL |
+| `alt` | `string` | `""` | 代替テキスト |
+| `fallback` | `ReactNode` | - | 画像が読み込めない場合の表示 |
+
+HTMLの `<img>` 要素の全ての属性も使用可能です。

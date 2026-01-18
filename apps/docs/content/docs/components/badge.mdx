@@ -1,0 +1,72 @@
+---
+title: Badge
+description: ニューモフィズムスタイルのバッジコンポーネント
+---
+
+# Badge
+
+ステータスやラベルを表示するニューモフィズムスタイルのバッジコンポーネントです。
+
+## インポート
+
+```tsx
+import { Badge } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<Badge>Default</Badge>
+```
+
+### バリアント
+
+```tsx
+<Badge variant="default">Default</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+<Badge variant="info">Info</Badge>
+```
+
+### サイズ
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+### 使用例：ステータス表示
+
+```tsx
+<div className="flex items-center gap-2">
+  <span>サーバー状態:</span>
+  <Badge variant="success">稼働中</Badge>
+</div>
+```
+
+### 使用例：カウンター
+
+```tsx
+<div className="relative">
+  <BellIcon />
+  <Badge 
+    variant="error" 
+    size="sm" 
+    className="absolute -top-1 -right-1"
+  >
+    3
+  </Badge>
+</div>
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `variant` | `"default" \| "success" \| "warning" \| "error" \| "info"` | `"default"` | バッジのスタイルバリアント |
+| `size` | `"sm" \| "md"` | `"md"` | バッジのサイズ |
+
+HTMLの `<span>` 要素の全ての属性も使用可能です。

@@ -1,0 +1,40 @@
+---
+title: はじめに
+description: Neumo UIライブラリの紹介
+---
+
+# Neumo UI
+
+**Neumo UI** は、React / Next.js アプリケーション向けのニューモフィズムデザインUIコンポーネントライブラリです。
+
+## 特徴
+
+- **ニューモフィズム2.0**: 高コントラストでアクセシビリティに配慮したモダンなデザイン
+- **Tailwind CSS v4対応**: CSS変数によるカスタマイズが簡単
+- **TypeScript完全サポート**: 型安全なコンポーネント
+- **Tree-shaking対応**: 使用するコンポーネントのみをバンドル
+
+## コンポーネント
+
+現在、以下のコンポーネントが利用可能です：
+
+- [Button](/docs/components/button) - ボタンコンポーネント
+- [Card](/docs/components/card) - カードコンポーネント
+- [Input](/docs/components/input) - 入力フィールド
+- [Avatar](/docs/components/avatar) - アバター
+- [Badge](/docs/components/badge) - バッジ
+- [Divider](/docs/components/divider) - 区切り線
+
+## クイックスタート
+
+```bash
+npm install @neumo/ui
+```
+
+```tsx
+import { Button } from "@neumo/ui";
+
+export default function App() {
+  return <Button variant="primary">Click me</Button>;
+}
+```

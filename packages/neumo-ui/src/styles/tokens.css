@@ -1,0 +1,99 @@
+/* 
+ * Neumo UI - デザイントークン
+ * ニューモフィズム2.0に基づいたCSS変数定義
+ */
+
+:root {
+  /* ========================================
+   * サーフェスカラー
+   * ======================================== */
+  --neumo-bg: #e0e5ec;
+  --neumo-bg-dark: #1a1a2e;
+  --neumo-text: #2d3436;
+  --neumo-text-muted: #636e72;
+  --neumo-primary: #6c5ce7;
+  --neumo-primary-light: #a29bfe;
+  --neumo-success: #00b894;
+  --neumo-warning: #fdcb6e;
+  --neumo-error: #d63031;
+  --neumo-info: #0984e3;
+
+  /* ========================================
+   * シャドウカラー
+   * ======================================== */
+  --neumo-shadow-light: rgba(255, 255, 255, 0.8);
+  --neumo-shadow-dark: rgba(163, 177, 198, 0.6);
+
+  /* ========================================
+   * エレベーション（浮き上がり効果）
+   * ======================================== */
+  --neumo-elevation-1: 
+    4px 4px 8px var(--neumo-shadow-dark),
+    -4px -4px 8px var(--neumo-shadow-light);
+  
+  --neumo-elevation-2: 
+    6px 6px 12px var(--neumo-shadow-dark),
+    -6px -6px 12px var(--neumo-shadow-light);
+  
+  --neumo-elevation-3: 
+    8px 8px 16px var(--neumo-shadow-dark),
+    -8px -8px 16px var(--neumo-shadow-light);
+
+  /* ========================================
+   * インセット（押し込み効果）
+   * ======================================== */
+  --neumo-inset-1: 
+    inset 2px 2px 4px var(--neumo-shadow-dark),
+    inset -2px -2px 4px var(--neumo-shadow-light);
+  
+  --neumo-inset-2: 
+    inset 4px 4px 8px var(--neumo-shadow-dark),
+    inset -4px -4px 8px var(--neumo-shadow-light);
+
+  /* ========================================
+   * 角丸
+   * ======================================== */
+  --neumo-radius-sm: 8px;
+  --neumo-radius-md: 12px;
+  --neumo-radius-lg: 16px;
+  --neumo-radius-xl: 24px;
+  --neumo-radius-full: 9999px;
+
+  /* ========================================
+   * スペーシング
+   * ======================================== */
+  --neumo-space-xs: 4px;
+  --neumo-space-sm: 8px;
+  --neumo-space-md: 16px;
+  --neumo-space-lg: 24px;
+  --neumo-space-xl: 32px;
+
+  /* ========================================
+   * トランジション
+   * ======================================== */
+  --neumo-transition-fast: 0.15s ease;
+  --neumo-transition-normal: 0.2s ease;
+  --neumo-transition-slow: 0.3s ease;
+
+  /* ========================================
+   * フォントサイズ
+   * ======================================== */
+  --neumo-text-xs: 0.75rem;
+  --neumo-text-sm: 0.875rem;
+  --neumo-text-md: 1rem;
+  --neumo-text-lg: 1.125rem;
+  --neumo-text-xl: 1.25rem;
+}
+
+/* ダークモード用の変数（将来の拡張用） */
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neumo-bg: #1a1a2e;
+    --neumo-text: #e0e5ec;
+    --neumo-text-muted: #a0a0a0;
+    --neumo-shadow-light: rgba(255, 255, 255, 0.05);
+    --neumo-shadow-dark: rgba(0, 0, 0, 0.5);
+  }
+}
+*/

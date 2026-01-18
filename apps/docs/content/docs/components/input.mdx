@@ -1,0 +1,75 @@
+---
+title: Input
+description: ニューモフィズムスタイルの入力フィールドコンポーネント
+---
+
+# Input
+
+フォーカス時にへこむ効果を持つニューモフィズムスタイルの入力フィールドです。
+
+## インポート
+
+```tsx
+import { Input } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<Input placeholder="名前を入力" />
+```
+
+### サイズ
+
+```tsx
+<Input size="sm" placeholder="Small" />
+<Input size="md" placeholder="Medium" />
+<Input size="lg" placeholder="Large" />
+```
+
+### タイプ
+
+```tsx
+<Input type="text" placeholder="テキスト" />
+<Input type="email" placeholder="メールアドレス" />
+<Input type="password" placeholder="パスワード" />
+<Input type="number" placeholder="数値" />
+```
+
+### エラー状態
+
+```tsx
+<Input 
+  error 
+  errorMessage="入力が正しくありません" 
+  placeholder="エラー"
+/>
+```
+
+### アイコン付き
+
+```tsx
+<Input leftIcon={<SearchIcon />} placeholder="検索" />
+<Input rightIcon={<EyeIcon />} type="password" placeholder="パスワード" />
+```
+
+### 無効状態
+
+```tsx
+<Input disabled placeholder="無効" />
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | インプットのサイズ |
+| `error` | `boolean` | `false` | エラー状態 |
+| `errorMessage` | `string` | - | エラーメッセージ |
+| `leftIcon` | `ReactNode` | - | 左側のアイコン |
+| `rightIcon` | `ReactNode` | - | 右側のアイコン |
+| `disabled` | `boolean` | `false` | 無効状態 |
+
+HTMLの `<input>` 要素の全ての属性も使用可能です。

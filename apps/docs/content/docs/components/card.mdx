@@ -1,0 +1,67 @@
+---
+title: Card
+description: ニューモフィズムスタイルのカードコンポーネント
+---
+
+# Card
+
+コンテンツを包むニューモフィズムスタイルのコンテナコンポーネントです。
+
+## インポート
+
+```tsx
+import { Card } from "@neumo/ui";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+<Card>
+  <h2>カードタイトル</h2>
+  <p>カードの内容がここに入ります。</p>
+</Card>
+```
+
+### バリアント
+
+```tsx
+{/* 浮き上がり効果（デフォルト） */}
+<Card variant="elevated">Elevated Card</Card>
+
+{/* フラット */}
+<Card variant="flat">Flat Card</Card>
+
+{/* へこみ効果 */}
+<Card variant="inset">Inset Card</Card>
+```
+
+### パディング
+
+```tsx
+<Card padding="none">No Padding</Card>
+<Card padding="sm">Small Padding</Card>
+<Card padding="md">Medium Padding</Card>
+<Card padding="lg">Large Padding</Card>
+```
+
+### ネスト
+
+```tsx
+<Card variant="elevated">
+  <h2>親カード</h2>
+  <Card variant="inset" padding="sm">
+    <p>ネストされた子カード</p>
+  </Card>
+</Card>
+```
+
+## Props
+
+| Prop | 型 | デフォルト | 説明 |
+|------|-----|---------|------|
+| `variant` | `"elevated" \| "flat" \| "inset"` | `"elevated"` | カードのスタイルバリアント |
+| `padding` | `"none" \| "sm" \| "md" \| "lg"` | `"md"` | 内側の余白 |
+
+HTMLの `<div>` 要素の全ての属性も使用可能です。
