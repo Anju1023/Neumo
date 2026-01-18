@@ -16,7 +16,7 @@ todos:
     status: completed
   - id: publish-prep
     content: "Step 5: パッケージ公開準備（README, exports設定）"
-    status: in_progress
+    status: completed
 ---
 
 # Neumo UI Phase 1 実装プラン

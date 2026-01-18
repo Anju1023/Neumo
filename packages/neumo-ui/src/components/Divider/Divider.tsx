@@ -28,11 +28,15 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
       `,
     };
 
+    // ARIA属性用に明示的なリテラル値を取得
+    const ariaOrientation: "horizontal" | "vertical" =
+      orientation === "vertical" ? "vertical" : "horizontal";
+
     return (
       <div
         ref={ref}
         role="separator"
-        aria-orientation={orientation}
+        aria-orientation={ariaOrientation}
         className={`
           ${orientationStyles[orientation]}
           ${className}
