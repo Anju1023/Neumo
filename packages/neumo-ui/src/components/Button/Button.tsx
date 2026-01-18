@@ -103,8 +103,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || loading}
         className={buttonClasses}
-        aria-busy={loading}
-        aria-disabled={disabled || loading}
+        aria-busy={loading ? "true" : undefined}
+        aria-disabled={disabled || loading ? "true" : undefined}
         {...props}
       >
         {/* ローディング時はスピナーを表示 */}

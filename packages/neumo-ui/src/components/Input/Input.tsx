@@ -121,7 +121,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={type}
             disabled={disabled}
-            aria-invalid={error}
+            aria-invalid={error ? "true" : undefined}
             aria-describedby={
               error && errorMessage
                 ? errorId
