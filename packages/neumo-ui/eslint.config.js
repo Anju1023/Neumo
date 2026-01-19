@@ -9,6 +9,17 @@ import reactHooks from "eslint-plugin-react-hooks";
  * @see https://eslint.org/docs/latest/use/configure/configuration-files-new
  */
 export default [
+  // 無視するファイル（最初に定義するのが重要！）
+  {
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      "coverage/**",
+      "*.config.*",
+      "**/*.d.ts",
+    ],
+  },
+
   // 基本のJavaScript推奨設定
   js.configs.recommended,
 
@@ -44,7 +55,7 @@ export default [
 
       // TypeScript固有の調整
       "@typescript-eslint/no-unused-vars": [
-        "warn",
+        "error",
         { argsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -67,10 +78,5 @@ export default [
       // テストファイルでは一部ルールを緩和
       "@typescript-eslint/no-explicit-any": "off",
     },
-  },
-
-  // 無視するファイル
-  {
-    ignores: ["dist/**", "node_modules/**", "*.config.*"],
   },
 ];
