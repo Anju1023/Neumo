@@ -42,7 +42,9 @@ describe("Avatar", () => {
     render(<Avatar src="/invalid.jpg" alt="John Doe" />);
     // コンテナの中のimg要素を取得
     const container = screen.getAllByRole("img")[0];
-    const img = container.querySelector("img");
+    // コンテナが存在することを確認
+    expect(container).toBeDefined();
+    const img = container?.querySelector("img");
     if (img) {
       fireEvent.error(img);
       expect(screen.getByText("JD")).toBeInTheDocument();
