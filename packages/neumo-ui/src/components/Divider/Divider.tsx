@@ -42,8 +42,9 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(
     return (
       <hr
         ref={ref}
-        role="separator"
-        aria-orientation={orientation}
+        // hr要素はデフォルトでseparatorロールを持つため、roleは不要
+        // aria-orientationはverticalの時のみ指定（horizontalがデフォルト）
+        aria-orientation={orientation === "vertical" ? "vertical" : undefined}
         className={dividerClasses}
         {...props}
       />

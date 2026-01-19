@@ -11,20 +11,16 @@ describe("Divider", () => {
 
   // 方向のテスト
   describe("orientations", () => {
-    it("renders horizontal orientation by default", () => {
+    it("renders horizontal orientation by default (no aria-orientation needed)", () => {
       render(<Divider />);
-      expect(screen.getByRole("separator")).toHaveAttribute(
-        "aria-orientation",
-        "horizontal"
-      );
+      // horizontalはデフォルトなのでaria-orientationは設定されない
+      expect(screen.getByRole("separator")).not.toHaveAttribute("aria-orientation");
     });
 
-    it("renders horizontal orientation explicitly", () => {
+    it("renders horizontal orientation explicitly (no aria-orientation needed)", () => {
       render(<Divider orientation="horizontal" />);
-      expect(screen.getByRole("separator")).toHaveAttribute(
-        "aria-orientation",
-        "horizontal"
-      );
+      // horizontalはデフォルトなのでaria-orientationは設定されない
+      expect(screen.getByRole("separator")).not.toHaveAttribute("aria-orientation");
     });
 
     it("renders vertical orientation", () => {

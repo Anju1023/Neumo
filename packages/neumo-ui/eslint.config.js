@@ -3,6 +3,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 /**
  * ESLint Flat Config for Neumo UI
@@ -40,6 +41,7 @@ export default [
       "@typescript-eslint": tseslint,
       react: react,
       "react-hooks": reactHooks,
+      "jsx-a11y": jsxA11y,
     },
     rules: {
       // TypeScript推奨ルール
@@ -63,6 +65,9 @@ export default [
 
       // 未定義変数のチェック（TypeScriptが担当するのでオフ）
       "no-undef": "off",
+
+      // アクセシビリティルール（jsx-a11y推奨）
+      ...jsxA11y.flatConfigs.recommended.rules,
     },
     settings: {
       react: {

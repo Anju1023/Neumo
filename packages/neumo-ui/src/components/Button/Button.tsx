@@ -32,6 +32,7 @@ const disabledClasses = "opacity-50 cursor-not-allowed !shadow-none";
 
 /**
  * ローディングスピナーコンポーネント
+ * aria-hidden: スクリーンリーダーから隠す（装飾的な要素のため）
  */
 const LoadingSpinner = () => (
   <svg
@@ -44,6 +45,7 @@ const LoadingSpinner = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
   >
     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
   </svg>
@@ -80,11 +82,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // インタラクティブかどうか（ホバー/アクティブ/フォーカス効果を適用するか）
     const isInteractive = !disabled && !loading;
 
-    // ホバー/アクティブ効果のクラス（ghostバリアント以外）
-    const interactionClasses =
-      isInteractive && variant !== "ghost"
+    // ホバー/アクティブ効果のクラス
+    const interactionClasses = isInteractive
+      ? variant !== "ghost"
         ? "hover:neumo-elevation-hover hover:-translate-y-px active:neumo-elevation-active active:translate-y-0 focus:neumo-focus-ring"
-        : "";
+        : "hover:bg-neumo-bg/50 focus:neumo-focus-ring" // ghostバリアントにもフォーカスリング
+      : "";
 
     // クラスを結合
     const buttonClasses = [
@@ -109,7 +112,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {/* ローディング時はスピナーを表示 */}
         {loading ? (
-          <LoadingSpinner />
+          <>
+            <LoadingSpinner />
+            {/* スクリーンリーダー用のローディングテキスト */}
+            <span className="sr-only">読み込み中</span>
+          </>
         ) : (
           <>
             {leftIcon && <span aria-hidden="true">{leftIcon}</span>}
