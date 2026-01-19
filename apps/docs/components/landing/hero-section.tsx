@@ -59,7 +59,7 @@ export function HeroSection() {
               </Button>
             </Link>
             <a
-              href="https://github.com/your-repo/neumo-ui"
+              href="https://github.com/Anju1023/Neumo"
               target="_blank"
               rel="noopener noreferrer"
             >
