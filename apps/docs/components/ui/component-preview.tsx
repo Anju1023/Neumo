@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { Check, Copy, Code, Eye } from "lucide-react";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 
 /**
  * ComponentPreviewのProps
@@ -140,10 +141,15 @@ export function ComponentPreview({
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </button>
 
-            {/* コードブロック */}
-            <pre className="p-4 overflow-x-auto bg-fd-background-deep text-sm">
-              <code className="text-fd-foreground">{code}</code>
-            </pre>
+            {/* コードブロック（Fumadocsのシンタックスハイライト付き） */}
+            <DynamicCodeBlock
+              lang="tsx"
+              code={code}
+              codeblock={{
+                allowCopy: false, // 独自のコピーボタンを使うため無効化
+                className: "rounded-none border-0", // 親コンテナに角丸があるので内側は角丸なし
+              }}
+            />
           </div>
         )}
       </div>

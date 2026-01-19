@@ -34,5 +34,8 @@ export default defineConfig({
   },
 
   // ビルド成功後にCSSをビルド
-  onSuccess: "pnpm exec tailwindcss -i src/styles/index.css -o dist/styles.css --minify",
+  // styles.css: 単独使用用（Tailwind込み）
+  // theme.css: 他フレームワーク統合用（Tailwindなし、テーマ変数のみ）
+  onSuccess:
+    "pnpm exec tailwindcss -i src/styles/index.css -o dist/styles.css --minify && pnpm exec tailwindcss -i src/styles/theme.css -o dist/theme.css --minify",
 });
