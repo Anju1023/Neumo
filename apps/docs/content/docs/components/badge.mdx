@@ -23,7 +23,7 @@ import { Badge } from 'neumo-ui';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Badge>Default</Badge>`}>
-  <Badge>Default</Badge>
+  <NeumoBadge>Default</NeumoBadge>
 </ComponentPreview>
 
 ## バリアント
@@ -31,11 +31,11 @@ import { Badge } from 'neumo-ui';
 5種類のバリアントがあります。ステータスや意味に応じて使い分けてください。
 
 <ComponentShowcase title="Badge Variants">
-  <Badge variant="default">Default</Badge>
-  <Badge variant="success">Success</Badge>
-  <Badge variant="warning">Warning</Badge>
-  <Badge variant="error">Error</Badge>
-  <Badge variant="info">Info</Badge>
+  <NeumoBadge variant="default">Default</NeumoBadge>
+  <NeumoBadge variant="success">Success</NeumoBadge>
+  <NeumoBadge variant="warning">Warning</NeumoBadge>
+  <NeumoBadge variant="error">Error</NeumoBadge>
+  <NeumoBadge variant="info">Info</NeumoBadge>
 </ComponentShowcase>
 
 <TypeTable
@@ -69,8 +69,8 @@ import { Badge } from 'neumo-ui';
 2種類のサイズがあります。
 
 <ComponentShowcase title="Badge Sizes">
-  <Badge size="sm">Small</Badge>
-  <Badge size="md">Medium</Badge>
+  <NeumoBadge size="sm">Small</NeumoBadge>
+  <NeumoBadge size="md">Medium</NeumoBadge>
 </ComponentShowcase>
 
 ## 使用例
@@ -85,9 +85,9 @@ import { Badge } from 'neumo-ui';
   <Badge variant="default">Offline</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <Badge variant="success">Online</Badge>
-    <Badge variant="warning">Away</Badge>
-    <Badge variant="default">Offline</Badge>
+    <NeumoBadge variant="success">Online</NeumoBadge>
+    <NeumoBadge variant="warning">Away</NeumoBadge>
+    <NeumoBadge variant="default">Offline</NeumoBadge>
   </div>
 </ComponentPreview>
 
@@ -100,10 +100,10 @@ import { Badge } from 'neumo-ui';
   <Badge variant="error">Blocked</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-    <Badge variant="info">New</Badge>
-    <Badge variant="warning">In Progress</Badge>
-    <Badge variant="success">Completed</Badge>
-    <Badge variant="error">Blocked</Badge>
+    <NeumoBadge variant="info">New</NeumoBadge>
+    <NeumoBadge variant="warning">In Progress</NeumoBadge>
+    <NeumoBadge variant="success">Completed</NeumoBadge>
+    <NeumoBadge variant="error">Blocked</NeumoBadge>
   </div>
 </ComponentPreview>
 
@@ -116,13 +116,13 @@ import { Badge } from 'neumo-ui';
   </div>
   <p>Task description...</p>
 </Card>`}>
-  <Card style={{ width: '300px' }}>
+  <NeumoCard style={{ width: '300px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <h3 style={{ margin: 0 }}>Task Title</h3>
-      <Badge variant="warning">In Progress</Badge>
+      <NeumoBadge variant="warning">In Progress</NeumoBadge>
     </div>
     <p style={{ margin: '0.5rem 0 0', color: '#718096' }}>Task description...</p>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ### ユーザーリスト
@@ -133,9 +133,9 @@ import { Badge } from 'neumo-ui';
   <Badge variant="info" size="sm">Admin</Badge>
 </div>`}>
   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-    <Avatar alt="John Doe" size="sm" />
+    <NeumoAvatar alt="John Doe" size="sm" />
     <span>John Doe</span>
-    <Badge variant="info" size="sm">Admin</Badge>
+    <NeumoBadge variant="info" size="sm">Admin</NeumoBadge>
   </div>
 </ComponentPreview>
 
@@ -148,10 +148,10 @@ import { Badge } from 'neumo-ui';
   <Badge variant="error">Deprecated</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-    <Badge variant="info">New</Badge>
-    <Badge variant="warning">Beta</Badge>
-    <Badge variant="success">Stable</Badge>
-    <Badge variant="error">Deprecated</Badge>
+    <NeumoBadge variant="info">New</NeumoBadge>
+    <NeumoBadge variant="warning">Beta</NeumoBadge>
+    <NeumoBadge variant="success">Stable</NeumoBadge>
+    <NeumoBadge variant="error">Deprecated</NeumoBadge>
   </div>
 </ComponentPreview>
 
@@ -165,8 +165,8 @@ import { Badge } from 'neumo-ui';
 </div>`}>
   <div style={{ display: 'flex', gap: '1rem' }}>
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <Button variant="default">Messages</Button>
-      <Badge variant="error" size="sm" style={{ position: 'absolute', top: '-8px', right: '-8px' }}>3</Badge>
+      <NeumoButton variant="default">Messages</NeumoButton>
+      <NeumoBadge variant="error" size="sm" style={{ position: 'absolute', top: '-8px', right: '-8px' }}>3</NeumoBadge>
     </div>
   </div>
 </ComponentPreview>

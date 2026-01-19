@@ -23,7 +23,7 @@ import { Input } from 'neumo-ui';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Input placeholder="Enter text..." />`}>
-  <Input placeholder="Enter text..." />
+  <NeumoInput placeholder="Enter text..." />
 </ComponentPreview>
 
 ## ラベル付き
@@ -31,7 +31,7 @@ import { Input } from 'neumo-ui';
 `label`プロパティでラベルを表示できます。ラベルは自動的に入力フィールドと関連付けられます。
 
 <ComponentPreview code={`<Input label="Email" placeholder="Enter your email" />`}>
-  <Input label="Email" placeholder="Enter your email" />
+  <NeumoInput label="Email" placeholder="Enter your email" />
 </ComponentPreview>
 
 ## サイズ
@@ -39,9 +39,9 @@ import { Input } from 'neumo-ui';
 3種類のサイズがあります。
 
 <ComponentShowcase title="Input Sizes">
-  <Input size="sm" placeholder="Small" />
-  <Input size="md" placeholder="Medium" />
-  <Input size="lg" placeholder="Large" />
+  <NeumoInput size="sm" placeholder="Small" />
+  <NeumoInput size="md" placeholder="Medium" />
+  <NeumoInput size="lg" placeholder="Large" />
 </ComponentShowcase>
 
 ## 入力タイプ
@@ -51,27 +51,27 @@ import { Input } from 'neumo-ui';
 <Tabs items={['テキスト', 'パスワード', 'メール', '数値', '検索']}>
   <Tab value="テキスト">
     <ComponentPreview code={`<Input type="text" label="Name" placeholder="Enter your name" />`}>
-      <Input type="text" label="Name" placeholder="Enter your name" />
+      <NeumoInput type="text" label="Name" placeholder="Enter your name" />
     </ComponentPreview>
   </Tab>
   <Tab value="パスワード">
     <ComponentPreview code={`<Input type="password" label="Password" placeholder="Enter password" />`}>
-      <Input type="password" label="Password" placeholder="Enter password" />
+      <NeumoInput type="password" label="Password" placeholder="Enter password" />
     </ComponentPreview>
   </Tab>
   <Tab value="メール">
     <ComponentPreview code={`<Input type="email" label="Email" placeholder="example@email.com" />`}>
-      <Input type="email" label="Email" placeholder="example@email.com" />
+      <NeumoInput type="email" label="Email" placeholder="example@email.com" />
     </ComponentPreview>
   </Tab>
   <Tab value="数値">
     <ComponentPreview code={`<Input type="number" label="Age" placeholder="Enter your age" />`}>
-      <Input type="number" label="Age" placeholder="Enter your age" />
+      <NeumoInput type="number" label="Age" placeholder="Enter your age" />
     </ComponentPreview>
   </Tab>
   <Tab value="検索">
     <ComponentPreview code={`<Input type="search" placeholder="Search..." />`}>
-      <Input type="search" placeholder="Search..." />
+      <NeumoInput type="search" placeholder="Search..." />
     </ComponentPreview>
   </Tab>
 </Tabs>
@@ -85,7 +85,7 @@ import { Input } from 'neumo-ui';
   placeholder="example@email.com"
   helperText="We'll never share your email"
 />`}>
-  <Input 
+  <NeumoInput 
     label="Email" 
     placeholder="example@email.com"
     helperText="We'll never share your email"
@@ -101,7 +101,7 @@ import { Input } from 'neumo-ui';
   error 
   errorMessage="Invalid email address"
 />`}>
-  <Input 
+  <NeumoInput 
     label="Email" 
     error 
     errorMessage="Invalid email address"
@@ -115,7 +115,7 @@ import { Input } from 'neumo-ui';
 ## 無効状態
 
 <ComponentPreview code={`<Input disabled placeholder="Disabled input" />`}>
-  <Input disabled placeholder="Disabled input" />
+  <NeumoInput disabled placeholder="Disabled input" />
 </ComponentPreview>
 
 ## 組み合わせ例
@@ -128,16 +128,16 @@ import { Input } from 'neumo-ui';
   <Input label="Password" type="password" placeholder="Enter your password" />
   <Button variant="primary">Sign In</Button>
 </Card>`}>
-  <Card padding="lg" style={{ width: '320px' }}>
+  <NeumoCard padding="lg" style={{ width: '320px' }}>
     <h3 style={{ margin: '0 0 1rem 0' }}>Login</h3>
     <div style={{ marginBottom: '1rem' }}>
-      <Input label="Email" type="email" placeholder="Enter your email" />
+      <NeumoInput label="Email" type="email" placeholder="Enter your email" />
     </div>
     <div style={{ marginBottom: '1rem' }}>
-      <Input label="Password" type="password" placeholder="Enter your password" />
+      <NeumoInput label="Password" type="password" placeholder="Enter your password" />
     </div>
-    <Button variant="primary">Sign In</Button>
-  </Card>
+    <NeumoButton variant="primary">Sign In</NeumoButton>
+  </NeumoCard>
 </ComponentPreview>
 
 ### お問い合わせフォーム
@@ -151,19 +151,19 @@ import { Input } from 'neumo-ui';
     <Button variant="ghost">Cancel</Button>
   </div>
 </Card>`}>
-  <Card padding="lg" style={{ width: '320px' }}>
+  <NeumoCard padding="lg" style={{ width: '320px' }}>
     <h3 style={{ margin: '0 0 1rem 0' }}>Contact Us</h3>
     <div style={{ marginBottom: '1rem' }}>
-      <Input label="Name" placeholder="Your name" />
+      <NeumoInput label="Name" placeholder="Your name" />
     </div>
     <div style={{ marginBottom: '1rem' }}>
-      <Input label="Email" type="email" placeholder="your@email.com" />
+      <NeumoInput label="Email" type="email" placeholder="your@email.com" />
     </div>
     <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <Button variant="primary">Send</Button>
-      <Button variant="ghost">Cancel</Button>
+      <NeumoButton variant="primary">Send</NeumoButton>
+      <NeumoButton variant="ghost">Cancel</NeumoButton>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ## Props

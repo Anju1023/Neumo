@@ -23,7 +23,7 @@ import { Button } from 'neumo-ui';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Button>Default Button</Button>`}>
-  <Button>Default Button</Button>
+  <NeumoButton>Default Button</NeumoButton>
 </ComponentPreview>
 
 ## バリアント
@@ -31,9 +31,9 @@ import { Button } from 'neumo-ui';
 3種類のバリアントがあります。用途に応じて使い分けてください。
 
 <ComponentShowcase title="Button Variants">
-  <Button variant="default">Default</Button>
-  <Button variant="primary">Primary</Button>
-  <Button variant="ghost">Ghost</Button>
+  <NeumoButton variant="default">Default</NeumoButton>
+  <NeumoButton variant="primary">Primary</NeumoButton>
+  <NeumoButton variant="ghost">Ghost</NeumoButton>
 </ComponentShowcase>
 
 <TypeTable
@@ -59,9 +59,9 @@ import { Button } from 'neumo-ui';
 3種類のサイズがあります。
 
 <ComponentShowcase title="Button Sizes">
-  <Button size="sm">Small</Button>
-  <Button size="md">Medium</Button>
-  <Button size="lg">Large</Button>
+  <NeumoButton size="sm">Small</NeumoButton>
+  <NeumoButton size="md">Medium</NeumoButton>
+  <NeumoButton size="lg">Large</NeumoButton>
 </ComponentShowcase>
 
 ## ローディング状態
@@ -69,7 +69,7 @@ import { Button } from 'neumo-ui';
 非同期処理中などにローディング状態を表示できます。
 
 <ComponentPreview code={`<Button loading>Loading...</Button>`}>
-  <Button loading>Loading...</Button>
+  <NeumoButton loading>Loading...</NeumoButton>
 </ComponentPreview>
 
 <Callout type="info">
@@ -79,7 +79,7 @@ import { Button } from 'neumo-ui';
 ## 無効状態
 
 <ComponentPreview code={`<Button disabled>Disabled</Button>`}>
-  <Button disabled>Disabled</Button>
+  <NeumoButton disabled>Disabled</NeumoButton>
 </ComponentPreview>
 
 ## アイコン付きボタン
@@ -90,7 +90,7 @@ import { Button } from 'neumo-ui';
   With Icon
 </Button>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <Button variant="primary">With Icon</Button>
+    <NeumoButton variant="primary">With Icon</NeumoButton>
   </div>
 </ComponentPreview>
 
@@ -103,8 +103,8 @@ import { Button } from 'neumo-ui';
   <Button variant="ghost">Cancel</Button>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <Button variant="primary">Submit</Button>
-    <Button variant="ghost">Cancel</Button>
+    <NeumoButton variant="primary">Submit</NeumoButton>
+    <NeumoButton variant="ghost">Cancel</NeumoButton>
   </div>
 </ComponentPreview>
 
@@ -118,14 +118,14 @@ import { Button } from 'neumo-ui';
     <Button variant="ghost" size="sm">Cancel</Button>
   </div>
 </Card>`}>
-  <Card padding="lg" style={{ width: '300px' }}>
+  <NeumoCard padding="lg" style={{ width: '300px' }}>
     <h3 style={{ margin: '0 0 0.5rem' }}>Confirm Action</h3>
     <p style={{ margin: '0 0 1rem', color: '#718096' }}>Are you sure you want to continue?</p>
     <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <Button variant="primary" size="sm">Yes, Continue</Button>
-      <Button variant="ghost" size="sm">Cancel</Button>
+      <NeumoButton variant="primary" size="sm">Yes, Continue</NeumoButton>
+      <NeumoButton variant="ghost" size="sm">Cancel</NeumoButton>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ## Props

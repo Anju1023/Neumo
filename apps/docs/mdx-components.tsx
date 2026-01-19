@@ -12,7 +12,15 @@ import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { ComponentPreview, ComponentShowcase } from '@/components/ui/component-preview';
 
 // Neumo UIコンポーネント（クライアントコンポーネントラッパー経由）
-import { Button, Card, Input, Avatar, Badge, Divider } from '@/components/ui/neumo-components';
+// 注意: Fumadocsの Card/Cards と名前衝突を避けるため Neumo プレフィックスを使用
+import {
+  Button as NeumoButton,
+  Card as NeumoCard,
+  Input as NeumoInput,
+  Avatar as NeumoAvatar,
+  Badge as NeumoBadge,
+  Divider as NeumoDivider,
+} from '@/components/ui/neumo-components';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -29,13 +37,14 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // ライブデモ用コンポーネント
     ComponentPreview,
     ComponentShowcase,
-    // Neumo UIコンポーネント（MDXで直接使用可能にする）
-    Button,
-    Card,
-    Input,
-    Avatar,
-    Badge,
-    Divider,
+    // Neumo UIコンポーネント（Neumoプレフィックス付き）
+    // ドキュメント内のライブデモで使用
+    NeumoButton,
+    NeumoCard,
+    NeumoInput,
+    NeumoAvatar,
+    NeumoBadge,
+    NeumoDivider,
     ...components,
   };
 }

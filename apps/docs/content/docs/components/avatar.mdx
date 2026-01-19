@@ -23,7 +23,7 @@ import { Avatar } from 'neumo-ui';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Avatar alt="John Doe" />`}>
-  <Avatar alt="John Doe" />
+  <NeumoAvatar alt="John Doe" />
 </ComponentPreview>
 
 ## イニシャル表示
@@ -31,9 +31,9 @@ import { Avatar } from 'neumo-ui';
 画像がない場合、名前からイニシャルを自動生成して表示します。
 
 <ComponentShowcase title="Avatar Initials">
-  <Avatar alt="John Doe" />
-  <Avatar alt="Jane" />
-  <Avatar alt="Alice Bob" />
+  <NeumoAvatar alt="John Doe" />
+  <NeumoAvatar alt="Jane" />
+  <NeumoAvatar alt="Alice Bob" />
 </ComponentShowcase>
 
 <Callout type="info">
@@ -47,11 +47,11 @@ import { Avatar } from 'neumo-ui';
 5種類のサイズがあります。用途に応じて選択してください。
 
 <ComponentShowcase title="Avatar Sizes">
-  <Avatar alt="XS" size="xs" />
-  <Avatar alt="SM" size="sm" />
-  <Avatar alt="MD" size="md" />
-  <Avatar alt="LG" size="lg" />
-  <Avatar alt="XL" size="xl" />
+  <NeumoAvatar alt="XS" size="xs" />
+  <NeumoAvatar alt="SM" size="sm" />
+  <NeumoAvatar alt="MD" size="md" />
+  <NeumoAvatar alt="LG" size="lg" />
+  <NeumoAvatar alt="XL" size="xl" />
 </ComponentShowcase>
 
 <TypeTable
@@ -85,8 +85,8 @@ import { Avatar } from 'neumo-ui';
 円形と角丸の2つの形状があります。
 
 <ComponentShowcase title="Avatar Variants">
-  <Avatar alt="Circle" variant="circle" size="lg" />
-  <Avatar alt="Rounded" variant="rounded" size="lg" />
+  <NeumoAvatar alt="Circle" variant="circle" size="lg" />
+  <NeumoAvatar alt="Rounded" variant="rounded" size="lg" />
 </ComponentShowcase>
 
 ## カスタムフォールバック
@@ -94,7 +94,7 @@ import { Avatar } from 'neumo-ui';
 デフォルトのイニシャル以外のフォールバックを指定できます。
 
 <ComponentPreview code={`<Avatar alt="User" fallback="?" />`}>
-  <Avatar alt="User" fallback="?" />
+  <NeumoAvatar alt="User" fallback="?" />
 </ComponentPreview>
 
 ## 組み合わせ例
@@ -109,9 +109,9 @@ import { Avatar } from 'neumo-ui';
   <Avatar alt="User 3" style={{ zIndex: 1 }} />
 </div>`}>
   <div style={{ display: 'flex' }}>
-    <Avatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
-    <Avatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
-    <Avatar alt="User 3" style={{ zIndex: 1 }} />
+    <NeumoAvatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
+    <NeumoAvatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
+    <NeumoAvatar alt="User 3" style={{ zIndex: 1 }} />
   </div>
 </ComponentPreview>
 
@@ -126,15 +126,15 @@ import { Avatar } from 'neumo-ui';
     </div>
   </div>
 </Card>`}>
-  <Card padding="lg" style={{ width: '300px' }}>
+  <NeumoCard padding="lg" style={{ width: '300px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <Avatar alt="John Doe" size="xl" />
+      <NeumoAvatar alt="John Doe" size="xl" />
       <div>
         <h3 style={{ margin: 0, marginBottom: '0.5rem' }}>John Doe</h3>
-        <Badge variant="success">Online</Badge>
+        <NeumoBadge variant="success">Online</NeumoBadge>
       </div>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ### ユーザーリスト
@@ -154,21 +154,21 @@ import { Avatar } from 'neumo-ui';
     </div>
   </div>
 </Card>`}>
-  <Card style={{ width: '250px' }}>
+  <NeumoCard style={{ width: '250px' }}>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <Avatar alt="Alice" size="sm" />
+        <NeumoAvatar alt="Alice" size="sm" />
         <span>Alice</span>
-        <Badge variant="info" size="sm">Admin</Badge>
+        <NeumoBadge variant="info" size="sm">Admin</NeumoBadge>
       </div>
-      <Divider />
+      <NeumoDivider />
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <Avatar alt="Bob" size="sm" />
+        <NeumoAvatar alt="Bob" size="sm" />
         <span>Bob</span>
-        <Badge variant="default" size="sm">Member</Badge>
+        <NeumoBadge variant="default" size="sm">Member</NeumoBadge>
       </div>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ## Props

@@ -29,7 +29,7 @@ import { Divider } from 'neumo-ui';
 </div>`}>
   <div style={{ width: '300px' }}>
     <p style={{ margin: '0 0 1rem' }}>Content above</p>
-    <Divider />
+    <NeumoDivider />
     <p style={{ margin: '1rem 0 0' }}>Content below</p>
   </div>
 </ComponentPreview>
@@ -44,7 +44,7 @@ import { Divider } from 'neumo-ui';
 
     <ComponentPreview code={`<Divider orientation="horizontal" />`}>
       <div style={{ width: '200px' }}>
-        <Divider orientation="horizontal" />
+        <NeumoDivider orientation="horizontal" />
       </div>
     </ComponentPreview>
   </Tab>
@@ -58,7 +58,7 @@ import { Divider } from 'neumo-ui';
 </div>`}>
       <div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
         <span>Left</span>
-        <Divider orientation="vertical" />
+        <NeumoDivider orientation="vertical" />
         <span>Right</span>
       </div>
     </ComponentPreview>
@@ -80,13 +80,13 @@ import { Divider } from 'neumo-ui';
   <h3>Section 2</h3>
   <p>Second section content</p>
 </Card>`}>
-  <Card style={{ width: '280px' }}>
+  <NeumoCard style={{ width: '280px' }}>
     <h3 style={{ margin: '0 0 0.5rem' }}>Section 1</h3>
     <p style={{ margin: '0 0 1rem', color: '#718096' }}>First section content</p>
-    <Divider />
+    <NeumoDivider />
     <h3 style={{ margin: '1rem 0 0.5rem' }}>Section 2</h3>
     <p style={{ margin: 0, color: '#718096' }}>Second section content</p>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ### プロフィールカード
@@ -104,21 +104,21 @@ import { Divider } from 'neumo-ui';
   <Divider />
   <Button variant="primary">View Profile</Button>
 </Card>`}>
-  <Card padding="lg" style={{ width: '300px' }}>
+  <NeumoCard padding="lg" style={{ width: '300px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-      <Avatar alt="John Doe" size="lg" />
+      <NeumoAvatar alt="John Doe" size="lg" />
       <div>
         <h3 style={{ margin: 0 }}>John Doe</h3>
-        <Badge variant="success">Online</Badge>
+        <NeumoBadge variant="success">Online</NeumoBadge>
       </div>
     </div>
-    <Divider />
+    <NeumoDivider />
     <p style={{ margin: '1rem 0', color: '#718096' }}>Software Developer at Example Inc.</p>
-    <Divider />
+    <NeumoDivider />
     <div style={{ marginTop: '1rem' }}>
-      <Button variant="primary">View Profile</Button>
+      <NeumoButton variant="primary">View Profile</NeumoButton>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ### ナビゲーション区切り
@@ -132,9 +132,9 @@ import { Divider } from 'neumo-ui';
 </nav>`}>
   <nav style={{ display: 'flex', alignItems: 'center', gap: '1rem', height: '24px' }}>
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>Home</span>
-    <Divider orientation="vertical" />
+    <NeumoDivider orientation="vertical" />
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>About</span>
-    <Divider orientation="vertical" />
+    <NeumoDivider orientation="vertical" />
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>Contact</span>
   </nav>
 </ComponentPreview>
@@ -151,16 +151,16 @@ import { Divider } from 'neumo-ui';
     <Button size="sm" variant="ghost">Right</Button>
   </div>
 </Card>`}>
-  <Card variant="flat" padding="sm">
+  <NeumoCard variant="flat" padding="sm">
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: '32px' }}>
-      <Button size="sm" variant="ghost">Bold</Button>
-      <Button size="sm" variant="ghost">Italic</Button>
-      <Divider orientation="vertical" />
-      <Button size="sm" variant="ghost">Left</Button>
-      <Button size="sm" variant="ghost">Center</Button>
-      <Button size="sm" variant="ghost">Right</Button>
+      <NeumoButton size="sm" variant="ghost">Bold</NeumoButton>
+      <NeumoButton size="sm" variant="ghost">Italic</NeumoButton>
+      <NeumoDivider orientation="vertical" />
+      <NeumoButton size="sm" variant="ghost">Left</NeumoButton>
+      <NeumoButton size="sm" variant="ghost">Center</NeumoButton>
+      <NeumoButton size="sm" variant="ghost">Right</NeumoButton>
     </div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ### リストアイテムの区切り
@@ -172,13 +172,13 @@ import { Divider } from 'neumo-ui';
   <Divider />
   <div>Item 3</div>
 </Card>`}>
-  <Card style={{ width: '200px' }}>
+  <NeumoCard style={{ width: '200px' }}>
     <div style={{ padding: '0.5rem 0' }}>Item 1</div>
-    <Divider />
+    <NeumoDivider />
     <div style={{ padding: '0.5rem 0' }}>Item 2</div>
-    <Divider />
+    <NeumoDivider />
     <div style={{ padding: '0.5rem 0' }}>Item 3</div>
-  </Card>
+  </NeumoCard>
 </ComponentPreview>
 
 ## Props
