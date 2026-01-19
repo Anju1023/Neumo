@@ -16,7 +16,7 @@ const notoSansJP = Noto_Sans_JP({
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen bg-neumo-bg text-neumo-text font-sans">
+      <body className="flex flex-col min-h-screen font-sans">
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
