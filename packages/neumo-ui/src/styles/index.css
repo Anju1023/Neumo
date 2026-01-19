@@ -162,7 +162,6 @@
 
 @utility neumo-elevation-hover {
   box-shadow: var(--neumo-elevation-hover);
-  transform: translateY(-2px); /* 物理的な浮上感 */
 }
 
 @utility neumo-elevation-active {

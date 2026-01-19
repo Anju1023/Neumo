@@ -4,10 +4,10 @@ overview: ボタンのホバー時に上に動くアニメーションを削除�
 todos:
   - id: update-css
     content: スタイル定義(index.css)からホバー時の移動アニメーションを削除
-    status: pending
+    status: completed
   - id: update-button
     content: Buttonコンポーネントからホバー時の移動クラスを削除
-    status: pending
+    status: completed
 ---
 
 # シンプルおしゃれなボタンへ！

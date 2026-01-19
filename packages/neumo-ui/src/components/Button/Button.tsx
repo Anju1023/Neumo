@@ -85,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // ホバー/アクティブ効果のクラス
     const interactionClasses = isInteractive
       ? variant !== "ghost"
-        ? "hover:neumo-elevation-hover hover:-translate-y-px active:neumo-elevation-active active:translate-y-0 focus:neumo-focus-ring"
+        ? "hover:neumo-elevation-hover active:neumo-elevation-active focus:neumo-focus-ring"
         : "hover:bg-neumo-bg/50 focus:neumo-focus-ring" // ghostバリアントにもフォーカスリング
       : "";
 
