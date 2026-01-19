@@ -25,6 +25,13 @@ export default defineConfig({
         "**/*.test.{ts,tsx}",
         "**/index.ts",
       ],
+      // カバレッジしきい値（下回るとテスト失敗）
+      thresholds: {
+        lines: 70,
+        functions: 70,
+        branches: 70,
+        statements: 70,
+      },
     },
   },
 });
