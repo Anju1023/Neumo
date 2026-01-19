@@ -6,7 +6,7 @@ import type { CardProps, CardVariant, CardPadding } from "./Card.types";
  */
 const variantClasses: Record<CardVariant, string> = {
   elevated: "bg-neumo-bg neumo-elevation-2",
-  flat: "bg-neumo-bg shadow-none border border-[rgba(163,177,198,0.6)]",
+  flat: "bg-neumo-bg shadow-none border border-neumo-text-muted/30",
   inset: "bg-neumo-bg neumo-elevation-inset",
 };
 

@@ -6,13 +6,10 @@ import type { BadgeProps, BadgeVariant, BadgeSize } from "./Badge.types";
  */
 const variantClasses: Record<BadgeVariant, string> = {
   default: "bg-neumo-bg text-neumo-text neumo-elevation-1",
-  success:
-    "bg-neumo-success text-white shadow-[2px_2px_4px_rgba(34,197,94,0.3),-2px_-2px_4px_rgba(255,255,255,0.5)]",
-  warning:
-    "bg-neumo-warning text-white shadow-[2px_2px_4px_rgba(245,158,11,0.3),-2px_-2px_4px_rgba(255,255,255,0.5)]",
-  error:
-    "bg-neumo-error text-white shadow-[2px_2px_4px_rgba(239,68,68,0.3),-2px_-2px_4px_rgba(255,255,255,0.5)]",
-  info: "bg-neumo-info text-white shadow-[2px_2px_4px_rgba(59,130,246,0.3),-2px_-2px_4px_rgba(255,255,255,0.5)]",
+  success: "bg-neumo-success text-white neumo-elevation-1",
+  warning: "bg-neumo-warning text-white neumo-elevation-1",
+  error: "bg-neumo-error text-white neumo-elevation-1",
+  info: "bg-neumo-info text-white neumo-elevation-1",
 };
 
 /**

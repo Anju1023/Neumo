@@ -102,7 +102,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
           />
         ) : (
           <span
-            className="flex items-center justify-center w-full h-full bg-linear-to-br from-neumo-primary to-neumo-info text-white font-semibold uppercase"
+            className="flex items-center justify-center w-full h-full bg-neumo-bg neumo-elevation-inset text-neumo-primary font-semibold uppercase"
             aria-hidden="true"
           >
             {fallbackText}

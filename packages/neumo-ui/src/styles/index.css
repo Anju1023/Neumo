@@ -81,7 +81,7 @@
 :root {
   /* シャドウカラー - 青みのあるグレーベースに調整 */
   --neumo-shadow-light: #FFFFFF;
-  --neumo-shadow-dark: rgba(174, 190, 205, 0.5);
+  --neumo-shadow-dark: rgba(166, 175, 186, 0.5);
 
   /* ダークモード用シャドウ */
   --neumo-shadow-light-dark: rgba(45, 45, 70, 0.3);
