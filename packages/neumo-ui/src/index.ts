@@ -24,3 +24,7 @@ export type { BadgeProps } from "./components/Badge";
 // Divider
 export { Divider } from "./components/Divider";
 export type { DividerProps } from "./components/Divider";
+
+// Toast
+export { Toast, ToastProvider, useToast } from "./components/Toast";
+export type { ToastProps } from "./components/Toast";

@@ -20,6 +20,8 @@ import {
   Avatar as NeumoAvatar,
   Badge as NeumoBadge,
   Divider as NeumoDivider,
+  Toast as NeumoToast,
+  ToastProvider as NeumoToastProvider,
 } from '@/components/ui/neumo-components';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -45,6 +47,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     NeumoAvatar,
     NeumoBadge,
     NeumoDivider,
+    NeumoToast,
+    NeumoToastProvider,
     ...components,
   };
 }

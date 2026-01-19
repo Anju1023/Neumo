@@ -71,6 +71,8 @@
      -------------------------------- */
   --animate-neumo-spin: neumo-spin 1s linear infinite;
   --animate-neumo-blob: neumo-blob 7s infinite;
+  --animate-neumo-slide-in-right: neumo-slide-in-right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --animate-neumo-fade-out: neumo-fade-out 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===================================
@@ -211,6 +213,16 @@
   33% { transform: translate(30px, -50px) scale(1.1); }
   66% { transform: translate(-20px, 20px) scale(0.9); }
   100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes neumo-slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes neumo-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 /* ===================================

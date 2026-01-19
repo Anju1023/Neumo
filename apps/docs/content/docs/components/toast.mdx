@@ -1,0 +1,380 @@
+---
+title: Toast
+description: ユーザーに一時的なフィードバックを表示する通知コンポーネント
+icon: Bell
+---
+
+import { Bell, Info, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
+
+# Toast
+
+ユーザーに操作結果やシステムメッセージを一時的に通知するコンポーネントです。
+画面の右下にフワッとスライドインし、自動的に消えます。
+
+<Callout type="info" title="ニューモフィズムな通知">
+`neumo-elevation-2` による浮き出し効果と、スライドインアニメーションで、
+**存在感がありつつも邪魔にならない**通知を実現しています。
+</Callout>
+
+## インポート
+
+```tsx
+import { Toast, ToastProvider, useToast } from 'neumo-ui';
+```
+
+## セットアップ
+
+Toastを使用するには、アプリケーションのルートを`ToastProvider`でラップする必要があります。
+
+<Steps>
+  <Step>
+    ### ToastProviderでアプリをラップ
+
+    アプリケーションのルートコンポーネント（`_app.tsx`や`layout.tsx`など）で`ToastProvider`をセットアップします。
+
+    ```tsx title="app/layout.tsx"
+    import { ToastProvider } from 'neumo-ui';
+
+    export default function RootLayout({ children }) {
+      return (
+        <html>
+          <body>
+            <ToastProvider>
+              {children}
+            </ToastProvider>
+          </body>
+        </html>
+      );
+    }
+    ```
+  </Step>
+  <Step>
+    ### useToastフックでトーストを表示
+
+    任意のコンポーネントで`useToast`フックを使用してトーストを表示できます。
+
+    ```tsx title="components/SaveButton.tsx"
+    import { useToast } from 'neumo-ui';
+
+    export function SaveButton() {
+      const { toast } = useToast();
+
+      const handleSave = () => {
+        // 保存処理...
+        toast({
+          title: '保存完了',
+          description: 'データが正常に保存されました',
+          variant: 'success',
+        });
+      };
+
+      return <button onClick={handleSave}>保存</button>;
+    }
+    ```
+  </Step>
+</Steps>
+
+## バリアント
+
+5種類のバリアントがあります。通知の種類に応じて使い分けてください。
+
+<Tabs items={['Default', 'Success', 'Error', 'Warning', 'Info']}>
+  <Tab value="Default">
+    ```tsx
+    toast({
+      title: '通知',
+      description: '一般的なメッセージです',
+      variant: 'default',
+    });
+    ```
+    <ComponentShowcase title="Default Toast">
+      <NeumoToast
+        title="通知"
+        description="一般的なメッセージです"
+        variant="default"
+        duration={Infinity}
+      />
+    </ComponentShowcase>
+  </Tab>
+  <Tab value="Success">
+    ```tsx
+    toast({
+      title: '成功',
+      description: '操作が正常に完了しました',
+      variant: 'success',
+    });
+    ```
+    <ComponentShowcase title="Success Toast">
+      <NeumoToast
+        title="成功"
+        description="操作が正常に完了しました"
+        variant="success"
+        duration={Infinity}
+      />
+    </ComponentShowcase>
+  </Tab>
+  <Tab value="Error">
+    ```tsx
+    toast({
+      title: 'エラー',
+      description: '問題が発生しました。もう一度お試しください。',
+      variant: 'error',
+    });
+    ```
+    <ComponentShowcase title="Error Toast">
+      <NeumoToast
+        title="エラー"
+        description="問題が発生しました。もう一度お試しください。"
+        variant="error"
+        duration={Infinity}
+      />
+    </ComponentShowcase>
+  </Tab>
+  <Tab value="Warning">
+    ```tsx
+    toast({
+      title: '警告',
+      description: '注意が必要な状態です',
+      variant: 'warning',
+    });
+    ```
+    <ComponentShowcase title="Warning Toast">
+      <NeumoToast
+        title="警告"
+        description="注意が必要な状態です"
+        variant="warning"
+        duration={Infinity}
+      />
+    </ComponentShowcase>
+  </Tab>
+  <Tab value="Info">
+    ```tsx
+    toast({
+      title: 'お知らせ',
+      description: '新機能が追加されました',
+      variant: 'info',
+    });
+    ```
+    <ComponentShowcase title="Info Toast">
+      <NeumoToast
+        title="お知らせ"
+        description="新機能が追加されました"
+        variant="info"
+        duration={Infinity}
+      />
+    </ComponentShowcase>
+  </Tab>
+</Tabs>
+
+<TypeTable
+  type={{
+    default: {
+      description: '標準的な通知。一般的なメッセージに使用',
+      type: 'variant',
+      default: '✓',
+    },
+    success: {
+      description: '成功を示す通知。保存完了、送信成功などに使用',
+      type: 'variant',
+    },
+    error: {
+      description: 'エラーを示す通知。失敗、例外発生時などに使用',
+      type: 'variant',
+    },
+    warning: {
+      description: '警告を示す通知。注意が必要な状況に使用',
+      type: 'variant',
+    },
+    info: {
+      description: '情報を示す通知。お知らせ、ヒントなどに使用',
+      type: 'variant',
+    },
+  }}
+/>
+
+## 表示時間のカスタマイズ
+
+`duration`プロパティでトーストの表示時間をミリ秒単位で指定できます。
+
+```tsx
+// 3秒間表示
+toast({
+  title: '短い通知',
+  duration: 3000,
+});
+
+// 10秒間表示
+toast({
+  title: '長い通知',
+  duration: 10000,
+});
+
+// 自動で消えない（手動で閉じる必要あり）
+toast({
+  title: '永続的な通知',
+  duration: Infinity,
+});
+```
+
+<Callout type="info">
+デフォルトの表示時間は**5秒（5000ms）**です。
+重要な情報を伝える場合は、長めの時間を設定することを推奨します。
+</Callout>
+
+## 使用例
+
+### フォーム送信後の通知
+
+<Accordions>
+  <Accordion title="コード例を見る">
+    ```tsx
+    function ContactForm() {
+      const { toast } = useToast();
+      const [isSubmitting, setIsSubmitting] = useState(false);
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+          await submitForm(formData);
+          toast({
+            title: '送信完了',
+            description: 'お問い合わせを受け付けました。',
+            variant: 'success',
+          });
+        } catch (error) {
+          toast({
+            title: '送信失敗',
+            description: 'エラーが発生しました。もう一度お試しください。',
+            variant: 'error',
+          });
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+
+      return (
+        <form onSubmit={handleSubmit}>
+          {/* フォームの内容 */}
+          <Button type="submit" loading={isSubmitting}>
+            送信
+          </Button>
+        </form>
+      );
+    }
+    ```
+  </Accordion>
+</Accordions>
+
+### 複数のトーストを表示
+
+複数のトーストを連続して表示すると、自動的にスタックされます。
+
+<Accordions>
+  <Accordion title="コード例を見る">
+    ```tsx
+    function MultipleToasts() {
+      const { toast } = useToast();
+
+      const showMultiple = () => {
+        toast({
+          title: '1つ目の通知',
+          variant: 'info',
+        });
+
+        setTimeout(() => {
+          toast({
+            title: '2つ目の通知',
+            variant: 'success',
+          });
+        }, 500);
+
+        setTimeout(() => {
+          toast({
+            title: '3つ目の通知',
+            variant: 'warning',
+          });
+        }, 1000);
+      };
+
+      return <Button onClick={showMultiple}>複数表示</Button>;
+    }
+    ```
+  </Accordion>
+</Accordions>
+
+## Props
+
+### ToastProps
+
+<TypeTable
+  type={{
+    title: {
+      description: 'トーストのタイトル',
+      type: 'ReactNode',
+    },
+    description: {
+      description: 'トーストの説明文',
+      type: 'ReactNode',
+    },
+    variant: {
+      description: 'トーストのバリアント',
+      type: '"default" | "success" | "error" | "warning" | "info"',
+      default: '"default"',
+    },
+    duration: {
+      description: '表示時間（ミリ秒）。Infinityで自動消去を無効化',
+      type: 'number',
+      default: '5000',
+    },
+    onClose: {
+      description: '閉じる時に呼ばれるコールバック',
+      type: '() => void',
+    },
+  }}
+/>
+
+### useToast
+
+`useToast`フックは以下のメソッドを返します：
+
+<TypeTable
+  type={{
+    toast: {
+      description: 'トーストを表示する関数',
+      type: '(props: ToastProps) => void',
+    },
+    dismiss: {
+      description: '指定したIDのトーストを閉じる関数',
+      type: '(id: string) => void',
+    },
+    toasts: {
+      description: '現在表示中のトーストの配列',
+      type: 'ToastProps[]',
+    },
+  }}
+/>
+
+## アクセシビリティ
+
+<Callout type="info" title="WAI-ARIA対応">
+Toastコンポーネントは以下のアクセシビリティ機能を備えています：
+</Callout>
+
+- **`role="alert"`**: スクリーンリーダーに即座に読み上げられます
+- **閉じるボタン**: キーボードでフォーカス可能で、`aria-label`付き
+- **`prefers-reduced-motion`対応**: モーション軽減設定時はアニメーションが無効化されます
+
+<Callout type="warn" title="注意事項">
+- 重要なエラーメッセージは、トーストだけでなく画面上にも表示することを推奨します
+- 頻繁にトーストを表示しすぎると、ユーザー体験を損なう可能性があります
+</Callout>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Button" description="トーストを表示するトリガーに" href="/docs/components/button" />
+  <Card title="Card" description="詳細な情報表示には" href="/docs/components/card" />
+  <Card title="Badge" description="ステータス表示に" href="/docs/components/badge" />
+</Cards>

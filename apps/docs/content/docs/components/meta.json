@@ -1,5 +1,5 @@
 {
   "title": "Components",
   "defaultOpen": true,
-  "pages": ["button", "card", "input", "avatar", "badge", "divider"]
+  "pages": ["button", "card", "input", "avatar", "badge", "divider", "toast"]
 }
