@@ -1,58 +1,117 @@
 ---
 title: Neumo UI
 description: ニューモフィズム2.0デザインのReact UIコンポーネントライブラリ
+icon: Palette
 ---
+
+import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-react';
 
 # Neumo UI
 
 **Neumo UI** は、ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリです。
 
+<Callout type="info" title="ニューモフィズム2.0とは？">
+従来のニューモフィズムの美しさを保ちながら、**高コントラスト**と**アクセシビリティ**を重視した新しいデザインアプローチです。視認性が向上し、より多くのユーザーにとって使いやすいUIを実現します。
+</Callout>
+
 ## 特徴
 
-- **ニューモフィズム2.0** - 高コントラストでアクセシブルなデザイン
-- **React 19対応** - 最新のReact機能に対応
-- **TypeScript** - 完全な型定義
-- **Tree-shaking対応** - 必要なコンポーネントだけをバンドル
-- **カスタマイズ可能** - CSS変数でスタイルを調整
+<Cards>
+  <Card icon={<Accessibility />} title="アクセシブル" href="/docs/components/button">
+    高コントラストで視認性が高く、WAI-ARIAに準拠したコンポーネント
+  </Card>
+  <Card icon={<Zap />} title="React 19対応" href="/docs/installation">
+    最新のReact機能に対応し、Server Componentsも使用可能
+  </Card>
+  <Card icon={<Code />} title="TypeScript" href="/docs/installation">
+    完全な型定義で、優れた開発者体験を提供
+  </Card>
+  <Card icon={<Package />} title="Tree-shaking" href="/docs/installation">
+    必要なコンポーネントだけをバンドルし、軽量なアプリケーションを実現
+  </Card>
+  <Card icon={<Paintbrush />} title="カスタマイズ可能" href="/docs/installation">
+    CSS変数でテーマカラーやスタイルを簡単に調整
+  </Card>
+</Cards>
 
 ## クイックスタート
 
-```bash
-# インストール
-npm install neumo-ui
+<Steps>
+  <Step>
+    ### パッケージをインストール
 
-# または pnpm
-pnpm add neumo-ui
-```
+    お好みのパッケージマネージャーでインストールしてください。
 
-```tsx
-import { Button, Card, Input } from 'neumo-ui';
-import 'neumo-ui/styles.css';
+    <Tabs items={['npm', 'pnpm', 'yarn', 'bun']} persist groupId="pm">
+      <Tab value="npm">
+        ```bash
+        npm install neumo-ui
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm add neumo-ui
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn add neumo-ui
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bun add neumo-ui
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
 
-function App() {
-  return (
-    <Card>
-      <h2>Welcome</h2>
-      <Input placeholder="Enter your name" />
-      <Button variant="primary">Submit</Button>
-    </Card>
-  );
-}
-```
+  <Step>
+    ### スタイルをインポート
 
-## コンポーネント
+    アプリケーションのエントリーポイントでスタイルをインポートします。
+
+    ```tsx
+    import 'neumo-ui/styles.css';
+    ```
+  </Step>
+
+  <Step>
+    ### コンポーネントを使う
+
+    ```tsx
+    import { Button, Card, Input } from 'neumo-ui';
+
+    function App() {
+      return (
+        <Card>
+          <h2>Welcome</h2>
+          <Input placeholder="Enter your name" />
+          <Button variant="primary">Submit</Button>
+        </Card>
+      );
+    }
+    ```
+  </Step>
+</Steps>
+
+<Callout type="warn" title="背景色の設定を忘れずに">
+ニューモフィズムデザインは背景色が重要です。`body`や親要素に`background: var(--neumo-bg)`を設定してください。
+</Callout>
+
+## コンポーネント一覧
 
 <Cards>
-  <Card title="Button" href="/docs/components/button" />
-  <Card title="Card" href="/docs/components/card" />
-  <Card title="Input" href="/docs/components/input" />
-  <Card title="Avatar" href="/docs/components/avatar" />
-  <Card title="Badge" href="/docs/components/badge" />
-  <Card title="Divider" href="/docs/components/divider" />
+  <Card title="Button" description="インタラクティブなボタンコンポーネント" href="/docs/components/button" />
+  <Card title="Card" description="コンテンツを囲むカードコンポーネント" href="/docs/components/card" />
+  <Card title="Input" description="テキスト入力フィールド" href="/docs/components/input" />
+  <Card title="Avatar" description="ユーザーのプロフィール画像表示" href="/docs/components/avatar" />
+  <Card title="Badge" description="ステータスやラベルの表示" href="/docs/components/badge" />
+  <Card title="Divider" description="コンテンツの区切り線" href="/docs/components/divider" />
 </Cards>
 
 ## 次のステップ
 
 <Cards>
-  <Card title="インストール" href="/docs/installation" />
+  <Card title="インストール" description="詳細なセットアップ手順" href="/docs/installation" />
 </Cards>

@@ -1,11 +1,18 @@
 ---
 title: Input
 description: ニューモフィズムスタイルの入力フィールドコンポーネント
+icon: TextCursorInput
 ---
+
+import { TextCursorInput, Info, AlertTriangle } from 'lucide-react';
 
 # Input
 
-ニューモフィズム2.0デザインの入力フィールドコンポーネントです。凹んだ（inset）デザインで、フォーカス時に深くなるエフェクトがあります。
+ニューモフィズム2.0デザインの入力フィールドコンポーネントです。
+
+<Callout type="info" title="デザインコンセプト">
+凹んだ（inset）デザインで、フォーカス時にさらに深くなるエフェクトがあります。これにより、ユーザーは入力フィールドを直感的に認識できます。
+</Callout>
 
 ## インポート
 
@@ -21,6 +28,8 @@ import { Input } from 'neumo-ui';
 
 ## ラベル付き
 
+`label`プロパティでラベルを表示できます。ラベルは自動的に入力フィールドと関連付けられます。
+
 <ComponentPreview code={`<Input label="Email" placeholder="Enter your email" />`}>
   <Input label="Email" placeholder="Enter your email" />
 </ComponentPreview>
@@ -35,7 +44,41 @@ import { Input } from 'neumo-ui';
   <Input size="lg" placeholder="Large" />
 </ComponentShowcase>
 
+## 入力タイプ
+
+さまざまな入力タイプをサポートしています。
+
+<Tabs items={['テキスト', 'パスワード', 'メール', '数値', '検索']}>
+  <Tab value="テキスト">
+    <ComponentPreview code={`<Input type="text" label="Name" placeholder="Enter your name" />`}>
+      <Input type="text" label="Name" placeholder="Enter your name" />
+    </ComponentPreview>
+  </Tab>
+  <Tab value="パスワード">
+    <ComponentPreview code={`<Input type="password" label="Password" placeholder="Enter password" />`}>
+      <Input type="password" label="Password" placeholder="Enter password" />
+    </ComponentPreview>
+  </Tab>
+  <Tab value="メール">
+    <ComponentPreview code={`<Input type="email" label="Email" placeholder="example@email.com" />`}>
+      <Input type="email" label="Email" placeholder="example@email.com" />
+    </ComponentPreview>
+  </Tab>
+  <Tab value="数値">
+    <ComponentPreview code={`<Input type="number" label="Age" placeholder="Enter your age" />`}>
+      <Input type="number" label="Age" placeholder="Enter your age" />
+    </ComponentPreview>
+  </Tab>
+  <Tab value="検索">
+    <ComponentPreview code={`<Input type="search" placeholder="Search..." />`}>
+      <Input type="search" placeholder="Search..." />
+    </ComponentPreview>
+  </Tab>
+</Tabs>
+
 ## ヘルパーテキスト
+
+`helperText`プロパティで補足説明を表示できます。
 
 <ComponentPreview code={`<Input 
   label="Email" 
@@ -51,6 +94,8 @@ import { Input } from 'neumo-ui';
 
 ## エラー状態
 
+バリデーションエラーを表示できます。
+
 <ComponentPreview code={`<Input 
   label="Email" 
   error 
@@ -63,13 +108,19 @@ import { Input } from 'neumo-ui';
   />
 </ComponentPreview>
 
+<Callout type="warn" title="エラーメッセージ">
+`error`プロパティを`true`にすると、入力フィールドが赤くハイライトされます。`errorMessage`を指定すると、エラーの詳細が表示されます。
+</Callout>
+
 ## 無効状態
 
 <ComponentPreview code={`<Input disabled placeholder="Disabled input" />`}>
   <Input disabled placeholder="Disabled input" />
 </ComponentPreview>
 
-## フォーム例
+## 組み合わせ例
+
+### ログインフォーム
 
 <ComponentPreview code={`<Card padding="lg">
   <h3>Login</h3>
@@ -89,23 +140,99 @@ import { Input } from 'neumo-ui';
   </Card>
 </ComponentPreview>
 
+### お問い合わせフォーム
+
+<ComponentPreview code={`<Card padding="lg">
+  <h3>Contact Us</h3>
+  <Input label="Name" placeholder="Your name" />
+  <Input label="Email" type="email" placeholder="your@email.com" />
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <Button variant="primary">Send</Button>
+    <Button variant="ghost">Cancel</Button>
+  </div>
+</Card>`}>
+  <Card padding="lg" style={{ width: '320px' }}>
+    <h3 style={{ margin: '0 0 1rem 0' }}>Contact Us</h3>
+    <div style={{ marginBottom: '1rem' }}>
+      <Input label="Name" placeholder="Your name" />
+    </div>
+    <div style={{ marginBottom: '1rem' }}>
+      <Input label="Email" type="email" placeholder="your@email.com" />
+    </div>
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Button variant="primary">Send</Button>
+      <Button variant="ghost">Cancel</Button>
+    </div>
+  </Card>
+</ComponentPreview>
+
 ## Props
 
-| Prop | 型 | デフォルト | 説明 |
-|------|------|-----------|------|
-| `type` | `"text" \| "password" \| "email" \| "number" \| "search"` | `"text"` | 入力タイプ |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 入力フィールドのサイズ |
-| `error` | `boolean` | `false` | エラー状態 |
-| `errorMessage` | `string` | - | エラーメッセージ |
-| `leftIcon` | `ReactNode` | - | 左側に表示するアイコン |
-| `rightIcon` | `ReactNode` | - | 右側に表示するアイコン |
-| `label` | `string` | - | ラベルテキスト |
-| `helperText` | `string` | - | ヘルパーテキスト |
-| `disabled` | `boolean` | `false` | 無効状態 |
+<TypeTable
+  type={{
+    type: {
+      description: '入力フィールドのタイプ',
+      type: '"text" | "password" | "email" | "number" | "search"',
+      default: '"text"',
+    },
+    size: {
+      description: '入力フィールドのサイズ',
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+    },
+    label: {
+      description: 'ラベルテキスト',
+      type: 'string',
+    },
+    helperText: {
+      description: '補足説明テキスト',
+      type: 'string',
+    },
+    error: {
+      description: 'エラー状態',
+      type: 'boolean',
+      default: 'false',
+    },
+    errorMessage: {
+      description: 'エラーメッセージ',
+      type: 'string',
+    },
+    leftIcon: {
+      description: '左側に表示するアイコン',
+      type: 'ReactNode',
+    },
+    rightIcon: {
+      description: '右側に表示するアイコン',
+      type: 'ReactNode',
+    },
+    disabled: {
+      description: '無効状態',
+      type: 'boolean',
+      default: 'false',
+    },
+  }}
+/>
 
 ## アクセシビリティ
 
-- `aria-invalid`: エラー時に`true`に設定
-- `aria-describedby`: エラーメッセージまたはヘルパーテキストを関連付け
-- ラベルとinputの関連付け（`htmlFor`/`id`）
-- フォーカス時にフォーカスリングを表示
+<Callout type="info" title="WAI-ARIA対応">
+Inputコンポーネントは以下のアクセシビリティ機能を備えています：
+</Callout>
+
+- **`aria-invalid`**: エラー時に`true`に設定
+- **`aria-describedby`**: エラーメッセージまたはヘルパーテキストを関連付け
+- **ラベル関連付け**: `label`要素と`input`要素が`htmlFor`/`id`で正しく関連付け
+- **フォーカスリング**: キーボードナビゲーション時に視認性の高いフォーカスリングを表示
+- **適切なコントラスト**: プレースホルダーテキストも読みやすい色で設計
+
+<Callout type="warn" title="ラベルの重要性">
+アクセシビリティの観点から、入力フィールドには常に`label`を設定することを推奨します。視覚的に非表示にしたい場合でも、スクリーンリーダー用に設定してください。
+</Callout>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Button" description="フォーム送信ボタン" href="/docs/components/button" />
+  <Card title="Card" description="フォームのコンテナ" href="/docs/components/card" />
+  <Card title="Badge" description="入力状態の表示" href="/docs/components/badge" />
+</Cards>

@@ -1,11 +1,18 @@
 ---
 title: Card
-description: ニューモフィズムスタイルのカードコンポーネント
+description: ニューモフィズムスタイルのコンテンツコンテナコンポーネント
+icon: LayoutGrid
 ---
+
+import { LayoutGrid, Info, AlertTriangle } from 'lucide-react';
 
 # Card
 
-ニューモフィズム2.0デザインのカードコンポーネントです。コンテンツを囲むためのコンテナとして使用します。
+ニューモフィズム2.0デザインのカードコンポーネントです。コンテンツを視覚的にグループ化するためのコンテナとして使用します。
+
+<Callout type="info" title="デザインコンセプト">
+Cardは背景から**浮き上がった**または**凹んだ**外観を持ち、コンテンツの階層構造を明確にします。3種類のバリアントでさまざまな表現が可能です。
+</Callout>
 
 ## インポート
 
@@ -27,7 +34,7 @@ import { Card } from 'neumo-ui';
 
 ## バリアント
 
-3種類のバリアントがあります。
+3種類のバリアントがあります。コンテンツの重要度や用途に応じて使い分けてください。
 
 <ComponentShowcase title="Card Variants">
   <Card variant="elevated" style={{ width: '200px' }}>
@@ -44,15 +51,27 @@ import { Card } from 'neumo-ui';
   </Card>
 </ComponentShowcase>
 
-| バリアント | 説明 |
-|-----------|------|
-| `elevated` | 浮き上がったカード（デフォルト） |
-| `flat` | フラットなカード（シャドウなし） |
-| `inset` | 凹んだカード |
+<TypeTable
+  type={{
+    elevated: {
+      description: '浮き上がったカード。メインコンテンツやカードリストに最適',
+      type: 'variant',
+      default: '✓',
+    },
+    flat: {
+      description: 'シャドウなしのフラットなカード。背景として使用する場合に',
+      type: 'variant',
+    },
+    inset: {
+      description: '凹んだカード。入力エリアやセカンダリコンテンツに',
+      type: 'variant',
+    },
+  }}
+/>
 
 ## パディング
 
-4種類のパディングサイズがあります。
+4種類のパディングサイズがあります。コンテンツ量や用途に応じて選択してください。
 
 <ComponentShowcase title="Card Padding">
   <Card padding="none" style={{ width: '120px' }}>
@@ -70,6 +89,8 @@ import { Card } from 'neumo-ui';
 </ComponentShowcase>
 
 ## 組み合わせ例
+
+### プロフィールカード
 
 <ComponentPreview code={`<Card variant="elevated" padding="lg">
   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -97,10 +118,77 @@ import { Card } from 'neumo-ui';
   </Card>
 </ComponentPreview>
 
+### ネストされたカード
+
+`inset`バリアントを使って、カード内にネストした領域を作成できます。
+
+<ComponentPreview code={`<Card variant="elevated" padding="lg">
+  <h3>Settings</h3>
+  <Card variant="inset" padding="md">
+    <p>Nested inset card for secondary content</p>
+  </Card>
+</Card>`}>
+  <Card variant="elevated" padding="lg" style={{ width: '320px' }}>
+    <h3 style={{ margin: '0 0 1rem' }}>Settings</h3>
+    <Card variant="inset" padding="md">
+      <p style={{ margin: 0, color: '#718096', fontSize: '0.875rem' }}>Nested inset card for secondary content</p>
+    </Card>
+  </Card>
+</ComponentPreview>
+
+### カードグリッド
+
+<ComponentPreview code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+  <Card><h4>Card 1</h4></Card>
+  <Card><h4>Card 2</h4></Card>
+  <Card><h4>Card 3</h4></Card>
+  <Card><h4>Card 4</h4></Card>
+</div>`}>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', width: '100%', maxWidth: '400px' }}>
+    <Card><h4 style={{ margin: 0 }}>Card 1</h4></Card>
+    <Card><h4 style={{ margin: 0 }}>Card 2</h4></Card>
+    <Card><h4 style={{ margin: 0 }}>Card 3</h4></Card>
+    <Card><h4 style={{ margin: 0 }}>Card 4</h4></Card>
+  </div>
+</ComponentPreview>
+
 ## Props
 
-| Prop | 型 | デフォルト | 説明 |
-|------|------|-----------|------|
-| `variant` | `"elevated" \| "flat" \| "inset"` | `"elevated"` | カードのスタイルバリアント |
-| `padding` | `"none" \| "sm" \| "md" \| "lg"` | `"md"` | カードのパディング |
-| `children` | `ReactNode` | - | カードの中身 |
+<TypeTable
+  type={{
+    variant: {
+      description: 'カードのスタイルバリアント',
+      type: '"elevated" | "flat" | "inset"',
+      default: '"elevated"',
+    },
+    padding: {
+      description: 'カードの内側の余白',
+      type: '"none" | "sm" | "md" | "lg"',
+      default: '"md"',
+    },
+    children: {
+      description: 'カードの中身',
+      type: 'ReactNode',
+      required: true,
+    },
+  }}
+/>
+
+## アクセシビリティ
+
+<Callout type="info" title="セマンティックHTML">
+Cardコンポーネントは`<div>`要素でレンダリングされます。コンテンツの構造に応じて、適切な見出しレベル（h1〜h6）を使用してください。
+</Callout>
+
+<Callout type="warn" title="インタラクティブなカード">
+カード全体をクリック可能にする場合は、内部にボタンやリンクを配置するか、カード自体を`<a>`や`<button>`でラップしてください。その際、適切な`role`と`tabIndex`を設定してください。
+</Callout>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Button" description="カード内のアクションボタン" href="/docs/components/button" />
+  <Card title="Divider" description="カード内のセクション区切り" href="/docs/components/divider" />
+  <Card title="Avatar" description="プロフィールカードに最適" href="/docs/components/avatar" />
+  <Card title="Badge" description="ステータス表示に" href="/docs/components/badge" />
+</Cards>

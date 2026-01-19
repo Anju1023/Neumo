@@ -1,11 +1,18 @@
 ---
 title: Avatar
-description: ニューモフィズムスタイルのアバターコンポーネント
+description: ニューモフィズムスタイルのアバター（プロフィール画像）コンポーネント
+icon: CircleUser
 ---
+
+import { CircleUser, Info, AlertTriangle } from 'lucide-react';
 
 # Avatar
 
 ニューモフィズム2.0デザインのアバターコンポーネントです。ユーザーのプロフィール画像を表示し、画像がない場合はイニシャルを表示します。
+
+<Callout type="info" title="スマートフォールバック">
+画像が指定されていない場合や読み込みに失敗した場合、`alt`テキストから自動的にイニシャルを生成して表示します。
+</Callout>
 
 ## インポート
 
@@ -29,9 +36,15 @@ import { Avatar } from 'neumo-ui';
   <Avatar alt="Alice Bob" />
 </ComponentShowcase>
 
+<Callout type="info">
+- フルネーム（例: "John Doe"）→ 頭文字2文字（"JD"）
+- 単一名（例: "Jane"）→ 頭文字1文字（"J"）
+- 3語以上（例: "Alice Bob Carol"）→ 最初と最後の頭文字（"AC"）
+</Callout>
+
 ## サイズ
 
-5種類のサイズがあります。
+5種類のサイズがあります。用途に応じて選択してください。
 
 <ComponentShowcase title="Avatar Sizes">
   <Avatar alt="XS" size="xs" />
@@ -41,15 +54,35 @@ import { Avatar } from 'neumo-ui';
   <Avatar alt="XL" size="xl" />
 </ComponentShowcase>
 
-| サイズ | ピクセル |
-|-------|---------|
-| `xs` | 24px |
-| `sm` | 32px |
-| `md` | 40px |
-| `lg` | 56px |
-| `xl` | 72px |
+<TypeTable
+  type={{
+    xs: {
+      description: '極小サイズ（24px）- インラインテキスト、コメント一覧など',
+      type: 'size',
+    },
+    sm: {
+      description: '小サイズ（32px）- リスト項目、チャットなど',
+      type: 'size',
+    },
+    md: {
+      description: '中サイズ（40px）- 一般的な用途',
+      type: 'size',
+      default: '✓',
+    },
+    lg: {
+      description: '大サイズ（56px）- プロフィールカードなど',
+      type: 'size',
+    },
+    xl: {
+      description: '特大サイズ（72px）- プロフィールページなど',
+      type: 'size',
+    },
+  }}
+/>
 
 ## バリアント（形状）
+
+円形と角丸の2つの形状があります。
 
 <ComponentShowcase title="Avatar Variants">
   <Avatar alt="Circle" variant="circle" size="lg" />
@@ -58,11 +91,17 @@ import { Avatar } from 'neumo-ui';
 
 ## カスタムフォールバック
 
+デフォルトのイニシャル以外のフォールバックを指定できます。
+
 <ComponentPreview code={`<Avatar alt="User" fallback="?" />`}>
   <Avatar alt="User" fallback="?" />
 </ComponentPreview>
 
-## アバターグループ
+## 組み合わせ例
+
+### アバターグループ
+
+複数のアバターを重ねて表示できます。
 
 <ComponentPreview code={`<div style={{ display: 'flex' }}>
   <Avatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
@@ -76,17 +115,110 @@ import { Avatar } from 'neumo-ui';
   </div>
 </ComponentPreview>
 
+### プロフィールカード
+
+<ComponentPreview code={`<Card padding="lg">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <Avatar alt="John Doe" size="xl" />
+    <div>
+      <h3>John Doe</h3>
+      <Badge variant="success">Online</Badge>
+    </div>
+  </div>
+</Card>`}>
+  <Card padding="lg" style={{ width: '300px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <Avatar alt="John Doe" size="xl" />
+      <div>
+        <h3 style={{ margin: 0, marginBottom: '0.5rem' }}>John Doe</h3>
+        <Badge variant="success">Online</Badge>
+      </div>
+    </div>
+  </Card>
+</ComponentPreview>
+
+### ユーザーリスト
+
+<ComponentPreview code={`<Card>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar alt="Alice" size="sm" />
+      <span>Alice</span>
+      <Badge variant="info" size="sm">Admin</Badge>
+    </div>
+    <Divider />
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar alt="Bob" size="sm" />
+      <span>Bob</span>
+      <Badge variant="default" size="sm">Member</Badge>
+    </div>
+  </div>
+</Card>`}>
+  <Card style={{ width: '250px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <Avatar alt="Alice" size="sm" />
+        <span>Alice</span>
+        <Badge variant="info" size="sm">Admin</Badge>
+      </div>
+      <Divider />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <Avatar alt="Bob" size="sm" />
+        <span>Bob</span>
+        <Badge variant="default" size="sm">Member</Badge>
+      </div>
+    </div>
+  </Card>
+</ComponentPreview>
+
 ## Props
 
-| Prop | 型 | デフォルト | 説明 |
-|------|------|-----------|------|
-| `src` | `string` | - | 画像のURL |
-| `alt` | `string` | **必須** | 代替テキスト（イニシャル生成にも使用） |
-| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` | アバターのサイズ |
-| `variant` | `"circle" \| "rounded"` | `"circle"` | アバターの形状 |
-| `fallback` | `string` | - | 画像がない場合のフォールバックテキスト |
+<TypeTable
+  type={{
+    src: {
+      description: '画像のURL',
+      type: 'string',
+    },
+    alt: {
+      description: '代替テキスト（イニシャル生成にも使用）',
+      type: 'string',
+      required: true,
+    },
+    size: {
+      description: 'アバターのサイズ',
+      type: '"xs" | "sm" | "md" | "lg" | "xl"',
+      default: '"md"',
+    },
+    variant: {
+      description: 'アバターの形状',
+      type: '"circle" | "rounded"',
+      default: '"circle"',
+    },
+    fallback: {
+      description: '画像がない場合に表示するテキスト',
+      type: 'string',
+    },
+  }}
+/>
 
 ## アクセシビリティ
 
-- `role="img"`: 画像としての役割を明示
-- `aria-label`: 代替テキストを設定
+<Callout type="info" title="WAI-ARIA対応">
+Avatarコンポーネントは以下のアクセシビリティ機能を備えています：
+</Callout>
+
+- **`role="img"`**: 画像としての役割を明示
+- **`aria-label`**: 代替テキストを設定し、スクリーンリーダーが読み上げ可能
+- **高コントラスト**: イニシャル表示時も十分なコントラスト比を確保
+
+<Callout type="warn" title="altの重要性">
+`alt`プロパティは必須です。これはイニシャル生成とアクセシビリティの両方に使用されます。ユーザーを識別できる意味のあるテキストを設定してください。
+</Callout>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Badge" description="アバターにステータスを追加" href="/docs/components/badge" />
+  <Card title="Card" description="プロフィールカードの作成" href="/docs/components/card" />
+  <Card title="Divider" description="ユーザーリストの区切り" href="/docs/components/divider" />
+</Cards>

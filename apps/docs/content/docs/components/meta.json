@@ -1,4 +1,6 @@
 {
   "title": "Components",
+  "description": "Neumo UIの全コンポーネント",
+  "icon": "Component",
   "pages": ["button", "card", "input", "avatar", "badge", "divider"]
 }

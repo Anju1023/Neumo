@@ -1,11 +1,18 @@
 ---
 title: Button
-description: ニューモフィズムスタイルのボタンコンポーネント
+description: ニューモフィズムスタイルのインタラクティブなボタンコンポーネント
+icon: MousePointerClick
 ---
+
+import { MousePointerClick, Info, AlertTriangle } from 'lucide-react';
 
 # Button
 
-ニューモフィズム2.0デザインのボタンコンポーネントです。ホバーで浮き上がり、クリックで押し込まれるエフェクトがあります。
+ニューモフィズム2.0デザインのボタンコンポーネントです。
+
+<Callout type="info" title="インタラクションエフェクト">
+ホバーで**浮き上がり**、クリックで**押し込まれる**エフェクトがあります。この立体的なフィードバックにより、ユーザーは操作を直感的に理解できます。
+</Callout>
 
 ## インポート
 
@@ -21,7 +28,7 @@ import { Button } from 'neumo-ui';
 
 ## バリアント
 
-3種類のバリアントがあります。
+3種類のバリアントがあります。用途に応じて使い分けてください。
 
 <ComponentShowcase title="Button Variants">
   <Button variant="default">Default</Button>
@@ -29,11 +36,23 @@ import { Button } from 'neumo-ui';
   <Button variant="ghost">Ghost</Button>
 </ComponentShowcase>
 
-| バリアント | 説明 |
-|-----------|------|
-| `default` | 標準のニューモフィズムボタン |
-| `primary` | プライマリカラーのボタン |
-| `ghost` | 背景なしの透明ボタン |
+<TypeTable
+  type={{
+    default: {
+      description: '標準のニューモフィズムボタン。一般的なアクションに使用',
+      type: 'variant',
+      default: '✓',
+    },
+    primary: {
+      description: 'プライマリカラーのボタン。主要なアクション（送信、確定など）に使用',
+      type: 'variant',
+    },
+    ghost: {
+      description: '背景なしの透明ボタン。補助的なアクション（キャンセル、詳細を見るなど）に使用',
+      type: 'variant',
+    },
+  }}
+/>
 
 ## サイズ
 
@@ -47,9 +66,15 @@ import { Button } from 'neumo-ui';
 
 ## ローディング状態
 
+非同期処理中などにローディング状態を表示できます。
+
 <ComponentPreview code={`<Button loading>Loading...</Button>`}>
   <Button loading>Loading...</Button>
 </ComponentPreview>
+
+<Callout type="info">
+ローディング中は自動的に`aria-busy="true"`が設定され、クリックできなくなります。
+</Callout>
 
 ## 無効状態
 
@@ -57,7 +82,21 @@ import { Button } from 'neumo-ui';
   <Button disabled>Disabled</Button>
 </ComponentPreview>
 
+## アイコン付きボタン
+
+`leftIcon`と`rightIcon`プロパティでアイコンを追加できます。
+
+<ComponentPreview code={`<Button variant="primary" leftIcon={<Icon />}>
+  With Icon
+</Button>`}>
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <Button variant="primary">With Icon</Button>
+  </div>
+</ComponentPreview>
+
 ## 組み合わせ例
+
+### フォーム送信ボタン
 
 <ComponentPreview code={`<div style={{ display: 'flex', gap: '0.5rem' }}>
   <Button variant="primary">Submit</Button>
@@ -69,20 +108,85 @@ import { Button } from 'neumo-ui';
   </div>
 </ComponentPreview>
 
+### カード内での使用
+
+<ComponentPreview code={`<Card padding="lg">
+  <h3>Confirm Action</h3>
+  <p>Are you sure you want to continue?</p>
+  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+    <Button variant="primary" size="sm">Yes, Continue</Button>
+    <Button variant="ghost" size="sm">Cancel</Button>
+  </div>
+</Card>`}>
+  <Card padding="lg" style={{ width: '300px' }}>
+    <h3 style={{ margin: '0 0 0.5rem' }}>Confirm Action</h3>
+    <p style={{ margin: '0 0 1rem', color: '#718096' }}>Are you sure you want to continue?</p>
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Button variant="primary" size="sm">Yes, Continue</Button>
+      <Button variant="ghost" size="sm">Cancel</Button>
+    </div>
+  </Card>
+</ComponentPreview>
+
 ## Props
 
-| Prop | 型 | デフォルト | 説明 |
-|------|------|-----------|------|
-| `variant` | `"default" \| "primary" \| "ghost"` | `"default"` | ボタンのスタイルバリアント |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | ボタンのサイズ |
-| `loading` | `boolean` | `false` | ローディング状態 |
-| `disabled` | `boolean` | `false` | 無効状態 |
-| `leftIcon` | `ReactNode` | - | 左側に表示するアイコン |
-| `rightIcon` | `ReactNode` | - | 右側に表示するアイコン |
-| `children` | `ReactNode` | - | ボタンの中身 |
+<TypeTable
+  type={{
+    variant: {
+      description: 'ボタンのスタイルバリアント',
+      type: '"default" | "primary" | "ghost"',
+      default: '"default"',
+    },
+    size: {
+      description: 'ボタンのサイズ',
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+    },
+    loading: {
+      description: 'ローディング状態を表示',
+      type: 'boolean',
+      default: 'false',
+    },
+    disabled: {
+      description: '無効状態にする',
+      type: 'boolean',
+      default: 'false',
+    },
+    leftIcon: {
+      description: '左側に表示するアイコン',
+      type: 'ReactNode',
+    },
+    rightIcon: {
+      description: '右側に表示するアイコン',
+      type: 'ReactNode',
+    },
+    children: {
+      description: 'ボタンの中身（テキストやアイコン）',
+      type: 'ReactNode',
+      required: true,
+    },
+  }}
+/>
 
 ## アクセシビリティ
 
-- `aria-busy`: ローディング時に`true`に設定
-- `aria-disabled`: 無効時に`true`に設定
-- キーボードフォーカス時にフォーカスリングを表示
+<Callout type="info" title="WAI-ARIA対応">
+Buttonコンポーネントは以下のアクセシビリティ機能を備えています：
+</Callout>
+
+- **`aria-busy`**: ローディング時に`true`に設定され、スクリーンリーダーに処理中であることを伝えます
+- **`aria-disabled`**: 無効時に`true`に設定されます
+- **フォーカスリング**: キーボードフォーカス時に視認性の高いフォーカスリングを表示
+- **適切なコントラスト**: WCAG 2.1 AAレベルのコントラスト比を満たすカラー設計
+
+<Callout type="warn" title="注意">
+`ghost`バリアントを使用する場合は、背景色とのコントラストが十分であることを確認してください。
+</Callout>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Card" description="ボタンを配置するコンテナ" href="/docs/components/card" />
+  <Card title="Input" description="フォームでよく一緒に使用" href="/docs/components/input" />
+  <Card title="Badge" description="ボタンにステータスを追加" href="/docs/components/badge" />
+</Cards>

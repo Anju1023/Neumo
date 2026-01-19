@@ -1,11 +1,18 @@
 ---
 title: Divider
 description: ニューモフィズムスタイルの区切り線コンポーネント
+icon: Minus
 ---
+
+import { Minus, Info, AlertTriangle } from 'lucide-react';
 
 # Divider
 
-ニューモフィズム2.0デザインの区切り線コンポーネントです。溝（groove）のような凹んだデザインで、コンテンツを視覚的に分割します。
+ニューモフィズム2.0デザインの区切り線コンポーネントです。コンテンツを視覚的に分割するために使用します。
+
+<Callout type="info" title="デザインコンセプト">
+溝（groove）のような凹んだデザインで、ニューモフィズムの背景に自然に溶け込みながら、コンテンツの区切りを明確にします。
+</Callout>
 
 ## インポート
 
@@ -31,31 +38,40 @@ import { Divider } from 'neumo-ui';
 
 水平と垂直の2つの方向があります。
 
-### 水平方向（デフォルト）
+<Tabs items={['水平方向', '垂直方向']}>
+  <Tab value="水平方向">
+    水平方向（horizontal）はデフォルトです。上下のコンテンツを分離します。
 
-<ComponentPreview code={`<Divider orientation="horizontal" />`}>
-  <div style={{ width: '200px' }}>
-    <Divider orientation="horizontal" />
-  </div>
-</ComponentPreview>
+    <ComponentPreview code={`<Divider orientation="horizontal" />`}>
+      <div style={{ width: '200px' }}>
+        <Divider orientation="horizontal" />
+      </div>
+    </ComponentPreview>
+  </Tab>
+  <Tab value="垂直方向">
+    垂直方向（vertical）は左右のコンテンツを分離します。Flexboxコンテナ内で使用してください。
 
-### 垂直方向
-
-<ComponentPreview code={`<div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
+    <ComponentPreview code={`<div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
   <span>Left</span>
   <Divider orientation="vertical" />
   <span>Right</span>
 </div>`}>
-  <div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
-    <span>Left</span>
-    <Divider orientation="vertical" />
-    <span>Right</span>
-  </div>
-</ComponentPreview>
+      <div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
+        <span>Left</span>
+        <Divider orientation="vertical" />
+        <span>Right</span>
+      </div>
+    </ComponentPreview>
+  </Tab>
+</Tabs>
+
+<Callout type="warn" title="垂直方向の注意点">
+`orientation="vertical"`を使用する場合、親要素に`height`が設定されている必要があります。また、親要素は`display: flex`と`align-items: center`または`stretch`を設定してください。
+</Callout>
 
 ## 使用例
 
-### カード内での使用
+### カード内でのセクション分割
 
 <ComponentPreview code={`<Card>
   <h3>Section 1</h3>
@@ -70,6 +86,38 @@ import { Divider } from 'neumo-ui';
     <Divider />
     <h3 style={{ margin: '1rem 0 0.5rem' }}>Section 2</h3>
     <p style={{ margin: 0, color: '#718096' }}>Second section content</p>
+  </Card>
+</ComponentPreview>
+
+### プロフィールカード
+
+<ComponentPreview code={`<Card padding="lg">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <Avatar alt="John Doe" size="lg" />
+    <div>
+      <h3>John Doe</h3>
+      <Badge variant="success">Online</Badge>
+    </div>
+  </div>
+  <Divider />
+  <p>Software Developer at Example Inc.</p>
+  <Divider />
+  <Button variant="primary">View Profile</Button>
+</Card>`}>
+  <Card padding="lg" style={{ width: '300px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+      <Avatar alt="John Doe" size="lg" />
+      <div>
+        <h3 style={{ margin: 0 }}>John Doe</h3>
+        <Badge variant="success">Online</Badge>
+      </div>
+    </div>
+    <Divider />
+    <p style={{ margin: '1rem 0', color: '#718096' }}>Software Developer at Example Inc.</p>
+    <Divider />
+    <div style={{ marginTop: '1rem' }}>
+      <Button variant="primary">View Profile</Button>
+    </div>
   </Card>
 </ComponentPreview>
 
@@ -91,13 +139,99 @@ import { Divider } from 'neumo-ui';
   </nav>
 </ComponentPreview>
 
+### ツールバー
+
+<ComponentPreview code={`<Card variant="flat" padding="sm">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Button size="sm" variant="ghost">Bold</Button>
+    <Button size="sm" variant="ghost">Italic</Button>
+    <Divider orientation="vertical" />
+    <Button size="sm" variant="ghost">Left</Button>
+    <Button size="sm" variant="ghost">Center</Button>
+    <Button size="sm" variant="ghost">Right</Button>
+  </div>
+</Card>`}>
+  <Card variant="flat" padding="sm">
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: '32px' }}>
+      <Button size="sm" variant="ghost">Bold</Button>
+      <Button size="sm" variant="ghost">Italic</Button>
+      <Divider orientation="vertical" />
+      <Button size="sm" variant="ghost">Left</Button>
+      <Button size="sm" variant="ghost">Center</Button>
+      <Button size="sm" variant="ghost">Right</Button>
+    </div>
+  </Card>
+</ComponentPreview>
+
+### リストアイテムの区切り
+
+<ComponentPreview code={`<Card>
+  <div>Item 1</div>
+  <Divider />
+  <div>Item 2</div>
+  <Divider />
+  <div>Item 3</div>
+</Card>`}>
+  <Card style={{ width: '200px' }}>
+    <div style={{ padding: '0.5rem 0' }}>Item 1</div>
+    <Divider />
+    <div style={{ padding: '0.5rem 0' }}>Item 2</div>
+    <Divider />
+    <div style={{ padding: '0.5rem 0' }}>Item 3</div>
+  </Card>
+</ComponentPreview>
+
 ## Props
 
-| Prop | 型 | デフォルト | 説明 |
-|------|------|-----------|------|
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | 区切り線の方向 |
+<TypeTable
+  type={{
+    orientation: {
+      description: '区切り線の方向',
+      type: '"horizontal" | "vertical"',
+      default: '"horizontal"',
+    },
+  }}
+/>
 
 ## アクセシビリティ
 
-- `role="separator"`: セパレーターとしての役割を明示
-- `aria-orientation`: 方向を明示
+<Callout type="info" title="セマンティックHTML">
+Dividerコンポーネントは以下のアクセシビリティ機能を備えています：
+</Callout>
+
+- **`role="separator"`**: セパレーターとしての役割を明示し、スクリーンリーダーがコンテンツの区切りを認識
+- **`aria-orientation`**: 方向（horizontal/vertical）を明示
+
+<Callout type="info" title="装飾的な区切り線">
+純粋に装飾目的で使用する場合は、`aria-hidden="true"`を追加することを検討してください。ただし、コンテンツの論理的な区切りを示す場合は、そのままにしてください。
+</Callout>
+
+## ベストプラクティス
+
+<Accordions>
+  <Accordion title="適切な使用場面">
+    - カード内のセクション分割
+    - リストアイテム間の区切り
+    - ツールバーのグループ分け
+    - ナビゲーションリンクの区切り
+    - フォームのセクション分割
+  </Accordion>
+  <Accordion title="避けるべき使用">
+    - 見出しの代わりに使用（見出しタグを使用してください）
+    - 過度な使用（視覚的にうるさくなります）
+    - マージンやパディングの代わりに使用
+  </Accordion>
+  <Accordion title="スタイリングのヒント">
+    - 垂直方向で使用する場合、親要素のFlexbox設定を確認
+    - 余白は親要素側で調整（Divider自体にマージンを追加しない）
+    - 色やサイズの変更はCSS変数で行う
+  </Accordion>
+</Accordions>
+
+## 関連コンポーネント
+
+<Cards>
+  <Card title="Card" description="Dividerをよく使用するコンテナ" href="/docs/components/card" />
+  <Card title="Button" description="ツールバーでの組み合わせ" href="/docs/components/button" />
+  <Card title="Avatar" description="プロフィールカードでの組み合わせ" href="/docs/components/avatar" />
+</Cards>

@@ -1,4 +1,6 @@
 {
   "title": "Neumo UI",
+  "description": "ニューモフィズム2.0デザインのReact UIライブラリ",
+  "icon": "Palette",
   "pages": ["index", "installation", "...components"]
 }
