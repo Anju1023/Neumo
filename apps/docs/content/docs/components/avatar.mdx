@@ -23,7 +23,7 @@ import { Avatar } from '@anju/nuform';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Avatar alt="John Doe" />`}>
-  <NeumoAvatar alt="John Doe" />
+  <NuformAvatar alt="John Doe" />
 </ComponentPreview>
 
 ## イニシャル表示
@@ -31,9 +31,9 @@ import { Avatar } from '@anju/nuform';
 画像がない場合、名前からイニシャルを自動生成して表示します。
 
 <ComponentShowcase title="Avatar Initials">
-  <NeumoAvatar alt="John Doe" />
-  <NeumoAvatar alt="Jane" />
-  <NeumoAvatar alt="Alice Bob" />
+  <NuformAvatar alt="John Doe" />
+  <NuformAvatar alt="Jane" />
+  <NuformAvatar alt="Alice Bob" />
 </ComponentShowcase>
 
 <Callout type="info">
@@ -47,11 +47,11 @@ import { Avatar } from '@anju/nuform';
 5種類のサイズがあります。用途に応じて選択してください。
 
 <ComponentShowcase title="Avatar Sizes">
-  <NeumoAvatar alt="XS" size="xs" />
-  <NeumoAvatar alt="SM" size="sm" />
-  <NeumoAvatar alt="MD" size="md" />
-  <NeumoAvatar alt="LG" size="lg" />
-  <NeumoAvatar alt="XL" size="xl" />
+  <NuformAvatar alt="XS" size="xs" />
+  <NuformAvatar alt="SM" size="sm" />
+  <NuformAvatar alt="MD" size="md" />
+  <NuformAvatar alt="LG" size="lg" />
+  <NuformAvatar alt="XL" size="xl" />
 </ComponentShowcase>
 
 <TypeTable
@@ -85,8 +85,8 @@ import { Avatar } from '@anju/nuform';
 円形と角丸の2つの形状があります。
 
 <ComponentShowcase title="Avatar Variants">
-  <NeumoAvatar alt="Circle" variant="circle" size="lg" />
-  <NeumoAvatar alt="Rounded" variant="rounded" size="lg" />
+  <NuformAvatar alt="Circle" variant="circle" size="lg" />
+  <NuformAvatar alt="Rounded" variant="rounded" size="lg" />
 </ComponentShowcase>
 
 ## カスタムフォールバック
@@ -94,7 +94,7 @@ import { Avatar } from '@anju/nuform';
 デフォルトのイニシャル以外のフォールバックを指定できます。
 
 <ComponentPreview code={`<Avatar alt="User" fallback="?" />`}>
-  <NeumoAvatar alt="User" fallback="?" />
+  <NuformAvatar alt="User" fallback="?" />
 </ComponentPreview>
 
 ## 組み合わせ例
@@ -109,9 +109,9 @@ import { Avatar } from '@anju/nuform';
   <Avatar alt="User 3" style={{ zIndex: 1 }} />
 </div>`}>
   <div style={{ display: 'flex' }}>
-    <NeumoAvatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
-    <NeumoAvatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
-    <NeumoAvatar alt="User 3" style={{ zIndex: 1 }} />
+    <NuformAvatar alt="User 1" style={{ marginRight: '-8px', zIndex: 3 }} />
+    <NuformAvatar alt="User 2" style={{ marginRight: '-8px', zIndex: 2 }} />
+    <NuformAvatar alt="User 3" style={{ zIndex: 1 }} />
   </div>
 </ComponentPreview>
 
@@ -126,15 +126,15 @@ import { Avatar } from '@anju/nuform';
     </div>
   </div>
 </Card>`}>
-  <NeumoCard padding="lg" style={{ width: '300px' }}>
+  <NuformCard padding="lg" style={{ width: '300px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <NeumoAvatar alt="John Doe" size="xl" />
+      <NuformAvatar alt="John Doe" size="xl" />
       <div>
         <h3 style={{ margin: 0, marginBottom: '0.5rem' }}>John Doe</h3>
-        <NeumoBadge variant="success">Online</NeumoBadge>
+        <NuformBadge variant="success">Online</NuformBadge>
       </div>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### ユーザーリスト
@@ -154,21 +154,21 @@ import { Avatar } from '@anju/nuform';
     </div>
   </div>
 </Card>`}>
-  <NeumoCard style={{ width: '250px' }}>
+  <NuformCard style={{ width: '250px' }}>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <NeumoAvatar alt="Alice" size="sm" />
+        <NuformAvatar alt="Alice" size="sm" />
         <span>Alice</span>
-        <NeumoBadge variant="info" size="sm">Admin</NeumoBadge>
+        <NuformBadge variant="info" size="sm">Admin</NuformBadge>
       </div>
-      <NeumoDivider />
+      <NuformDivider />
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <NeumoAvatar alt="Bob" size="sm" />
+        <NuformAvatar alt="Bob" size="sm" />
         <span>Bob</span>
-        <NeumoBadge variant="default" size="sm">Member</NeumoBadge>
+        <NuformBadge variant="default" size="sm">Member</NuformBadge>
       </div>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ## Props

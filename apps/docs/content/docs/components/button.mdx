@@ -23,7 +23,7 @@ import { Button } from '@anju/nuform';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Button>Default Button</Button>`}>
-  <NeumoButton>Default Button</NeumoButton>
+  <NuformButton>Default Button</NuformButton>
 </ComponentPreview>
 
 ## バリアント
@@ -31,9 +31,9 @@ import { Button } from '@anju/nuform';
 3種類のバリアントがあります。用途に応じて使い分けてください。
 
 <ComponentShowcase title="Button Variants">
-  <NeumoButton variant="default">Default</NeumoButton>
-  <NeumoButton variant="primary">Primary</NeumoButton>
-  <NeumoButton variant="ghost">Ghost</NeumoButton>
+  <NuformButton variant="default">Default</NuformButton>
+  <NuformButton variant="primary">Primary</NuformButton>
+  <NuformButton variant="ghost">Ghost</NuformButton>
 </ComponentShowcase>
 
 <TypeTable
@@ -59,9 +59,9 @@ import { Button } from '@anju/nuform';
 3種類のサイズがあります。
 
 <ComponentShowcase title="Button Sizes">
-  <NeumoButton size="sm">Small</NeumoButton>
-  <NeumoButton size="md">Medium</NeumoButton>
-  <NeumoButton size="lg">Large</NeumoButton>
+  <NuformButton size="sm">Small</NuformButton>
+  <NuformButton size="md">Medium</NuformButton>
+  <NuformButton size="lg">Large</NuformButton>
 </ComponentShowcase>
 
 ## ローディング状態
@@ -69,7 +69,7 @@ import { Button } from '@anju/nuform';
 非同期処理中などにローディング状態を表示できます。
 
 <ComponentPreview code={`<Button loading>Loading...</Button>`}>
-  <NeumoButton loading>Loading...</NeumoButton>
+  <NuformButton loading>Loading...</NuformButton>
 </ComponentPreview>
 
 <Callout type="info">
@@ -79,7 +79,7 @@ import { Button } from '@anju/nuform';
 ## 無効状態
 
 <ComponentPreview code={`<Button disabled>Disabled</Button>`}>
-  <NeumoButton disabled>Disabled</NeumoButton>
+  <NuformButton disabled>Disabled</NuformButton>
 </ComponentPreview>
 
 ## アイコン付きボタン
@@ -90,7 +90,7 @@ import { Button } from '@anju/nuform';
   With Icon
 </Button>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <NeumoButton variant="primary">With Icon</NeumoButton>
+    <NuformButton variant="primary">With Icon</NuformButton>
   </div>
 </ComponentPreview>
 
@@ -103,8 +103,8 @@ import { Button } from '@anju/nuform';
   <Button variant="ghost">Cancel</Button>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <NeumoButton variant="primary">Submit</NeumoButton>
-    <NeumoButton variant="ghost">Cancel</NeumoButton>
+    <NuformButton variant="primary">Submit</NuformButton>
+    <NuformButton variant="ghost">Cancel</NuformButton>
   </div>
 </ComponentPreview>
 
@@ -118,14 +118,14 @@ import { Button } from '@anju/nuform';
     <Button variant="ghost" size="sm">Cancel</Button>
   </div>
 </Card>`}>
-  <NeumoCard padding="lg" style={{ width: '300px' }}>
+  <NuformCard padding="lg" style={{ width: '300px' }}>
     <h3 style={{ margin: '0 0 0.5rem' }}>Confirm Action</h3>
     <p style={{ margin: '0 0 1rem', color: '#718096' }}>Are you sure you want to continue?</p>
     <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <NeumoButton variant="primary" size="sm">Yes, Continue</NeumoButton>
-      <NeumoButton variant="ghost" size="sm">Cancel</NeumoButton>
+      <NuformButton variant="primary" size="sm">Yes, Continue</NuformButton>
+      <NuformButton variant="ghost" size="sm">Cancel</NuformButton>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ## Props

@@ -26,10 +26,10 @@ import { Card } from '@anju/nuform';
   <h2>Card Title</h2>
   <p>Card content goes here</p>
 </Card>`}>
-  <NeumoCard>
+  <NuformCard>
     <h2 style={{ margin: 0, marginBottom: '0.5rem' }}>Card Title</h2>
     <p style={{ margin: 0, color: '#718096' }}>Card content goes here</p>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ## バリアント
@@ -37,18 +37,18 @@ import { Card } from '@anju/nuform';
 3種類のバリアントがあります。コンテンツの重要度や用途に応じて使い分けてください。
 
 <ComponentShowcase title="Card Variants">
-  <NeumoCard variant="elevated" style={{ width: '200px' }}>
+  <NuformCard variant="elevated" style={{ width: '200px' }}>
     <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Elevated</h4>
     <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>浮き上がったカード</p>
-  </NeumoCard>
-  <NeumoCard variant="flat" style={{ width: '200px' }}>
+  </NuformCard>
+  <NuformCard variant="flat" style={{ width: '200px' }}>
     <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Flat</h4>
     <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>フラットなカード</p>
-  </NeumoCard>
-  <NeumoCard variant="inset" style={{ width: '200px' }}>
+  </NuformCard>
+  <NuformCard variant="inset" style={{ width: '200px' }}>
     <h4 style={{ margin: 0, marginBottom: '0.5rem' }}>Inset</h4>
     <p style={{ margin: 0, fontSize: '0.875rem', color: '#718096' }}>凹んだカード</p>
-  </NeumoCard>
+  </NuformCard>
 </ComponentShowcase>
 
 <TypeTable
@@ -74,18 +74,18 @@ import { Card } from '@anju/nuform';
 4種類のパディングサイズがあります。コンテンツ量や用途に応じて選択してください。
 
 <ComponentShowcase title="Card Padding">
-  <NeumoCard padding="none" style={{ width: '120px' }}>
+  <NuformCard padding="none" style={{ width: '120px' }}>
     <span>none</span>
-  </NeumoCard>
-  <NeumoCard padding="sm" style={{ width: '120px' }}>
+  </NuformCard>
+  <NuformCard padding="sm" style={{ width: '120px' }}>
     <span>sm</span>
-  </NeumoCard>
-  <NeumoCard padding="md" style={{ width: '120px' }}>
+  </NuformCard>
+  <NuformCard padding="md" style={{ width: '120px' }}>
     <span>md</span>
-  </NeumoCard>
-  <NeumoCard padding="lg" style={{ width: '120px' }}>
+  </NuformCard>
+  <NuformCard padding="lg" style={{ width: '120px' }}>
     <span>lg</span>
-  </NeumoCard>
+  </NuformCard>
 </ComponentShowcase>
 
 ## 組み合わせ例
@@ -104,18 +104,18 @@ import { Card } from '@anju/nuform';
   <p>This is a profile card example.</p>
   <Button variant="primary">View Profile</Button>
 </Card>`}>
-  <NeumoCard variant="elevated" padding="lg" style={{ width: '320px' }}>
+  <NuformCard variant="elevated" padding="lg" style={{ width: '320px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-      <NeumoAvatar alt="John Doe" size="lg" />
+      <NuformAvatar alt="John Doe" size="lg" />
       <div>
         <h3 style={{ margin: 0 }}>John Doe</h3>
-        <NeumoBadge variant="success">Online</NeumoBadge>
+        <NuformBadge variant="success">Online</NuformBadge>
       </div>
     </div>
-    <NeumoDivider />
+    <NuformDivider />
     <p style={{ margin: '1rem 0', color: '#718096' }}>This is a profile card example.</p>
-    <NeumoButton variant="primary">View Profile</NeumoButton>
-  </NeumoCard>
+    <NuformButton variant="primary">View Profile</NuformButton>
+  </NuformCard>
 </ComponentPreview>
 
 ### ネストされたカード
@@ -128,12 +128,12 @@ import { Card } from '@anju/nuform';
     <p>Nested inset card for secondary content</p>
   </Card>
 </Card>`}>
-  <NeumoCard variant="elevated" padding="lg" style={{ width: '320px' }}>
+  <NuformCard variant="elevated" padding="lg" style={{ width: '320px' }}>
     <h3 style={{ margin: '0 0 1rem' }}>Settings</h3>
-    <NeumoCard variant="inset" padding="md">
+    <NuformCard variant="inset" padding="md">
       <p style={{ margin: 0, color: '#718096', fontSize: '0.875rem' }}>Nested inset card for secondary content</p>
-    </NeumoCard>
-  </NeumoCard>
+    </NuformCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### カードグリッド
@@ -145,10 +145,10 @@ import { Card } from '@anju/nuform';
   <Card><h4>Card 4</h4></Card>
 </div>`}>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', width: '100%', maxWidth: '400px' }}>
-    <NeumoCard><h4 style={{ margin: 0 }}>Card 1</h4></NeumoCard>
-    <NeumoCard><h4 style={{ margin: 0 }}>Card 2</h4></NeumoCard>
-    <NeumoCard><h4 style={{ margin: 0 }}>Card 3</h4></NeumoCard>
-    <NeumoCard><h4 style={{ margin: 0 }}>Card 4</h4></NeumoCard>
+    <NuformCard><h4 style={{ margin: 0 }}>Card 1</h4></NuformCard>
+    <NuformCard><h4 style={{ margin: 0 }}>Card 2</h4></NuformCard>
+    <NuformCard><h4 style={{ margin: 0 }}>Card 3</h4></NuformCard>
+    <NuformCard><h4 style={{ margin: 0 }}>Card 4</h4></NuformCard>
   </div>
 </ComponentPreview>
 

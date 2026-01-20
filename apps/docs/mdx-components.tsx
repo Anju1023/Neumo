@@ -12,17 +12,17 @@ import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { ComponentPreview, ComponentShowcase } from '@/components/ui/component-preview';
 
 // Nuformコンポーネント（クライアントコンポーネントラッパー経由）
-// 注意: Fumadocsの Card/Cards と名前衝突を避けるため Neumo プレフィックスを使用
+// 注意: Fumadocsの Card/Cards と名前衝突を避けるため Nuform プレフィックスを使用
 import {
-  Button as NeumoButton,
-  Card as NeumoCard,
-  Input as NeumoInput,
-  Avatar as NeumoAvatar,
-  Badge as NeumoBadge,
-  Divider as NeumoDivider,
-  Toast as NeumoToast,
-  ToastProvider as NeumoToastProvider,
-} from '@/components/ui/neumo-components';
+  Button as NuformButton,
+  Card as NuformCard,
+  Input as NuformInput,
+  Avatar as NuformAvatar,
+  Badge as NuformBadge,
+  Divider as NuformDivider,
+  Toast as NuformToast,
+  ToastProvider as NuformToastProvider,
+} from '@/components/ui/nuform-components';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -39,16 +39,16 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // ライブデモ用コンポーネント
     ComponentPreview,
     ComponentShowcase,
-    // Nuformコンポーネント（Neumoプレフィックス付き）
+    // Nuformコンポーネント（Nuformプレフィックス付き）
     // ドキュメント内のライブデモで使用
-    NeumoButton,
-    NeumoCard,
-    NeumoInput,
-    NeumoAvatar,
-    NeumoBadge,
-    NeumoDivider,
-    NeumoToast,
-    NeumoToastProvider,
+    NuformButton,
+    NuformCard,
+    NuformInput,
+    NuformAvatar,
+    NuformBadge,
+    NuformDivider,
+    NuformToast,
+    NuformToastProvider,
     ...components,
   };
 }

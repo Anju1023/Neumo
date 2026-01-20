@@ -23,7 +23,7 @@ import { Input } from '@anju/nuform';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Input placeholder="Enter text..." />`}>
-  <NeumoInput placeholder="Enter text..." />
+  <NuformInput placeholder="Enter text..." />
 </ComponentPreview>
 
 ## ラベル付き
@@ -31,7 +31,7 @@ import { Input } from '@anju/nuform';
 `label`プロパティでラベルを表示できます。ラベルは自動的に入力フィールドと関連付けられます。
 
 <ComponentPreview code={`<Input label="Email" placeholder="Enter your email" />`}>
-  <NeumoInput label="Email" placeholder="Enter your email" />
+  <NuformInput label="Email" placeholder="Enter your email" />
 </ComponentPreview>
 
 ## サイズ
@@ -39,9 +39,9 @@ import { Input } from '@anju/nuform';
 3種類のサイズがあります。
 
 <ComponentShowcase title="Input Sizes">
-  <NeumoInput size="sm" placeholder="Small" />
-  <NeumoInput size="md" placeholder="Medium" />
-  <NeumoInput size="lg" placeholder="Large" />
+  <NuformInput size="sm" placeholder="Small" />
+  <NuformInput size="md" placeholder="Medium" />
+  <NuformInput size="lg" placeholder="Large" />
 </ComponentShowcase>
 
 ## 入力タイプ
@@ -51,27 +51,27 @@ import { Input } from '@anju/nuform';
 <Tabs items={['テキスト', 'パスワード', 'メール', '数値', '検索']}>
   <Tab value="テキスト">
     <ComponentPreview code={`<Input type="text" label="Name" placeholder="Enter your name" />`}>
-      <NeumoInput type="text" label="Name" placeholder="Enter your name" />
+      <NuformInput type="text" label="Name" placeholder="Enter your name" />
     </ComponentPreview>
   </Tab>
   <Tab value="パスワード">
     <ComponentPreview code={`<Input type="password" label="Password" placeholder="Enter password" />`}>
-      <NeumoInput type="password" label="Password" placeholder="Enter password" />
+      <NuformInput type="password" label="Password" placeholder="Enter password" />
     </ComponentPreview>
   </Tab>
   <Tab value="メール">
     <ComponentPreview code={`<Input type="email" label="Email" placeholder="example@email.com" />`}>
-      <NeumoInput type="email" label="Email" placeholder="example@email.com" />
+      <NuformInput type="email" label="Email" placeholder="example@email.com" />
     </ComponentPreview>
   </Tab>
   <Tab value="数値">
     <ComponentPreview code={`<Input type="number" label="Age" placeholder="Enter your age" />`}>
-      <NeumoInput type="number" label="Age" placeholder="Enter your age" />
+      <NuformInput type="number" label="Age" placeholder="Enter your age" />
     </ComponentPreview>
   </Tab>
   <Tab value="検索">
     <ComponentPreview code={`<Input type="search" placeholder="Search..." />`}>
-      <NeumoInput type="search" placeholder="Search..." />
+      <NuformInput type="search" placeholder="Search..." />
     </ComponentPreview>
   </Tab>
 </Tabs>
@@ -85,7 +85,7 @@ import { Input } from '@anju/nuform';
   placeholder="example@email.com"
   helperText="We'll never share your email"
 />`}>
-  <NeumoInput 
+  <NuformInput 
     label="Email" 
     placeholder="example@email.com"
     helperText="We'll never share your email"
@@ -101,7 +101,7 @@ import { Input } from '@anju/nuform';
   error 
   errorMessage="Invalid email address"
 />`}>
-  <NeumoInput 
+  <NuformInput 
     label="Email" 
     error 
     errorMessage="Invalid email address"
@@ -115,7 +115,7 @@ import { Input } from '@anju/nuform';
 ## 無効状態
 
 <ComponentPreview code={`<Input disabled placeholder="Disabled input" />`}>
-  <NeumoInput disabled placeholder="Disabled input" />
+  <NuformInput disabled placeholder="Disabled input" />
 </ComponentPreview>
 
 ## 組み合わせ例
@@ -128,16 +128,16 @@ import { Input } from '@anju/nuform';
   <Input label="Password" type="password" placeholder="Enter your password" />
   <Button variant="primary">Sign In</Button>
 </Card>`}>
-  <NeumoCard padding="lg" style={{ width: '320px' }}>
+  <NuformCard padding="lg" style={{ width: '320px' }}>
     <h3 style={{ margin: '0 0 1rem 0' }}>Login</h3>
     <div style={{ marginBottom: '1rem' }}>
-      <NeumoInput label="Email" type="email" placeholder="Enter your email" />
+      <NuformInput label="Email" type="email" placeholder="Enter your email" />
     </div>
     <div style={{ marginBottom: '1rem' }}>
-      <NeumoInput label="Password" type="password" placeholder="Enter your password" />
+      <NuformInput label="Password" type="password" placeholder="Enter your password" />
     </div>
-    <NeumoButton variant="primary">Sign In</NeumoButton>
-  </NeumoCard>
+    <NuformButton variant="primary">Sign In</NuformButton>
+  </NuformCard>
 </ComponentPreview>
 
 ### お問い合わせフォーム
@@ -151,19 +151,19 @@ import { Input } from '@anju/nuform';
     <Button variant="ghost">Cancel</Button>
   </div>
 </Card>`}>
-  <NeumoCard padding="lg" style={{ width: '320px' }}>
+  <NuformCard padding="lg" style={{ width: '320px' }}>
     <h3 style={{ margin: '0 0 1rem 0' }}>Contact Us</h3>
     <div style={{ marginBottom: '1rem' }}>
-      <NeumoInput label="Name" placeholder="Your name" />
+      <NuformInput label="Name" placeholder="Your name" />
     </div>
     <div style={{ marginBottom: '1rem' }}>
-      <NeumoInput label="Email" type="email" placeholder="your@email.com" />
+      <NuformInput label="Email" type="email" placeholder="your@email.com" />
     </div>
     <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <NeumoButton variant="primary">Send</NeumoButton>
-      <NeumoButton variant="ghost">Cancel</NeumoButton>
+      <NuformButton variant="primary">Send</NuformButton>
+      <NuformButton variant="ghost">Cancel</NuformButton>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ## Props

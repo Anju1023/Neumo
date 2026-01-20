@@ -23,7 +23,7 @@ import { Badge } from '@anju/nuform';
 ## 基本的な使い方
 
 <ComponentPreview code={`<Badge>Default</Badge>`}>
-  <NeumoBadge>Default</NeumoBadge>
+  <NuformBadge>Default</NuformBadge>
 </ComponentPreview>
 
 ## バリアント
@@ -31,11 +31,11 @@ import { Badge } from '@anju/nuform';
 5種類のバリアントがあります。ステータスや意味に応じて使い分けてください。
 
 <ComponentShowcase title="Badge Variants">
-  <NeumoBadge variant="default">Default</NeumoBadge>
-  <NeumoBadge variant="success">Success</NeumoBadge>
-  <NeumoBadge variant="warning">Warning</NeumoBadge>
-  <NeumoBadge variant="error">Error</NeumoBadge>
-  <NeumoBadge variant="info">Info</NeumoBadge>
+  <NuformBadge variant="default">Default</NuformBadge>
+  <NuformBadge variant="success">Success</NuformBadge>
+  <NuformBadge variant="warning">Warning</NuformBadge>
+  <NuformBadge variant="error">Error</NuformBadge>
+  <NuformBadge variant="info">Info</NuformBadge>
 </ComponentShowcase>
 
 <TypeTable
@@ -69,8 +69,8 @@ import { Badge } from '@anju/nuform';
 2種類のサイズがあります。
 
 <ComponentShowcase title="Badge Sizes">
-  <NeumoBadge size="sm">Small</NeumoBadge>
-  <NeumoBadge size="md">Medium</NeumoBadge>
+  <NuformBadge size="sm">Small</NuformBadge>
+  <NuformBadge size="md">Medium</NuformBadge>
 </ComponentShowcase>
 
 ## 使用例
@@ -85,9 +85,9 @@ import { Badge } from '@anju/nuform';
   <Badge variant="default">Offline</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem' }}>
-    <NeumoBadge variant="success">Online</NeumoBadge>
-    <NeumoBadge variant="warning">Away</NeumoBadge>
-    <NeumoBadge variant="default">Offline</NeumoBadge>
+    <NuformBadge variant="success">Online</NuformBadge>
+    <NuformBadge variant="warning">Away</NuformBadge>
+    <NuformBadge variant="default">Offline</NuformBadge>
   </div>
 </ComponentPreview>
 
@@ -100,10 +100,10 @@ import { Badge } from '@anju/nuform';
   <Badge variant="error">Blocked</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-    <NeumoBadge variant="info">New</NeumoBadge>
-    <NeumoBadge variant="warning">In Progress</NeumoBadge>
-    <NeumoBadge variant="success">Completed</NeumoBadge>
-    <NeumoBadge variant="error">Blocked</NeumoBadge>
+    <NuformBadge variant="info">New</NuformBadge>
+    <NuformBadge variant="warning">In Progress</NuformBadge>
+    <NuformBadge variant="success">Completed</NuformBadge>
+    <NuformBadge variant="error">Blocked</NuformBadge>
   </div>
 </ComponentPreview>
 
@@ -116,13 +116,13 @@ import { Badge } from '@anju/nuform';
   </div>
   <p>Task description...</p>
 </Card>`}>
-  <NeumoCard style={{ width: '300px' }}>
+  <NuformCard style={{ width: '300px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <h3 style={{ margin: 0 }}>Task Title</h3>
-      <NeumoBadge variant="warning">In Progress</NeumoBadge>
+      <NuformBadge variant="warning">In Progress</NuformBadge>
     </div>
     <p style={{ margin: '0.5rem 0 0', color: '#718096' }}>Task description...</p>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### ユーザーリスト
@@ -133,9 +133,9 @@ import { Badge } from '@anju/nuform';
   <Badge variant="info" size="sm">Admin</Badge>
 </div>`}>
   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-    <NeumoAvatar alt="John Doe" size="sm" />
+    <NuformAvatar alt="John Doe" size="sm" />
     <span>John Doe</span>
-    <NeumoBadge variant="info" size="sm">Admin</NeumoBadge>
+    <NuformBadge variant="info" size="sm">Admin</NuformBadge>
   </div>
 </ComponentPreview>
 
@@ -148,10 +148,10 @@ import { Badge } from '@anju/nuform';
   <Badge variant="error">Deprecated</Badge>
 </div>`}>
   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-    <NeumoBadge variant="info">New</NeumoBadge>
-    <NeumoBadge variant="warning">Beta</NeumoBadge>
-    <NeumoBadge variant="success">Stable</NeumoBadge>
-    <NeumoBadge variant="error">Deprecated</NeumoBadge>
+    <NuformBadge variant="info">New</NuformBadge>
+    <NuformBadge variant="warning">Beta</NuformBadge>
+    <NuformBadge variant="success">Stable</NuformBadge>
+    <NuformBadge variant="error">Deprecated</NuformBadge>
   </div>
 </ComponentPreview>
 
@@ -165,8 +165,8 @@ import { Badge } from '@anju/nuform';
 </div>`}>
   <div style={{ display: 'flex', gap: '1rem' }}>
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <NeumoButton variant="default">Messages</NeumoButton>
-      <NeumoBadge variant="error" size="sm" style={{ position: 'absolute', top: '-8px', right: '-8px' }}>3</NeumoBadge>
+      <NuformButton variant="default">Messages</NuformButton>
+      <NuformBadge variant="error" size="sm" style={{ position: 'absolute', top: '-8px', right: '-8px' }}>3</NuformBadge>
     </div>
   </div>
 </ComponentPreview>

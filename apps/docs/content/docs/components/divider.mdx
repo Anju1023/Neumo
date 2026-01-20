@@ -29,7 +29,7 @@ import { Divider } from '@anju/nuform';
 </div>`}>
   <div style={{ width: '300px' }}>
     <p style={{ margin: '0 0 1rem' }}>Content above</p>
-    <NeumoDivider />
+    <NuformDivider />
     <p style={{ margin: '1rem 0 0' }}>Content below</p>
   </div>
 </ComponentPreview>
@@ -44,7 +44,7 @@ import { Divider } from '@anju/nuform';
 
     <ComponentPreview code={`<Divider orientation="horizontal" />`}>
       <div style={{ width: '200px' }}>
-        <NeumoDivider orientation="horizontal" />
+        <NuformDivider orientation="horizontal" />
       </div>
     </ComponentPreview>
   </Tab>
@@ -58,7 +58,7 @@ import { Divider } from '@anju/nuform';
 </div>`}>
       <div style={{ display: 'flex', alignItems: 'center', height: '40px', gap: '1rem' }}>
         <span>Left</span>
-        <NeumoDivider orientation="vertical" />
+        <NuformDivider orientation="vertical" />
         <span>Right</span>
       </div>
     </ComponentPreview>
@@ -80,13 +80,13 @@ import { Divider } from '@anju/nuform';
   <h3>Section 2</h3>
   <p>Second section content</p>
 </Card>`}>
-  <NeumoCard style={{ width: '280px' }}>
+  <NuformCard style={{ width: '280px' }}>
     <h3 style={{ margin: '0 0 0.5rem' }}>Section 1</h3>
     <p style={{ margin: '0 0 1rem', color: '#718096' }}>First section content</p>
-    <NeumoDivider />
+    <NuformDivider />
     <h3 style={{ margin: '1rem 0 0.5rem' }}>Section 2</h3>
     <p style={{ margin: 0, color: '#718096' }}>Second section content</p>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### プロフィールカード
@@ -104,21 +104,21 @@ import { Divider } from '@anju/nuform';
   <Divider />
   <Button variant="primary">View Profile</Button>
 </Card>`}>
-  <NeumoCard padding="lg" style={{ width: '300px' }}>
+  <NuformCard padding="lg" style={{ width: '300px' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-      <NeumoAvatar alt="John Doe" size="lg" />
+      <NuformAvatar alt="John Doe" size="lg" />
       <div>
         <h3 style={{ margin: 0 }}>John Doe</h3>
-        <NeumoBadge variant="success">Online</NeumoBadge>
+        <NuformBadge variant="success">Online</NuformBadge>
       </div>
     </div>
-    <NeumoDivider />
+    <NuformDivider />
     <p style={{ margin: '1rem 0', color: '#718096' }}>Software Developer at Example Inc.</p>
-    <NeumoDivider />
+    <NuformDivider />
     <div style={{ marginTop: '1rem' }}>
-      <NeumoButton variant="primary">View Profile</NeumoButton>
+      <NuformButton variant="primary">View Profile</NuformButton>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### ナビゲーション区切り
@@ -132,9 +132,9 @@ import { Divider } from '@anju/nuform';
 </nav>`}>
   <nav style={{ display: 'flex', alignItems: 'center', gap: '1rem', height: '24px' }}>
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>Home</span>
-    <NeumoDivider orientation="vertical" />
+    <NuformDivider orientation="vertical" />
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>About</span>
-    <NeumoDivider orientation="vertical" />
+    <NuformDivider orientation="vertical" />
     <span style={{ color: '#6366f1', cursor: 'pointer' }}>Contact</span>
   </nav>
 </ComponentPreview>
@@ -151,16 +151,16 @@ import { Divider } from '@anju/nuform';
     <Button size="sm" variant="ghost">Right</Button>
   </div>
 </Card>`}>
-  <NeumoCard variant="flat" padding="sm">
+  <NuformCard variant="flat" padding="sm">
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: '32px' }}>
-      <NeumoButton size="sm" variant="ghost">Bold</NeumoButton>
-      <NeumoButton size="sm" variant="ghost">Italic</NeumoButton>
-      <NeumoDivider orientation="vertical" />
-      <NeumoButton size="sm" variant="ghost">Left</NeumoButton>
-      <NeumoButton size="sm" variant="ghost">Center</NeumoButton>
-      <NeumoButton size="sm" variant="ghost">Right</NeumoButton>
+      <NuformButton size="sm" variant="ghost">Bold</NuformButton>
+      <NuformButton size="sm" variant="ghost">Italic</NuformButton>
+      <NuformDivider orientation="vertical" />
+      <NuformButton size="sm" variant="ghost">Left</NuformButton>
+      <NuformButton size="sm" variant="ghost">Center</NuformButton>
+      <NuformButton size="sm" variant="ghost">Right</NuformButton>
     </div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ### リストアイテムの区切り
@@ -172,13 +172,13 @@ import { Divider } from '@anju/nuform';
   <Divider />
   <div>Item 3</div>
 </Card>`}>
-  <NeumoCard style={{ width: '200px' }}>
+  <NuformCard style={{ width: '200px' }}>
     <div style={{ padding: '0.5rem 0' }}>Item 1</div>
-    <NeumoDivider />
+    <NuformDivider />
     <div style={{ padding: '0.5rem 0' }}>Item 2</div>
-    <NeumoDivider />
+    <NuformDivider />
     <div style={{ padding: '0.5rem 0' }}>Item 3</div>
-  </NeumoCard>
+  </NuformCard>
 </ComponentPreview>
 
 ## Props
