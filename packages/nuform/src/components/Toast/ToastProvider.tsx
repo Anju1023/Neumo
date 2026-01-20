@@ -41,7 +41,12 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="fixed bottom-0 right-0 z-50 flex flex-col gap-2 p-4 max-h-screen overflow-hidden pointer-events-none w-full max-w-[420px]">
+      {/* aria-live="polite"でスクリーンリーダーに通知を伝える */}
+      <div 
+        className="fixed bottom-0 right-0 z-50 flex flex-col gap-2 p-4 max-h-screen overflow-hidden pointer-events-none w-full max-w-[420px]"
+        aria-live="polite"
+        aria-label="Notifications"
+      >
         {toasts.map((toastProps) => (
           <Toast
             key={toastProps.id}
