@@ -22,8 +22,8 @@ export const metadata: Metadata = {
       : 'http://localhost:3000'
   ),
   title: {
-    default: 'Neumo UI',
-    template: '%s | Neumo UI',
+    default: 'Nuform',
+    template: '%s | Nuform',
   },
   description: 'ニューモフィズム2.0デザインのReact UIコンポーネントライブラリ',
 };

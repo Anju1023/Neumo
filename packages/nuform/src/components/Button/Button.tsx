@@ -5,18 +5,18 @@ import type { ButtonProps, ButtonVariant, ButtonSize } from "./Button.types";
  * バリアントごとのTailwindクラス
  */
 const variantClasses: Record<ButtonVariant, string> = {
-  default: "bg-neumo-bg text-neumo-text neumo-elevation-1",
-  primary: "bg-neumo-primary text-white neumo-elevation-1",
-  ghost: "bg-transparent text-neumo-text shadow-none",
+  default: "bg-nuform-bg text-nuform-text nuform-elevation-1",
+  primary: "bg-nuform-primary text-white nuform-elevation-1",
+  ghost: "bg-transparent text-nuform-text shadow-none",
 };
 
 /**
  * サイズごとのTailwindクラス
  */
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "px-neumo-sm py-neumo-xs text-neumo-sm rounded-neumo-sm gap-neumo-xs",
-  md: "px-neumo-md py-neumo-sm text-neumo-md rounded-neumo-md gap-neumo-sm",
-  lg: "px-neumo-lg py-neumo-md text-neumo-lg rounded-neumo-lg gap-neumo-sm",
+  sm: "px-nuform-sm py-nuform-xs text-nuform-sm rounded-nuform-sm gap-nuform-xs",
+  md: "px-nuform-md py-nuform-sm text-nuform-md rounded-nuform-md gap-nuform-sm",
+  lg: "px-nuform-lg py-nuform-md text-nuform-lg rounded-nuform-lg gap-nuform-sm",
 };
 
 /**
@@ -36,7 +36,7 @@ const disabledClasses = "opacity-50 cursor-not-allowed !shadow-none";
  */
 const LoadingSpinner = () => (
   <svg
-    className="animate-neumo-spin"
+    className="animate-nuform-spin"
     width="16"
     height="16"
     viewBox="0 0 24 24"
@@ -85,8 +85,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // ホバー/アクティブ効果のクラス
     const interactionClasses = isInteractive
       ? variant !== "ghost"
-        ? "hover:neumo-elevation-hover active:neumo-elevation-active focus:neumo-focus-ring"
-        : "hover:bg-neumo-bg/50 focus:neumo-focus-ring" // ghostバリアントにもフォーカスリング
+        ? "hover:nuform-elevation-hover active:nuform-elevation-active focus:nuform-focus-ring"
+        : "hover:bg-nuform-bg/50 focus:nuform-focus-ring" // ghostバリアントにもフォーカスリング
       : "";
 
     // クラスを結合

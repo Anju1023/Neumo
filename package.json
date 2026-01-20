@@ -1,14 +1,14 @@
 {
-  "name": "neumo",
+  "name": "nuform",
   "version": "0.0.0",
   "private": true,
   "description": "Neumorphism 2.0 UI component library for React/Next.js",
   "scripts": {
     "dev": "pnpm --filter docs dev",
-    "dev:lib": "pnpm --filter neumo-ui dev",
+    "dev:lib": "pnpm --filter @anju/nuform dev",
     "dev:docs": "pnpm --filter docs dev",
-    "build": "pnpm --filter neumo-ui build && pnpm --filter docs build",
-    "build:lib": "pnpm --filter neumo-ui build",
+    "build": "pnpm --filter @anju/nuform build && pnpm --filter docs build",
+    "build:lib": "pnpm --filter @anju/nuform build",
     "build:docs": "pnpm --filter docs build",
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",

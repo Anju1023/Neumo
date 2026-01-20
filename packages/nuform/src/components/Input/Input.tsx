@@ -5,21 +5,21 @@ import type { InputProps, InputSize } from "./Input.types";
  * サイズごとのTailwindクラス
  */
 const sizeClasses: Record<InputSize, string> = {
-  sm: "px-neumo-sm py-neumo-xs text-neumo-sm rounded-neumo-sm",
-  md: "px-neumo-md py-neumo-sm text-neumo-md rounded-neumo-md",
-  lg: "px-neumo-lg py-neumo-md text-neumo-lg rounded-neumo-lg",
+  sm: "px-nuform-sm py-nuform-xs text-nuform-sm rounded-nuform-sm",
+  md: "px-nuform-md py-nuform-sm text-nuform-md rounded-nuform-md",
+  lg: "px-nuform-lg py-nuform-md text-nuform-lg rounded-nuform-lg",
 };
 
 /**
  * ベースのTailwindクラス
  */
 const baseClasses =
-  "w-full bg-neumo-bg text-neumo-text border-none neumo-elevation-inset-sm transition-all outline-none";
+  "w-full bg-nuform-bg text-nuform-text border-none nuform-elevation-inset-sm transition-all outline-none";
 
 /**
  * フォーカス時のTailwindクラス
  */
-const focusClasses = "focus:neumo-elevation-inset focus:neumo-focus-ring";
+const focusClasses = "focus:nuform-elevation-inset focus:nuform-focus-ring";
 
 /**
  * 無効時のTailwindクラス
@@ -67,15 +67,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     // アイコンがある場合のパディングクラス
     const iconPaddingClasses = [
-      leftIcon ? "pl-[calc(theme(spacing.neumo-lg)+8px)]" : "",
-      rightIcon ? "pr-[calc(theme(spacing.neumo-lg)+8px)]" : "",
+      leftIcon ? "pl-[calc(theme(spacing.nuform-lg)+8px)]" : "",
+      rightIcon ? "pr-[calc(theme(spacing.nuform-lg)+8px)]" : "",
     ]
       .filter(Boolean)
       .join(" ");
 
     // エラー時のクラス（フォーカス時のスタイルを上書き）
     const errorClasses = error
-      ? "shadow-[var(--neumo-elevation-inset-sm),_0_0_0_2px_theme(colors.neumo-error)] focus:shadow-[var(--neumo-elevation-inset),_0_0_0_2px_theme(colors.neumo-error)]"
+      ? "shadow-[var(--nuform-elevation-inset-sm),_0_0_0_2px_theme(colors.nuform-error)] focus:shadow-[var(--nuform-elevation-inset),_0_0_0_2px_theme(colors.nuform-error)]"
       : "";
 
     // インプットのクラスを結合
@@ -92,12 +92,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       .join(" ");
 
     return (
-      <div className="flex flex-col gap-neumo-xs">
+      <div className="flex flex-col gap-nuform-xs">
         {/* ラベル */}
         {label && (
           <label
             htmlFor={inputId}
-            className="text-neumo-sm font-medium text-neumo-text"
+            className="text-nuform-sm font-medium text-nuform-text"
           >
             {label}
           </label>
@@ -108,7 +108,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {/* 左アイコン */}
           {leftIcon && (
             <span
-              className="absolute left-neumo-sm flex items-center justify-center text-neumo-text-muted pointer-events-none"
+              className="absolute left-nuform-sm flex items-center justify-center text-nuform-text-muted pointer-events-none"
               aria-hidden="true"
             >
               {leftIcon}
@@ -136,7 +136,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {/* 右アイコン */}
           {rightIcon && (
             <span
-              className="absolute right-neumo-sm flex items-center justify-center text-neumo-text-muted pointer-events-none"
+              className="absolute right-nuform-sm flex items-center justify-center text-nuform-text-muted pointer-events-none"
               aria-hidden="true"
             >
               {rightIcon}
@@ -146,14 +146,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
         {/* エラーメッセージ */}
         {error && errorMessage && (
-          <span id={errorId} className="text-neumo-xs text-neumo-error" role="alert">
+          <span id={errorId} className="text-nuform-xs text-nuform-error" role="alert">
             {errorMessage}
           </span>
         )}
 
         {/* ヘルパーテキスト */}
         {!error && helperText && (
-          <span id={helperId} className="text-neumo-xs text-neumo-text-muted">
+          <span id={helperId} className="text-nuform-xs text-nuform-text-muted">
             {helperText}
           </span>
         )}

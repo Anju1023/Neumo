@@ -1,7 +1,7 @@
 "use client";
 
 import { Accessibility, Palette, Zap, Code2 } from "lucide-react";
-import { Card } from "neumo-ui";
+import { Card } from "@anju/nuform";
 
 /**
  * 特徴データ
@@ -36,18 +36,18 @@ const features = [
 /**
  * FeaturesSection
  *
- * Neumo UIの特徴を紹介するセクション
+ * Nuformの特徴を紹介するセクション
  */
 export function FeaturesSection() {
   return (
-    <section className="py-24 bg-neumo-bg relative z-10">
+    <section className="py-24 bg-nuform-bg relative z-10">
       <div className="container mx-auto px-4">
         {/* セクションタイトル */}
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-neumo-text mb-6">
-            Why Neumo UI?
+          <h2 className="text-3xl md:text-5xl font-bold text-nuform-text mb-6">
+            Why Nuform?
           </h2>
-          <p className="text-xl text-neumo-text-muted max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-nuform-text-muted max-w-2xl mx-auto leading-relaxed">
             モダンなUIライブラリに求められるすべてを、
             <br className="hidden md:block" />
             ニューモフィズムデザインで実現
@@ -64,17 +64,17 @@ export function FeaturesSection() {
               className="text-center group hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col items-center"
             >
               {/* アイコン */}
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neumo-bg neumo-elevation-inset mb-6 text-neumo-primary group-hover:text-neumo-primary-hover transition-colors">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-nuform-bg nuform-elevation-inset mb-6 text-nuform-primary group-hover:text-nuform-primary-hover transition-colors">
                 <feature.icon size={32} />
               </div>
 
               {/* タイトル */}
-              <h3 className="text-xl font-bold text-neumo-text mb-4">
+              <h3 className="text-xl font-bold text-nuform-text mb-4">
                 {feature.title}
               </h3>
 
               {/* 説明 */}
-              <p className="text-base text-neumo-text-muted leading-relaxed">
+              <p className="text-base text-nuform-text-muted leading-relaxed">
                 {feature.description}
               </p>
             </Card>

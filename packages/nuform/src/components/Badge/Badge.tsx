@@ -5,19 +5,19 @@ import type { BadgeProps, BadgeVariant, BadgeSize } from "./Badge.types";
  * バリアントごとのTailwindクラス
  */
 const variantClasses: Record<BadgeVariant, string> = {
-  default: "bg-neumo-bg text-neumo-text neumo-elevation-1",
-  success: "bg-neumo-success text-white neumo-elevation-1",
-  warning: "bg-neumo-warning text-white neumo-elevation-1",
-  error: "bg-neumo-error text-white neumo-elevation-1",
-  info: "bg-neumo-info text-white neumo-elevation-1",
+  default: "bg-nuform-bg text-nuform-text nuform-elevation-1",
+  success: "bg-nuform-success text-white nuform-elevation-1",
+  warning: "bg-nuform-warning text-white nuform-elevation-1",
+  error: "bg-nuform-error text-white nuform-elevation-1",
+  info: "bg-nuform-info text-white nuform-elevation-1",
 };
 
 /**
  * サイズごとのTailwindクラス
  */
 const sizeClasses: Record<BadgeSize, string> = {
-  sm: "px-1.5 py-0.5 text-neumo-xs rounded-neumo-sm",
-  md: "px-2.5 py-1 text-neumo-sm rounded-neumo-md",
+  sm: "px-1.5 py-0.5 text-nuform-xs rounded-nuform-sm",
+  md: "px-2.5 py-1 text-nuform-sm rounded-nuform-md",
 };
 
 /**

@@ -6,7 +6,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 
 /**
- * ESLint Flat Config for Neumo UI
+ * ESLint Flat Config for Nuform
  * @see https://eslint.org/docs/latest/use/configure/configuration-files-new
  */
 export default [

@@ -1,14 +1,14 @@
 ---
-title: Neumo UI
+title: Nuform
 description: ニューモフィズム2.0デザインのReact UIコンポーネントライブラリ
 icon: Palette
 ---
 
 import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-react';
 
-# Neumo UI
+# Nuform
 
-**Neumo UI** は、ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリです。
+**Nuform** は、ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリです。
 
 <Callout type="info" title="ニューモフィズム2.0とは？">
 従来のニューモフィズムの美しさを保ちながら、**高コントラスト**と**アクセシビリティ**を重視した新しいデザインアプローチです。視認性が向上し、より多くのユーザーにとって使いやすいUIを実現します。
@@ -45,22 +45,22 @@ import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-r
     <Tabs items={['npm', 'pnpm', 'yarn', 'bun']} persist groupId="pm">
       <Tab value="npm">
         ```bash
-        npm install neumo-ui
+        npm install @anju/nuform
         ```
       </Tab>
       <Tab value="pnpm">
         ```bash
-        pnpm add neumo-ui
+        pnpm add @anju/nuform
         ```
       </Tab>
       <Tab value="yarn">
         ```bash
-        yarn add neumo-ui
+        yarn add @anju/nuform
         ```
       </Tab>
       <Tab value="bun">
         ```bash
-        bun add neumo-ui
+        bun add @anju/nuform
         ```
       </Tab>
     </Tabs>
@@ -72,7 +72,7 @@ import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-r
     アプリケーションのエントリーポイントでスタイルをインポートします。
 
     ```tsx
-    import 'neumo-ui/styles.css';
+    import '@anju/nuform/styles.css';
     ```
   </Step>
 
@@ -80,7 +80,7 @@ import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-r
     ### コンポーネントを使う
 
     ```tsx
-    import { Button, Card, Input } from 'neumo-ui';
+    import { Button, Card, Input } from '@anju/nuform';
 
     function App() {
       return (
@@ -96,7 +96,7 @@ import { Palette, Accessibility, Zap, Package, Paintbrush, Code } from 'lucide-r
 </Steps>
 
 <Callout type="warn" title="背景色の設定を忘れずに">
-ニューモフィズムデザインは背景色が重要です。`body`や親要素に`background: var(--neumo-bg)`を設定してください。
+ニューモフィズムデザインは背景色が重要です。`body`や親要素に`background: var(--nuform-bg)`を設定してください。
 </Callout>
 
 ## コンポーネント一覧

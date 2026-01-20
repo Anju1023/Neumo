@@ -1,4 +1,4 @@
-// Neumo UI - Neumorphism 2.0 Component Library
+// Nuform - Neumorphism 2.0 Component Library
 // コンポーネントのエクスポート
 
 // Button

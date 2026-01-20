@@ -17,6 +17,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@anju/nuform':
+        specifier: workspace:*
+        version: link:../../packages/nuform
       fumadocs-core:
         specifier: 16.4.7
         version: 16.4.7(@types/react@19.2.8)(lucide-react@0.562.0(react@19.2.3))(next@16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.5)
@@ -29,9 +32,6 @@ importers:
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@19.2.3)
-      neumo-ui:
-        specifier: workspace:*
-        version: link:../../packages/neumo-ui
       next:
         specifier: 16.1.1
         version: 16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -73,7 +73,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
-  packages/neumo-ui:
+  packages/nuform:
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.2

@@ -5,26 +5,26 @@ import type { AvatarProps, AvatarSize, AvatarVariant } from "./Avatar.types";
  * サイズごとのTailwindクラス
  */
 const sizeClasses: Record<AvatarSize, string> = {
-  xs: "w-6 h-6 text-neumo-xs",
-  sm: "w-8 h-8 text-neumo-sm",
-  md: "w-10 h-10 text-neumo-md",
-  lg: "w-14 h-14 text-neumo-lg",
-  xl: "w-[72px] h-[72px] text-neumo-xl",
+  xs: "w-6 h-6 text-nuform-xs",
+  sm: "w-8 h-8 text-nuform-sm",
+  md: "w-10 h-10 text-nuform-md",
+  lg: "w-14 h-14 text-nuform-lg",
+  xl: "w-[72px] h-[72px] text-nuform-xl",
 };
 
 /**
  * バリアントごとのTailwindクラス
  */
 const variantClasses: Record<AvatarVariant, string> = {
-  circle: "rounded-neumo-full",
-  rounded: "rounded-neumo-md",
+  circle: "rounded-nuform-full",
+  rounded: "rounded-nuform-md",
 };
 
 /**
  * ベースのTailwindクラス
  */
 const baseClasses =
-  "inline-flex items-center justify-center bg-neumo-bg neumo-elevation-1 overflow-hidden shrink-0";
+  "inline-flex items-center justify-center bg-nuform-bg nuform-elevation-1 overflow-hidden shrink-0";
 
 /**
  * イニシャルを取得
@@ -102,7 +102,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
           />
         ) : (
           <span
-            className="flex items-center justify-center w-full h-full bg-neumo-bg neumo-elevation-inset text-neumo-primary font-semibold uppercase"
+            className="flex items-center justify-center w-full h-full bg-nuform-bg nuform-elevation-inset text-nuform-primary font-semibold uppercase"
             aria-hidden="true"
           >
             {fallbackText}

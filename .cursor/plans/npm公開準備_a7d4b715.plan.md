@@ -1,21 +1,3 @@
----
-name: npm公開準備
-overview: GitHubリンク修正、LICENSEファイル追加、npm公開の準備を行う。実際の公開は行わない。
-todos:
-  - id: fix-github-url
-    content: hero-section.tsxのGitHubリンクを修正
-    status: completed
-  - id: add-license
-    content: LICENSEファイルをプロジェクトルートに追加
-    status: completed
-  - id: verify-package
-    content: package.jsonのメタデータとビルド確認
-    status: completed
-  - id: commit
-    content: 変更をコミット
-    status: completed
----
-
 # npm公開準備プラン
 
 ## 1. GitHubリポジトリURLの修正

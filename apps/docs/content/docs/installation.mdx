@@ -1,6 +1,6 @@
 ---
 title: インストール
-description: Neumo UIのインストール方法と初期設定
+description: Nuformのインストール方法と初期設定
 icon: Download
 ---
 
@@ -8,7 +8,7 @@ import { CircleCheck, AlertTriangle, Info } from 'lucide-react';
 
 # インストール
 
-Neumo UIをプロジェクトに追加する方法を説明します。
+Nuformをプロジェクトに追加する方法を説明します。
 
 <Callout type="info" title="動作環境">
 - **React**: 18.0以上（React 19推奨）
@@ -27,22 +27,22 @@ Neumo UIをプロジェクトに追加する方法を説明します。
     <Tabs items={['npm', 'pnpm', 'yarn', 'bun']} persist groupId="pm">
       <Tab value="npm">
         ```bash
-        npm install neumo-ui
+        npm install @anju/nuform
         ```
       </Tab>
       <Tab value="pnpm">
         ```bash
-        pnpm add neumo-ui
+        pnpm add @anju/nuform
         ```
       </Tab>
       <Tab value="yarn">
         ```bash
-        yarn add neumo-ui
+        yarn add @anju/nuform
         ```
       </Tab>
       <Tab value="bun">
         ```bash
-        bun add neumo-ui
+        bun add @anju/nuform
         ```
       </Tab>
     </Tabs>
@@ -51,12 +51,12 @@ Neumo UIをプロジェクトに追加する方法を説明します。
   <Step>
     ### スタイルをインポート
 
-    Neumo UIのデザイントークン（CSS変数）を使用するため、アプリケーションのエントリーポイントでスタイルをインポートしてください。
+    Nuformのデザイントークン（CSS変数）を使用するため、アプリケーションのエントリーポイントでスタイルをインポートしてください。
 
     <Tabs items={['Next.js (App Router)', 'Next.js (Pages Router)', 'Vite / CRA']} persist groupId="framework">
       <Tab value="Next.js (App Router)">
         ```tsx title="app/layout.tsx"
-        import 'neumo-ui/styles.css';
+        import '@anju/nuform/styles.css';
 
         export default function RootLayout({ children }) {
           return (
@@ -69,7 +69,7 @@ Neumo UIをプロジェクトに追加する方法を説明します。
       </Tab>
       <Tab value="Next.js (Pages Router)">
         ```tsx title="pages/_app.tsx"
-        import 'neumo-ui/styles.css';
+        import '@anju/nuform/styles.css';
         import type { AppProps } from 'next/app';
 
         export default function App({ Component, pageProps }: AppProps) {
@@ -79,7 +79,7 @@ Neumo UIをプロジェクトに追加する方法を説明します。
       </Tab>
       <Tab value="Vite / CRA">
         ```tsx title="src/main.tsx"
-        import 'neumo-ui/styles.css';
+        import '@anju/nuform/styles.css';
         import React from 'react';
         import ReactDOM from 'react-dom/client';
         import App from './App';
@@ -101,11 +101,11 @@ Neumo UIをプロジェクトに追加する方法を説明します。
   <Step>
     ### 背景色を設定
 
-    ニューモフィズムデザインは背景色が重要です。`--neumo-bg`変数を使用して背景を設定してください。
+    ニューモフィズムデザインは背景色が重要です。`--nuform-bg`変数を使用して背景を設定してください。
 
     ```css title="globals.css"
     body {
-      background: var(--neumo-bg);
+      background: var(--nuform-bg);
       min-height: 100vh;
     }
     ```
@@ -113,7 +113,7 @@ Neumo UIをプロジェクトに追加する方法を説明します。
     または、Tailwind CSSを使用している場合:
 
     ```tsx
-    <div className="bg-(--neumo-bg) min-h-screen">
+    <div className="bg-(--nuform-bg) min-h-screen">
       {/* アプリケーションの内容 */}
     </div>
     ```
@@ -125,11 +125,11 @@ Neumo UIをプロジェクトに追加する方法を説明します。
     これで準備完了です！コンポーネントをインポートして使用できます。
 
     ```tsx title="App.tsx"
-    import { Button, Card, Input, Badge, Avatar, Divider } from 'neumo-ui';
+    import { Button, Card, Input, Badge, Avatar, Divider } from '@anju/nuform';
 
     function App() {
       return (
-        <div style={{ background: 'var(--neumo-bg)', minHeight: '100vh', padding: '2rem' }}>
+        <div style={{ background: 'var(--nuform-bg)', minHeight: '100vh', padding: '2rem' }}>
           <Card>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
               <Avatar alt="User" size="lg" />
@@ -160,13 +160,13 @@ Neumo UIをプロジェクトに追加する方法を説明します。
 ## TypeScript
 
 <Callout type="info" title="型定義">
-Neumo UIはTypeScriptで書かれており、型定義がパッケージに含まれています。追加の`@types`パッケージは不要です。
+NuformはTypeScriptで書かれており、型定義がパッケージに含まれています。追加の`@types`パッケージは不要です。
 </Callout>
 
 コンポーネントのPropsの型をインポートできます:
 
 ```tsx
-import type { ButtonProps, CardProps, InputProps, AvatarProps, BadgeProps, DividerProps } from 'neumo-ui';
+import type { ButtonProps, CardProps, InputProps, AvatarProps, BadgeProps, DividerProps } from '@anju/nuform';
 
 // 型を使った例
 const myButtonProps: ButtonProps = {
@@ -178,38 +178,38 @@ const myButtonProps: ButtonProps = {
 
 ## CSS変数
 
-Neumo UIは以下のCSS変数を提供しています。これらを上書きすることでテーマをカスタマイズできます:
+Nuformは以下のCSS変数を提供しています。これらを上書きすることでテーマをカスタマイズできます:
 
 <Accordions>
   <Accordion title="カラー変数">
     ```css
     :root {
-      --neumo-bg: #e8eef3;           /* 背景色 */
-      --neumo-text: #2d3748;         /* テキスト色 */
-      --neumo-primary: #6366f1;      /* プライマリカラー */
-      --neumo-shadow-light: #ffffff; /* ライトシャドウ */
-      --neumo-shadow-dark: #c5ccd5;  /* ダークシャドウ */
+      --nuform-bg: #e8eef3;           /* 背景色 */
+      --nuform-text: #2d3748;         /* テキスト色 */
+      --nuform-primary: #6366f1;      /* プライマリカラー */
+      --nuform-shadow-light: #ffffff; /* ライトシャドウ */
+      --nuform-shadow-dark: #c5ccd5;  /* ダークシャドウ */
     }
     ```
   </Accordion>
   <Accordion title="スペーシング変数">
     ```css
     :root {
-      --neumo-spacing-xs: 0.25rem;
-      --neumo-spacing-sm: 0.5rem;
-      --neumo-spacing-md: 1rem;
-      --neumo-spacing-lg: 1.5rem;
-      --neumo-spacing-xl: 2rem;
+      --nuform-spacing-xs: 0.25rem;
+      --nuform-spacing-sm: 0.5rem;
+      --nuform-spacing-md: 1rem;
+      --nuform-spacing-lg: 1.5rem;
+      --nuform-spacing-xl: 2rem;
     }
     ```
   </Accordion>
   <Accordion title="ボーダーラジアス変数">
     ```css
     :root {
-      --neumo-radius-sm: 0.375rem;
-      --neumo-radius-md: 0.5rem;
-      --neumo-radius-lg: 0.75rem;
-      --neumo-radius-full: 9999px;
+      --nuform-radius-sm: 0.375rem;
+      --nuform-radius-md: 0.5rem;
+      --nuform-radius-lg: 0.75rem;
+      --nuform-radius-full: 9999px;
     }
     ```
   </Accordion>

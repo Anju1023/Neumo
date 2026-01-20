@@ -1,6 +1,6 @@
-# Neumo UI ドキュメントサイト
+# Nuform ドキュメントサイト
 
-Neumo UIのドキュメントサイト。[Fumadocs](https://fumadocs.dev) + Next.js 16で構築。
+Nuformのドキュメントサイト。[Fumadocs](https://fumadocs.dev) + Next.js 16で構築。
 
 ## 起動方法
 

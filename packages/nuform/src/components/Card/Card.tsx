@@ -5,9 +5,9 @@ import type { CardProps, CardVariant, CardPadding } from "./Card.types";
  * バリアントごとのTailwindクラス
  */
 const variantClasses: Record<CardVariant, string> = {
-  elevated: "bg-neumo-bg neumo-elevation-2",
-  flat: "bg-neumo-bg shadow-none border border-neumo-text-muted/30",
-  inset: "bg-neumo-bg neumo-elevation-inset",
+  elevated: "bg-nuform-bg nuform-elevation-2",
+  flat: "bg-nuform-bg shadow-none border border-nuform-text-muted/30",
+  inset: "bg-nuform-bg nuform-elevation-inset",
 };
 
 /**
@@ -15,15 +15,15 @@ const variantClasses: Record<CardVariant, string> = {
  */
 const paddingClasses: Record<CardPadding, string> = {
   none: "p-0",
-  sm: "p-neumo-sm",
-  md: "p-neumo-md",
-  lg: "p-neumo-lg",
+  sm: "p-nuform-sm",
+  md: "p-nuform-md",
+  lg: "p-nuform-lg",
 };
 
 /**
  * ベースのTailwindクラス
  */
-const baseClasses = "rounded-neumo-lg text-neumo-text transition-all";
+const baseClasses = "rounded-nuform-lg text-nuform-text transition-all";
 
 /**
  * Cardコンポーネント

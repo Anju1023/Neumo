@@ -30,7 +30,7 @@ export default defineConfig({
 
   // バナーコメント
   banner: {
-    js: "/* Neumo UI - Neumorphism 2.0 Component Library */",
+    js: "/* Nuform - Neumorphism 2.0 Component Library */",
   },
 
   // ビルド成功後にCSSをビルド

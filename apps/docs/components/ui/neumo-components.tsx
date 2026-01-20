@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Neumo UIコンポーネントのクライアントコンポーネントラッパー
+ * Nuformコンポーネントのクライアントコンポーネントラッパー
  *
  * MDXでServer Component内から使用できるように、
  * "use client" ディレクティブ付きでre-exportする
@@ -17,4 +17,4 @@ export {
   Toast,
   ToastProvider,
   useToast,
-} from "neumo-ui";
+} from "@anju/nuform";

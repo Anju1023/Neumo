@@ -4,19 +4,19 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
-/* Neumo UIのテーマ変数のみ（Tailwindなし版、Fumadocsとの競合を防ぐ） */
+/* Nuformのテーマ変数のみ（Tailwindなし版、Fumadocsとの競合を防ぐ） */
 /* モノレポ環境では相対パスで参照 */
-@import '../../../packages/neumo-ui/src/styles/theme.css';
+@import '../../../packages/nuform/src/styles/theme.css';
 
-/* Neumo UIのコンポーネントをTailwindにスキャンさせる */
-@source '../../../packages/neumo-ui/src/**/*.tsx';
-@source '../../../packages/neumo-ui/src/styles/*.css';
+/* NuformのコンポーネントをTailwindにスキャンさせる */
+@source '../../../packages/nuform/src/**/*.tsx';
+@source '../../../packages/nuform/src/styles/*.css';
 
 @theme {
   --font-sans: var(--font-inter), var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* Fumadocsレイアウト変数の保護（neumo-uiによる上書きを防ぐ） */
+/* Fumadocsレイアウト変数の保護（nuformによる上書きを防ぐ） */
 :root {
   --fd-nav-height: 3.5rem;
 }

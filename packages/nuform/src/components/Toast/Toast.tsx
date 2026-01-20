@@ -5,11 +5,11 @@ import type { ToastProps, ToastVariant } from "./Toast.types";
  * バリアントごとのスタイル
  */
 const variantClasses: Record<ToastVariant, string> = {
-  default: "bg-neumo-bg text-neumo-text",
-  success: "bg-neumo-bg text-neumo-text",
-  error: "bg-neumo-bg text-neumo-text",
-  info: "bg-neumo-bg text-neumo-text",
-  warning: "bg-neumo-bg text-neumo-text",
+  default: "bg-nuform-bg text-nuform-text",
+  success: "bg-nuform-bg text-nuform-text",
+  error: "bg-nuform-bg text-nuform-text",
+  info: "bg-nuform-bg text-nuform-text",
+  warning: "bg-nuform-bg text-nuform-text",
 };
 
 /**
@@ -20,7 +20,7 @@ const VariantIcon = ({ variant }: { variant: ToastVariant }) => {
     case "success":
       return (
         <svg
-          className="w-5 h-5 text-neumo-success"
+          className="w-5 h-5 text-nuform-success"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -36,7 +36,7 @@ const VariantIcon = ({ variant }: { variant: ToastVariant }) => {
     case "error":
       return (
         <svg
-          className="w-5 h-5 text-neumo-error"
+          className="w-5 h-5 text-nuform-error"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -52,7 +52,7 @@ const VariantIcon = ({ variant }: { variant: ToastVariant }) => {
     case "info":
       return (
         <svg
-          className="w-5 h-5 text-neumo-info"
+          className="w-5 h-5 text-nuform-info"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -68,7 +68,7 @@ const VariantIcon = ({ variant }: { variant: ToastVariant }) => {
     case "warning":
       return (
         <svg
-          className="w-5 h-5 text-neumo-warning"
+          className="w-5 h-5 text-nuform-warning"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -124,16 +124,16 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
     // ベースクラス
     const baseClasses =
-      "pointer-events-auto flex w-full max-w-md items-center gap-3 rounded-neumo-lg p-4 shadow-neumo-elevation-2 transition-all overflow-hidden relative mb-3 last:mb-0";
+      "pointer-events-auto flex w-full max-w-md items-center gap-3 rounded-nuform-lg p-4 shadow-nuform-elevation-2 transition-all overflow-hidden relative mb-3 last:mb-0";
 
     // クラス結合
     const toastClasses = [
       baseClasses,
       variantClasses[variant],
-      "neumo-elevation-2", // 浮き出し効果
+      "nuform-elevation-2", // 浮き出し効果
       isExiting || !isVisible
-        ? "animate-neumo-fade-out"
-        : "animate-neumo-slide-in-right",
+        ? "animate-nuform-fade-out"
+        : "animate-nuform-slide-in-right",
       className,
     ]
       .filter(Boolean)
@@ -149,7 +149,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       <div ref={ref} className={toastClasses} role="alert" {...props}>
         <div className="flex-1 flex items-center gap-3">
           {variant !== "default" && (
-            <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full neumo-elevation-inset">
+            <div className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full nuform-elevation-inset">
               <VariantIcon variant={variant} />
             </div>
           )}
@@ -163,7 +163,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
         <button
           onClick={handleClose}
-          className="shrink-0 rounded-neumo-sm w-8 h-8 flex items-center justify-center text-neumo-text-muted hover:text-neumo-text hover:neumo-elevation-1 active:neumo-elevation-inset focus:outline-none focus:ring-2 focus:ring-neumo-primary transition-all cursor-pointer"
+          className="shrink-0 rounded-nuform-sm w-8 h-8 flex items-center justify-center text-nuform-text-muted hover:text-nuform-text hover:nuform-elevation-1 active:nuform-elevation-inset focus:outline-none focus:ring-2 focus:ring-nuform-primary transition-all cursor-pointer"
           aria-label="Close"
         >
           <svg

@@ -11,7 +11,7 @@ import { TypeTable } from 'fumadocs-ui/components/type-table';
 // カスタムコンポーネント
 import { ComponentPreview, ComponentShowcase } from '@/components/ui/component-preview';
 
-// Neumo UIコンポーネント（クライアントコンポーネントラッパー経由）
+// Nuformコンポーネント（クライアントコンポーネントラッパー経由）
 // 注意: Fumadocsの Card/Cards と名前衝突を避けるため Neumo プレフィックスを使用
 import {
   Button as NeumoButton,
@@ -39,7 +39,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // ライブデモ用コンポーネント
     ComponentPreview,
     ComponentShowcase,
-    // Neumo UIコンポーネント（Neumoプレフィックス付き）
+    // Nuformコンポーネント（Neumoプレフィックス付き）
     // ドキュメント内のライブデモで使用
     NeumoButton,
     NeumoCard,

@@ -1,4 +1,4 @@
-# Neumo UI
+# Nuform
 
 ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリ
 
@@ -14,24 +14,24 @@
 
 ```bash
 # npm
-npm install neumo-ui
+npm install @anju/nuform
 
 # pnpm
-pnpm add neumo-ui
+pnpm add @anju/nuform
 
 # yarn
-yarn add neumo-ui
+yarn add @anju/nuform
 ```
 
 ## 使い方
 
 ```tsx
-import { Button, Card, Input, Badge, Avatar, Divider } from 'neumo-ui';
-import 'neumo-ui/styles.css';
+import { Button, Card, Input, Badge, Avatar, Divider } from '@anju/nuform';
+import '@anju/nuform/styles.css';
 
 function App() {
   return (
-    <div style={{ background: 'var(--neumo-bg)', minHeight: '100vh', padding: '2rem' }}>
+    <div style={{ background: 'var(--nuform-bg)', minHeight: '100vh', padding: '2rem' }}>
       <Card>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <Avatar alt="User" size="lg" />
@@ -122,11 +122,11 @@ function App() {
 ### プロジェクト構成
 
 ```
-neumo/
+nuform/
 ├── apps/
 │   └── docs/          # ドキュメントサイト (Fumadocs + Next.js)
 ├── packages/
-│   └── neumo-ui/      # UIコンポーネントライブラリ
+│   └── nuform/        # UIコンポーネントライブラリ
 └── package.json       # ルートpackage.json
 ```
 

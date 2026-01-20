@@ -1,18 +1,18 @@
-# neumo-ui
+# @anju/nuform
 
 ニューモフィズム2.0デザインに基づいたモダンなReact UIコンポーネントライブラリ
 
 ## インストール
 
 ```bash
-npm install neumo-ui
+npm install @anju/nuform
 ```
 
 ## 使い方
 
 ```tsx
-import { Button, Card, Input, Badge, Avatar, Divider } from 'neumo-ui';
-import 'neumo-ui/styles.css';
+import { Button, Card, Input, Badge, Avatar, Divider } from '@anju/nuform';
+import '@anju/nuform/styles.css';
 ```
 
 ## コンポーネント

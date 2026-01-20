@@ -9,7 +9,7 @@ import {
 /**
  * HomePage
  *
- * Neumo UIのランディングページ
+ * Nuformのランディングページ
  * 各セクションを組み合わせて表示
  */
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
       {/* ヒーローセクション - キャッチコピーとCTA */}
       <HeroSection />
 
-      {/* 特徴セクション - Neumo UIの魅力 */}
+      {/* 特徴セクション - Nuformの魅力 */}
       <FeaturesSection />
 
       {/* ショーケースセクション - コンポーネントデモ */}

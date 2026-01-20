@@ -19,7 +19,7 @@ import { Bell, Info, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
 ## インポート
 
 ```tsx
-import { Toast, ToastProvider, useToast } from 'neumo-ui';
+import { Toast, ToastProvider, useToast } from '@anju/nuform';
 ```
 
 ## セットアップ
@@ -33,7 +33,7 @@ Toastを使用するには、アプリケーションのルートを`ToastProvid
     アプリケーションのルートコンポーネント（`_app.tsx`や`layout.tsx`など）で`ToastProvider`をセットアップします。
 
     ```tsx title="app/layout.tsx"
-    import { ToastProvider } from 'neumo-ui';
+    import { ToastProvider } from '@anju/nuform';
 
     export default function RootLayout({ children }) {
       return (
@@ -54,7 +54,7 @@ Toastを使用するには、アプリケーションのルートを`ToastProvid
     任意のコンポーネントで`useToast`フックを使用してトーストを表示できます。
 
     ```tsx title="components/SaveButton.tsx"
-    import { useToast } from 'neumo-ui';
+    import { useToast } from '@anju/nuform';
 
     export function SaveButton() {
       const { toast } = useToast();

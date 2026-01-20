@@ -5,8 +5,8 @@ import type { DividerProps, DividerOrientation } from "./Divider.types";
  * 方向ごとのTailwindクラス
  */
 const orientationClasses: Record<DividerOrientation, string> = {
-  horizontal: "w-full h-0.5 my-neumo-md",
-  vertical: "w-0.5 h-full mx-neumo-md",
+  horizontal: "w-full h-0.5 my-nuform-md",
+  vertical: "w-0.5 h-full mx-nuform-md",
 };
 
 /**
@@ -14,7 +14,7 @@ const orientationClasses: Record<DividerOrientation, string> = {
  * ニューモフィズムの溝（groove）エフェクト
  */
 const baseClasses =
-  "border-none bg-transparent shadow-[inset_1px_1px_2px_var(--neumo-shadow-dark),inset_-1px_-1px_2px_var(--neumo-shadow-light)] rounded-neumo-full";
+  "border-none bg-transparent shadow-[inset_1px_1px_2px_var(--nuform-shadow-dark),inset_-1px_-1px_2px_var(--nuform-shadow-light)] rounded-nuform-full";
 
 /**
  * Dividerコンポーネント
