@@ -4,25 +4,25 @@ overview: プロジェクト名を「Neumo UI」から「Nuform」に変更し�
 todos:
   - id: rename-folder
     content: packages/neumo-ui を packages/nuform にリネーム
-    status: pending
+    status: completed
   - id: update-package-json
     content: 3つの package.json を更新（ルート、パッケージ、docs）
-    status: pending
+    status: completed
   - id: update-css-vars
     content: CSS変数とユーティリティクラスのプレフィックス変更（--neumo- → --nuform-）
-    status: pending
+    status: completed
   - id: update-imports
     content: import文の更新（neumo-ui → @anju/nuform）
-    status: pending
+    status: completed
   - id: update-docs
     content: ドキュメント内のテキスト変更（Neumo UI → Nuform）
-    status: pending
+    status: completed
   - id: build-test
     content: pnpm install && pnpm build && pnpm test で動作確認
-    status: pending
+    status: completed
   - id: commit
     content: 変更をコミット
-    status: pending
+    status: completed
 ---
 
 # Nuform リネーム計画
@@ -44,15 +44,15 @@ todos:
 2. **package.json の更新**
 
 - [package.json](package.json): 
- - name: `"neumo"` → `"nuform"`
- - scripts内の `--filter neumo-ui` → `--filter @anju/nuform`
+- name: `"neumo"` → `"nuform"`
+- scripts内の `--filter neumo-ui` → `--filter @anju/nuform`
 
 - [packages/nuform/package.json](packages/neumo-ui/package.json):
- - name: `"neumo-ui"` → `"@anju/nuform"`
- - repository.directory: `"packages/neumo-ui"` → `"packages/nuform"`
+- name: `"neumo-ui"` → `"@anju/nuform"`
+- repository.directory: `"packages/neumo-ui"` → `"packages/nuform"`
 
 - [apps/docs/package.json](apps/docs/package.json):
- - dependencies: `"neumo-ui": "workspace:*"` → `"@anju/nuform": "workspace:*"`
+- dependencies: `"neumo-ui": "workspace:*"` → `"@anju/nuform": "workspace:*"`
 
 ### Phase 2: CSS変数とユーティリティクラスの変更
 
