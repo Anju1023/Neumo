@@ -25,7 +25,7 @@ export function HeroSection() {
           {/* バッジ */}
           <div className="flex justify-center mb-8">
             <Badge variant="default" className="text-nuform-primary px-4 py-1.5 rounded-full border border-nuform-primary/10 bg-white/50 backdrop-blur-sm">
-              <span className="font-bold">v1.0.0</span>
+              <span className="font-bold">v0.1.0</span>
               <span className="mx-2 text-nuform-text-muted/50">•</span>
               <span>React 19 Ready</span>
             </Badge>
