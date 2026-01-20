@@ -14,7 +14,7 @@ import {
  */
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-neumo-bg">
+    <main className="min-h-screen bg-nuform-bg">
       {/* ヒーローセクション - キャッチコピーとCTA */}
       <HeroSection />
 

@@ -1,4 +1,4 @@
-# Neumo UI リリースガイド
+# Nuform リリースガイド
 
 このドキュメントでは、Changesetsを使ったバージョン管理とnpm公開の手順を説明します。
 
@@ -24,7 +24,7 @@ pnpm changeset
 
 1. **どのパッケージを変更した？**
    - スペースキーで選択、Enterで確定
-   - 今は `neumo-ui` だけなので、それを選ぶ
+   - 今は `@anju/nuform` だけなので、それを選ぶ
 
 2. **バージョンの種類は？**
    | 種類 | いつ使う？ | 例 |
@@ -44,13 +44,13 @@ $ pnpm changeset
 
 🦋  Which packages would you like to include?
    ◯ changed packages
-     ◉ neumo-ui
+     ◉ @anju/nuform
 
 🦋  Which packages should have a major bump?
-   ◯ neumo-ui
+   ◯ @anju/nuform
 
 🦋  Which packages should have a minor bump?
-   ◉ neumo-ui
+   ◉ @anju/nuform
 
 🦋  Please enter a summary for this change:
    Buttonコンポーネントにoutlineバリアントを追加
@@ -58,7 +58,7 @@ $ pnpm changeset
 🦋  Summary: Buttonコンポーネントにoutlineバリアントを追加
 
 🦋  === Summary of changesets ===
-🦋  minor: neumo-ui
+🦋  minor: @anju/nuform
 
 🦋  Is this your desired changeset? (Y/n) Y
 
@@ -75,7 +75,7 @@ changeset ファイルも一緒にコミットします。
 
 ```bash
 git add .
-git commit -m "feat(neumo-ui): add outline variant to Button"
+git commit -m "feat(nuform): add outline variant to Button"
 git push
 ```
 
@@ -92,15 +92,15 @@ pnpm version-packages
 ```
 
 これにより：
-- `packages/neumo-ui/package.json` のバージョンが更新される
-- `packages/neumo-ui/CHANGELOG.md` が生成/更新される
+- `packages/nuform/package.json` のバージョンが更新される
+- `packages/nuform/CHANGELOG.md` が生成/更新される
 - `.changeset/` 内のchangesetファイルが削除される
 
 ### 3.2 変更をコミット
 
 ```bash
 git add .
-git commit -m "chore: release neumo-ui@x.x.x"
+git commit -m "chore: release @anju/nuform@x.x.x"
 git push
 ```
 

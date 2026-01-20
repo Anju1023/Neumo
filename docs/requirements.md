@@ -1,9 +1,9 @@
-# Neumo UI - 要件定義書
+# Nuform - 要件定義書
 
 ## 1. プロジェクト概要
 
 ### 1.1 プロジェクト名
-**Neumo** - ニューモフィズムUIコンポーネントライブラリ
+**Nuform** - ニューモフィズムUIコンポーネントライブラリ
 
 ### 1.2 目的
 React / Next.js アプリケーションで使用できる、ニューモフィズム2.0デザインに基づいたモダンなUIコンポーネントライブラリを提供する。
@@ -38,9 +38,9 @@ React / Next.js アプリケーションで使用できる、ニューモフィ�
 ## 3. プロジェクト構造
 
 ```
-neumo/
+nuform/
 ├── packages/
-│   └── neumo-ui/              # コンポーネントライブラリ本体
+│   └── nuform/                # コンポーネントライブラリ本体
 │       ├── src/
 │       │   ├── components/    # UIコンポーネント
 │       │   │   ├── Button/
@@ -79,32 +79,32 @@ neumo/
 ```css
 :root {
   /* サーフェスカラー */
-  --neumo-bg: #e0e5ec;
-  --neumo-bg-dark: #1a1a2e;
+  --nuform-bg: #e0e5ec;
+  --nuform-bg-dark: #1a1a2e;
   
   /* シャドウカラー */
-  --neumo-shadow-light: rgba(255, 255, 255, 0.8);
-  --neumo-shadow-dark: rgba(163, 177, 198, 0.6);
+  --nuform-shadow-light: rgba(255, 255, 255, 0.8);
+  --nuform-shadow-dark: rgba(163, 177, 198, 0.6);
   
   /* エレベーション */
-  --neumo-elevation-1: 
-    4px 4px 8px var(--neumo-shadow-dark),
-    -4px -4px 8px var(--neumo-shadow-light);
-  --neumo-elevation-2: 
-    6px 6px 12px var(--neumo-shadow-dark),
-    -6px -6px 12px var(--neumo-shadow-light);
-  --neumo-elevation-inset: 
-    inset 4px 4px 8px var(--neumo-shadow-dark),
-    inset -4px -4px 8px var(--neumo-shadow-light);
+  --nuform-elevation-1: 
+    4px 4px 8px var(--nuform-shadow-dark),
+    -4px -4px 8px var(--nuform-shadow-light);
+  --nuform-elevation-2: 
+    6px 6px 12px var(--nuform-shadow-dark),
+    -6px -6px 12px var(--nuform-shadow-light);
+  --nuform-elevation-inset: 
+    inset 4px 4px 8px var(--nuform-shadow-dark),
+    inset -4px -4px 8px var(--nuform-shadow-light);
   
   /* 角丸 */
-  --neumo-radius-sm: 8px;
-  --neumo-radius-md: 12px;
-  --neumo-radius-lg: 16px;
-  --neumo-radius-full: 9999px;
+  --nuform-radius-sm: 8px;
+  --nuform-radius-md: 12px;
+  --nuform-radius-lg: 16px;
+  --nuform-radius-full: 9999px;
   
   /* トランジション */
-  --neumo-transition: 0.2s ease;
+  --nuform-transition: 0.2s ease;
 }
 ```
 

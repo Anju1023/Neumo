@@ -1,12 +1,12 @@
-# Neumo UI デザイン要件書
+# Nuform デザイン要件書
 
-Geminiへ: このドキュメントはNeumo UIのランディングページとドキュメントサイトのデザインを依頼するための要件書です。
+Geminiへ: このドキュメントはNuformのランディングページとドキュメントサイトのデザインを依頼するための要件書です。
 
 ---
 
 ## 1. プロジェクト概要
 
-### Neumo UI とは？
+### Nuform とは？
 
 **ニューモフィズム2.0** デザインに基づいたモダンなReact UIコンポーネントライブラリ。
 
@@ -69,37 +69,37 @@ Geminiへ: このドキュメントはNeumo UIのランディングページと�
 
 ```css
 /* 背景 */
---neumo-bg: #e0e5ec;          /* メイン背景（ソフトグレー） */
+--nuform-bg: #e0e5ec;          /* メイン背景（ソフトグレー） */
 
 /* テキスト */
---neumo-text: #2d3748;         /* メインテキスト（ダークグレー） */
---neumo-text-muted: #718096;   /* サブテキスト */
+--nuform-text: #2d3748;         /* メインテキスト（ダークグレー） */
+--nuform-text-muted: #718096;   /* サブテキスト */
 
 /* アクセント */
---neumo-primary: #6366f1;      /* プライマリ（インディゴ） */
---neumo-primary-hover: #4f46e5;
---neumo-success: #22c55e;      /* 成功（グリーン） */
---neumo-warning: #f59e0b;      /* 警告（オレンジ） */
---neumo-error: #ef4444;        /* エラー（レッド） */
---neumo-info: #3b82f6;         /* 情報（ブルー） */
+--nuform-primary: #6366f1;      /* プライマリ（インディゴ） */
+--nuform-primary-hover: #4f46e5;
+--nuform-success: #22c55e;      /* 成功（グリーン） */
+--nuform-warning: #f59e0b;      /* 警告（オレンジ） */
+--nuform-error: #ef4444;        /* エラー（レッド） */
+--nuform-info: #3b82f6;         /* 情報（ブルー） */
 
 /* シャドウ */
---neumo-shadow-light: rgba(255, 255, 255, 0.8);  /* 明るいシャドウ */
---neumo-shadow-dark: rgba(163, 177, 198, 0.6);   /* 暗いシャドウ */
+--nuform-shadow-light: rgba(255, 255, 255, 0.8);  /* 明るいシャドウ */
+--nuform-shadow-dark: rgba(163, 177, 198, 0.6);   /* 暗いシャドウ */
 ```
 
 ### ダークモード
 
 ```css
 /* 背景 */
---neumo-bg-dark: #1a1a2e;
+--nuform-bg-dark: #1a1a2e;
 
 /* テキスト */
---neumo-text-dark: #e2e8f0;
+--nuform-text-dark: #e2e8f0;
 
 /* シャドウ */
---neumo-shadow-light-dark: rgba(45, 45, 70, 0.3);
---neumo-shadow-dark-dark: rgba(10, 10, 20, 0.5);
+--nuform-shadow-light-dark: rgba(45, 45, 70, 0.3);
+--nuform-shadow-dark-dark: rgba(10, 10, 20, 0.5);
 ```
 
 ---
@@ -138,7 +138,7 @@ Geminiへ: このドキュメントはNeumo UIのランディングページと�
 ### 必要なセクション
 
 #### 5.1 ヒーローセクション
-- **キャッチコピー**: Neumo UIの魅力を一言で伝える
+- **キャッチコピー**: Nuformの魅力を一言で伝える
 - **サブコピー**: 簡潔な説明
 - **CTAボタン**: 「Get Started」「View Components」
 - **ビジュアル**: コンポーネントのデモ or イラスト
@@ -191,7 +191,7 @@ Geminiへ: このドキュメントはNeumo UIのランディングページと�
 - Propsを切り替えてインタラクティブに試せる
 
 #### 6.2 スタイリングの統一
-- Neumo UIのデザイントークンをドキュメントサイトにも適用
+- Nuformのデザイントークンをドキュメントサイトにも適用
 - 一貫したブランド体験
 
 #### 6.3 ナビゲーション改善
