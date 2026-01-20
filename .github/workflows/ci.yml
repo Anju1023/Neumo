@@ -1,0 +1,49 @@
+# CI ワークフロー
+# PR時とmainへのpush時にlint、test、buildを実行
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Lint, Test, Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # pnpmをセットアップ
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      # Node.jsをセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      # 依存関係をインストール
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Lint実行
+      - name: Run lint
+        run: pnpm lint
+
+      # テスト実行
+      - name: Run tests
+        run: pnpm test
+
+      # ビルド実行
+      - name: Build
+        run: pnpm build
