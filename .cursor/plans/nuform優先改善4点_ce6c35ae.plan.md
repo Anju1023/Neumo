@@ -30,18 +30,18 @@ todos:
 **テスト項目**:
 
 - Toast単体
-        - 基本レンダリング（title, description）
-        - 全バリアント（default, success, error, info, warning）
-        - アイコン表示確認
-        - 閉じるボタンのクリック
-        - 自動クローズ（duration）
-        - `role="alert"` の確認
+                - 基本レンダリング（title, description）
+                - 全バリアント（default, success, error, info, warning）
+                - アイコン表示確認
+                - 閉じるボタンのクリック
+                - 自動クローズ（duration）
+                - `role="alert"` の確認
 - ToastProvider
-        - toast()でToast追加
-        - dismiss()でToast削除
-        - 複数Toastの表示
+                - toast()でToast追加
+                - dismiss()でToast削除
+                - 複数Toastの表示
 - useToast
-        - Provider外で使用時のエラー
+                - Provider外で使用時のエラー
 
 **参考**: [Button.test.tsx](packages/nuform/src/components/Button/Button.test.tsx) の構成を踏襲
 
